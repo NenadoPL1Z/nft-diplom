@@ -1,5 +1,5 @@
 import { IHeaderModel } from "@/lib/models/IHeaderModel";
-import { PagesNamespace } from "@/types/types";
+import { PagesNamespace } from "@/types/enum";
 
 export const headersData: IHeaderModel[] = [
   { id: 1, title: "Главная", href: PagesNamespace.INDEX },

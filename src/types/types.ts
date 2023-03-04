@@ -1,7 +1,3 @@
-export enum PagesNamespace {
-  INDEX = "/",
-  ABOUT = "/about",
-  CONTACTS = "/contacts",
-  NFT = "/nft",
-  ACCOUNT = "/account",
+export interface ICallback {
+  onClick: () => void;
 }

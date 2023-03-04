@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Button, styled } from "@mui/material";
 import { IHeaderModel } from "@/lib/models/IHeaderModel";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { HeaderNavigationTypes } from "@/components/Header/HeaderNavigation/types";
 
-const HeaderItem = ({ title, href }: Omit<IHeaderModel, "id">) => {
+type IHeaderItem = Omit<IHeaderModel, "id"> & HeaderNavigationTypes;
+
+const HeaderItem = ({ title, href, onClick }: IHeaderItem) => {
   const { pathname } = useRouter();
+  const isActive = useMemo(() => pathname === href, [pathname]);
+
+  const handleClick = () => {
+    if (isActive) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+    if (onClick) onClick();
+  };
 
   return (
     <LiSC>
       <Link href={href}>
-        <Button variant={pathname === href ? "contained" : "outlined"}>
+        <Button
+          fullWidth={true}
+          onClick={handleClick}
+          variant={isActive ? "contained" : "outlined"}>
           {title}
         </Button>
       </Link>

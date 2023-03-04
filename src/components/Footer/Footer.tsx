@@ -11,10 +11,7 @@ const Footer = () => {
           <FooterLogoSC>
             <Logo />
           </FooterLogoSC>
-          <ParagraphSC>
-            Дпломная работа на тему NFT{"\n"}
-            <span>сделанная Пятигорским Родионом Борисовичем</span>
-          </ParagraphSC>
+          <ParagraphSC>Copyright © 2023</ParagraphSC>
         </WrapperSC>
       </PageContainerSC>
     </FooterSC>

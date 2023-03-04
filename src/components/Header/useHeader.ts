@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { PagesNamespace } from "@/types/types";
+import { PagesNamespace } from "@/types/enum";
 
 export const useHeader = () => {
   const router = useRouter();

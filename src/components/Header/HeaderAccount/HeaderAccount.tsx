@@ -1,14 +1,22 @@
 import React from "react";
-import { Avatar } from "@mui/material";
+import { Avatar, styled } from "@mui/material";
 import Link from "next/link";
-import { PagesNamespace } from "@/types/types";
+import { PagesNamespace } from "@/types/enum";
 
 const HeaderAccount = () => {
   return (
-    <Link href={PagesNamespace.ACCOUNT}>
-      <Avatar />
-    </Link>
+    <ContainerSC>
+      <Link href={PagesNamespace.ACCOUNT}>
+        <Avatar />
+      </Link>
+    </ContainerSC>
   );
 };
+
+const ContainerSC = styled("div")`
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+  }
+`;
 
 export default React.memo(HeaderAccount);

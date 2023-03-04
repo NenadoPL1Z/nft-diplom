@@ -30,5 +30,23 @@ export const theme = createTheme({
         variant: "contained",
       },
     },
+    MuiAvatar: {
+      defaultProps: {
+        style: {
+          backgroundColor: "#0B0D21",
+          border: "2px solid lightblue",
+          boxSizing: "content-box",
+        },
+      },
+    },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: "#0B0D21",
+          padding: 10,
+          borderRight: "1px solid lightblue",
+        },
+      },
+    },
   },
 });

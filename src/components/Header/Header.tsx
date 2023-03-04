@@ -5,13 +5,12 @@ import HeaderNavigation from "@/components/Header/HeaderNavigation/HeaderNavigat
 import HeaderAccount from "@/components/Header/HeaderAccount/HeaderAccount";
 import Logo from "@/components/Logo/Logo";
 import { useHeader } from "@/components/Header/useHeader";
-import { useTablet } from "@/hooks/useTablet";
 import HeaderDrawer from "@/components/Header/HeaderDrawer/HeaderDrawer";
+import { useTablet } from "@/hooks/useMedia";
 
 const Header = () => {
   const { handlePressLogo } = useHeader();
   const isTablet = useTablet();
-  console.log(isTablet);
 
   return (
     <HeaderSC>
@@ -36,7 +35,7 @@ const Header = () => {
 const HeaderSC = styled("header")`
   position: sticky;
   top: 0;
-  padding: 20px;
+  padding: 10px 0;
   background-color: rgba(0, 0, 0, 0.3);
   border-bottom: 1px solid lightblue;
 `;
