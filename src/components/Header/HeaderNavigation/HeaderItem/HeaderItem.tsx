@@ -9,13 +9,21 @@ type IHeaderItem = Omit<IHeaderModel, "id"> & HeaderNavigationTypes;
 
 const HeaderItem = ({ title, href, onClick }: IHeaderItem) => {
   const { pathname } = useRouter();
-  const isActive = useMemo(() => pathname === href, [pathname]);
+
+  const isActive = useMemo(() => pathname === href, [pathname, href]);
+  const Container = useMemo(
+    () =>
+      isActive
+        ? { Component: React.Fragment, props: { href: "" } }
+        : { Component: Link, props: { href } },
+    [isActive, href],
+  );
 
   const handleClick = () => {
     if (isActive) {
       window.scrollTo({
-        top: 0,
         behavior: "smooth",
+        top: 0,
       });
     }
     if (onClick) onClick();
@@ -23,14 +31,14 @@ const HeaderItem = ({ title, href, onClick }: IHeaderItem) => {
 
   return (
     <LiSC>
-      <Link href={href}>
+      <Container.Component {...Container.props}>
         <Button
           fullWidth={true}
           onClick={handleClick}
           variant={isActive ? "contained" : "outlined"}>
           {title}
         </Button>
-      </Link>
+      </Container.Component>
     </LiSC>
   );
 };

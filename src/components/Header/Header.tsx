@@ -7,6 +7,7 @@ import Logo from "@/components/Logo/Logo";
 import { useHeader } from "@/components/Header/useHeader";
 import HeaderDrawer from "@/components/Header/HeaderDrawer/HeaderDrawer";
 import { useTablet } from "@/hooks/useMedia";
+import { SECONDARY_COLOR, LIGHT_COLOR } from "../../theme/colors";
 
 const Header = () => {
   const { handlePressLogo } = useHeader();
@@ -35,9 +36,10 @@ const Header = () => {
 const HeaderSC = styled("header")`
   position: sticky;
   top: 0;
+  z-index: 1;
   padding: 10px 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid lightblue;
+  background-color: ${SECONDARY_COLOR};
+  border-bottom: 1px solid ${LIGHT_COLOR};
 `;
 
 const WrapperSC = styled("header")`

@@ -1,28 +1,11 @@
-import { blue, orange } from "@mui/material/colors";
 import { createTheme } from "@mui/material";
-
-declare module "@mui/material" {
-  interface Theme {
-    status: {
-      danger: string;
-    };
-  }
-  // allow configuration using `createTheme`
-  interface ThemeOptions {
-    status?: {
-      danger?: string;
-    };
-  }
-}
+import { LIGHT_COLOR, MAIN_COLOR, PRIMARY_MAIN_COLOR } from "./colors";
 
 export const theme = createTheme({
   palette: {
     primary: {
-      main: blue[50],
+      main: PRIMARY_MAIN_COLOR,
     },
-  },
-  status: {
-    danger: orange[500],
   },
   components: {
     MuiButton: {
@@ -33,8 +16,8 @@ export const theme = createTheme({
     MuiAvatar: {
       defaultProps: {
         style: {
-          backgroundColor: "#0B0D21",
-          border: "2px solid lightblue",
+          backgroundColor: MAIN_COLOR,
+          border: `2px solid ${LIGHT_COLOR}`,
           boxSizing: "content-box",
         },
       },
@@ -42,9 +25,9 @@ export const theme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: "#0B0D21",
+          backgroundColor: MAIN_COLOR,
           padding: 10,
-          borderRight: "1px solid lightblue",
+          borderRight: `1px solid ${LIGHT_COLOR}`,
         },
       },
     },

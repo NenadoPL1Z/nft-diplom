@@ -2,6 +2,7 @@ import React from "react";
 import PageContainerSC from "@/UI/SC/PageContainerSC";
 import { styled } from "@mui/material";
 import Logo from "@/components/Logo/Logo";
+import { SECONDARY_COLOR, LIGHT_COLOR } from "../../theme/colors";
 
 const Footer = () => {
   return (
@@ -20,8 +21,8 @@ const Footer = () => {
 
 const FooterSC = styled("footer")`
   padding: 20px 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-top: 1px solid lightblue;
+  background-color: ${SECONDARY_COLOR};
+  border-top: 1px solid ${LIGHT_COLOR};
 `;
 
 const WrapperSC = styled("footer")`
