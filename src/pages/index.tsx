@@ -1,9 +1,11 @@
 import "normalize.css";
-import { NFTPortApi } from "@/lib/constants/constants";
-export default function Home() {
+import PageContainerSC from "@/UI/SC/PageContainerSC";
+const Home = () => {
   return (
-    <>
-      <h1>ok</h1>
-    </>
+    <PageContainerSC>
+      <h1>ok123</h1>
+    </PageContainerSC>
   );
-}
+};
+
+export default Home;
