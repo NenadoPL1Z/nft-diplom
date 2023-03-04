@@ -1,5 +1,5 @@
 import React from "react";
-import { styled, useMediaQuery } from "@mui/material";
+import { styled } from "@mui/material";
 import PageContainerSC from "@/UI/SC/PageContainerSC";
 import HeaderNavigation from "@/components/Header/HeaderNavigation/HeaderNavigation";
 import HeaderAccount from "@/components/Header/HeaderAccount/HeaderAccount";

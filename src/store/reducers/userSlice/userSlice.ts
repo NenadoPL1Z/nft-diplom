@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootReducerNamespace } from "@/store/reducers/rootReducer";
-import { AuthType, IUserModel } from "@/lib/models/IUserModel";
+import { AuthType } from "@/lib/models/IUserModel";
 import { IUserReducerState } from "@/store/reducers/userSlice/types";
 
 const initialState: IUserReducerState = {

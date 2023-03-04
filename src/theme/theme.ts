@@ -1,6 +1,5 @@
-import { blue, lime, orange, purple, red } from "@mui/material/colors";
+import { blue, orange } from "@mui/material/colors";
 import { createTheme } from "@mui/material";
-import { light } from "@mui/material/styles/createPalette";
 
 declare module "@mui/material" {
   interface Theme {
