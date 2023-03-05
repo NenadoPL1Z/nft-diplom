@@ -6,29 +6,25 @@ import HeaderAccount from "@/components/Header/HeaderAccount/HeaderAccount";
 import Logo from "@/components/Logo/Logo";
 import { useHeader } from "@/components/Header/useHeader";
 import HeaderDrawer from "@/components/Header/HeaderDrawer/HeaderDrawer";
-import { useTablet } from "@/hooks/useMedia";
 import { SECONDARY_COLOR, LIGHT_COLOR } from "../../theme/colors";
 
 const Header = () => {
-  const { handlePressLogo } = useHeader();
-  const isTablet = useTablet();
+  const { isTablet, handlePressLogo } = useHeader();
 
   return (
     <HeaderSC>
-      <PageContainerSC>
-        <WrapperSC>
-          <HeaderLogoSC onClick={handlePressLogo}>
-            <Logo />
-          </HeaderLogoSC>
-          {!isTablet && (
-            <>
-              <HeaderNavigation />
-              <HeaderAccount />
-            </>
-          )}
-          {isTablet && <HeaderDrawer />}
-        </WrapperSC>
-      </PageContainerSC>
+      <CustomPageContainerSC as="div">
+        <HeaderLogoSC onClick={handlePressLogo}>
+          <Logo />
+        </HeaderLogoSC>
+        <HeaderDesktopSC>
+          <HeaderNavigation />
+        </HeaderDesktopSC>
+        <HeaderDesktopSC>
+          <HeaderAccount />
+        </HeaderDesktopSC>
+        {isTablet && <HeaderDrawer />}
+      </CustomPageContainerSC>
     </HeaderSC>
   );
 };
@@ -42,16 +38,22 @@ const HeaderSC = styled("header")`
   border-bottom: 1px solid ${LIGHT_COLOR};
 `;
 
-const WrapperSC = styled("header")`
+const CustomPageContainerSC = styled(PageContainerSC)`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-const HeaderLogoSC = styled("div")`
+const HeaderLogoSC = styled("section")`
   cursor: pointer;
   width: 40px;
   height: 40px;
+`;
+
+const HeaderDesktopSC = styled("section")`
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export default React.memo(Header);

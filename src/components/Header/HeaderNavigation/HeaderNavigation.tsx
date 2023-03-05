@@ -2,7 +2,7 @@ import React from "react";
 import { headersData } from "@/lib/constants/header";
 import { styled } from "@mui/material";
 import HeaderItem from "@/components/Header/HeaderNavigation/HeaderItem/HeaderItem";
-import { HeaderNavigationTypes } from "@/components/Header/HeaderNavigation/types";
+import { HeaderNavigationTypes } from "@/components/Header/types";
 
 const HeaderNavigation = (props: HeaderNavigationTypes) => {
   return (

@@ -1,4 +1,3 @@
-import "normalize.css";
 import PageContainerSC from "@/UI/SC/PageContainerSC";
 const Home = () => {
   return (

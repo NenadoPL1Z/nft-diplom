@@ -3,7 +3,7 @@ import { Button, styled } from "@mui/material";
 import { IHeaderModel } from "@/lib/models/IHeaderModel";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { HeaderNavigationTypes } from "@/components/Header/HeaderNavigation/types";
+import { HeaderNavigationTypes } from "@/components/Header/types";
 
 type IHeaderItem = Omit<IHeaderModel, "id"> & HeaderNavigationTypes;
 

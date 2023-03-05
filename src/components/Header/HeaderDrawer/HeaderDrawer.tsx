@@ -25,7 +25,7 @@ const HeaderDrawer = () => {
         open={isOpen}
         onClose={handleToggleDrawer(false)}>
         <WrapperSC>
-          <HeaderAccount />
+          <HeaderAccount onClick={handleToggleDrawer(false)} />
           <HeaderNavigation onClick={handleToggleDrawer(false)} />
         </WrapperSC>
       </Drawer>
@@ -40,4 +40,4 @@ const WrapperSC = styled("div")`
   align-items: center;
 `;
 
-export default HeaderDrawer;
+export default React.memo(HeaderDrawer);
