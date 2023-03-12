@@ -35,7 +35,7 @@ const SignIn = () => {
 
 const ResetContainerSC = styled(TextFieldContainerSC)`
   text-align: right;
-  margin: 20px 0;
+  margin-bottom: 20px;
 `;
 
 export default SignIn;

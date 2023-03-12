@@ -32,7 +32,7 @@ const Header = () => {
 const HeaderSC = styled("header")`
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
   padding: 10px 0;
   background-color: ${SECONDARY_COLOR};
   border-bottom: 1px solid ${LIGHT_COLOR};

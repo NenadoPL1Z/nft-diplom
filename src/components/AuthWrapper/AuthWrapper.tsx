@@ -41,7 +41,7 @@ const ContainerSC = styled("div")`
 
 const TitleSC = styled("h1")`
   margin-top: 0;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 `;
 
 export default AuthWrapper;

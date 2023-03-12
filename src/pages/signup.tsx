@@ -24,7 +24,7 @@ const Signup = () => {
         </TextFieldContainerSC>
         <Button fullWidth>Зарегистрироваться</Button>
         <AuthBottom
-          title="Есть акканут?"
+          title="Есть аккаунт?"
           href={PagesNamespace.SIGN_IN}
           buttonTitle="Войти"
         />
