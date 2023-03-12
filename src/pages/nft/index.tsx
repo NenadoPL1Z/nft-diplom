@@ -1,34 +1,23 @@
 import React, { useEffect } from "react";
 import PageContainerSC from "@/UI/SC/PageContainerSC";
 
-import Moralis from "moralis";
-import { EvmChain } from "@moralisweb3/common-evm-utils";
-
-const runApp = async () => {
-  await Moralis.start({
-    apiKey: "UdAH6DXhfV7PQJpeKDEj4P0IHtW8KhC2MojHawptirvpbM10ZQbJs4s9yAs8460f",
-    // ...and any other configuration
-  });
-
-  const address = "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB";
-
-  const chain = EvmChain.ETHEREUM;
-
-  const response = await Moralis.EvmApi.nft.getContractNFTs({
-    address,
-    chain,
-  });
-
-  return response.toJSON();
-};
+import NftList from "@/components/Nft/NftList/NftList";
+import { useAppDispatch } from "@/hooks/useStore";
+import { fetchGetContractNFTs } from "@/store/reducers/nftSlice/asyncThunks/fetchGetContractNFTs/fetchGetContractNFTs";
+import NftSearch from "@/components/Nft/NftSearch/NftSearch";
 
 const Nft = () => {
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    runApp().then((r) => {
-      console.log(r);
-    });
+    dispatch(fetchGetContractNFTs());
   }, []);
-  return <PageContainerSC>Nft</PageContainerSC>;
+  return (
+    <>
+      <NftSearch />
+      <NftList />
+    </>
+  );
 };
 
 export default Nft;

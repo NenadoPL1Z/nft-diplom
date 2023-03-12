@@ -2,7 +2,7 @@ import React from "react";
 import PageContainerSC from "@/UI/SC/PageContainerSC";
 
 const Contacts = () => {
-  return <PageContainerSC>Contacts</PageContainerSC>;
+  return <section>Contacts</section>;
 };
 
 export default Contacts;

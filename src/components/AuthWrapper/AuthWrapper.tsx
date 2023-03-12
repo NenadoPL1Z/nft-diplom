@@ -22,7 +22,7 @@ const AuthWrapper = ({ title, children }: IAuthWrapperProps) => {
   );
 };
 
-const CustomPageContainerSC = styled(PageContainerSC)`
+const CustomPageContainerSC = styled("section")`
   flex-grow: 1;
   display: flex;
   flex-direction: column;

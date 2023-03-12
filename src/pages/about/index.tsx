@@ -1,8 +1,7 @@
 import React from "react";
-import PageContainerSC from "@/UI/SC/PageContainerSC";
 
 const About = () => {
-  return <PageContainerSC>about</PageContainerSC>;
+  return <section>about</section>;
 };
 
 export default About;

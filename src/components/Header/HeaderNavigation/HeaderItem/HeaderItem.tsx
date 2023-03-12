@@ -33,6 +33,7 @@ const HeaderItem = ({ title, href, onClick }: IHeaderItem) => {
     <LiSC>
       <Container.Component {...Container.props}>
         <Button
+          color="secondary"
           fullWidth={true}
           onClick={handleClick}
           variant={isActive ? "contained" : "text"}>
