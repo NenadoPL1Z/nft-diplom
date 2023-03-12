@@ -26,7 +26,7 @@ const firebaseConfig = {
 export const firebaseApp = initializeApp(firebaseConfig);
 
 const auth = getAuth(firebaseApp);
-connectAuthEmulator(auth, "http://localhost:3000/");
+// connectAuthEmulator(auth, "http://localhost:3000/");
 
 export const loginEmailPassword = async (email: string, password: string) => {
   try {

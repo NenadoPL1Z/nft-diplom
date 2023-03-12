@@ -14,12 +14,14 @@ const Header = () => {
   return (
     <HeaderSC>
       <CustomPageContainerSC as="div">
-        <HeaderLogoSC onClick={handlePressLogo}>
-          <Logo />
-        </HeaderLogoSC>
-        <HeaderDesktopSC>
-          <HeaderNavigation />
-        </HeaderDesktopSC>
+        <LeftContainerSC>
+          <HeaderLogoSC onClick={handlePressLogo}>
+            <Logo />
+          </HeaderLogoSC>
+          <HeaderDesktopSC>
+            <HeaderNavigation />
+          </HeaderDesktopSC>
+        </LeftContainerSC>
         <HeaderDesktopSC>
           <HeaderAccount />
         </HeaderDesktopSC>
@@ -44,13 +46,18 @@ const CustomPageContainerSC = styled(PageContainerSC)`
   align-items: center;
 `;
 
-const HeaderLogoSC = styled("section")`
+const LeftContainerSC = styled("section")`
+  display: flex;
+`;
+
+const HeaderLogoSC = styled("div")`
   cursor: pointer;
   width: 40px;
   height: 40px;
+  margin-right: 50px;
 `;
 
-const HeaderDesktopSC = styled("section")`
+const HeaderDesktopSC = styled("div")`
   @media (max-width: 768px) {
     display: none;
   }

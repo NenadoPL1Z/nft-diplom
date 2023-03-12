@@ -1,8 +1,13 @@
 import PageContainerSC from "@/UI/SC/PageContainerSC";
+import { Button } from "@mui/material";
+import { useEffect } from "react";
+import { NFT_API_KEY } from "@/lib/constants/constants";
+import { axiosProject } from "@/lib/http";
+
 const Home = () => {
   return (
-    <PageContainerSC style={{ height: "4000px" }}>
-      <h1>ok123</h1>
+    <PageContainerSC>
+      <h1>NFT Маркет</h1>
     </PageContainerSC>
   );
 };
