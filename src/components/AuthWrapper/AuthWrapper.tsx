@@ -3,7 +3,7 @@ import { IChildren } from "@/types/types";
 import { useAuthWrapper } from "@/components/AuthWrapper/useAuthWrapper";
 import { styled } from "@mui/material";
 import PageContainerSC from "@/UI/SC/PageContainerSC";
-import { LIGHT_COLOR } from "../../theme/colors";
+import { COLORS } from "../../theme/colors";
 
 interface IAuthWrapperProps extends IChildren {
   title: string;
@@ -35,8 +35,9 @@ const ContainerSC = styled("div")`
   max-width: 500px;
   padding: 10px 20px;
   border-radius: 10px;
-  border: 1px solid ${LIGHT_COLOR};
   margin: 10px auto;
+  border: 1px solid ${COLORS.LIGHT};
+  background-color: ${COLORS.SECONDARY};
 `;
 
 const TitleSC = styled("h1")`

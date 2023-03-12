@@ -6,23 +6,47 @@ import TextFieldContainerSC from "@/UI/TextFieldUI/TextFieldContainerSC";
 import { PagesNamespace } from "@/types/enum";
 import AuthBottom from "@/components/AuthWrapper/AuthBottom";
 import Link from "next/link";
+import { useSignIn } from "@/hooks/pages/useSignIn";
 
 const SignIn = () => {
+  const {
+    passwordController,
+    emailController,
+    handleChangeEmail,
+    handleChangePassword,
+    onSubmit,
+  } = useSignIn();
   return (
     <AuthWrapper title="Вход">
-      <form>
+      <form onSubmit={onSubmit}>
         <TextFieldContainerSC>
-          <TextFieldUI label="Почта" />
+          <TextFieldUI
+            label="Почта"
+            value={emailController.field.value}
+            onChange={handleChangeEmail}
+            error={!!emailController.fieldState.error}
+            helperText={emailController.fieldState.error?.message}
+          />
         </TextFieldContainerSC>
         <TextFieldContainerSC>
-          <TextFieldUI label="Пароль" />
+          <TextFieldUI
+            label="Пароль"
+            value={passwordController.field.value}
+            onChange={handleChangePassword}
+            error={!!passwordController.fieldState.error}
+            helperText={passwordController.fieldState.error?.message}
+          />
         </TextFieldContainerSC>
         <ResetContainerSC>
           <Link href={PagesNamespace.RESET}>
             <Button variant="text">Забыли пароль?</Button>
           </Link>
         </ResetContainerSC>
-        <Button fullWidth>Войти</Button>
+        <Button
+          fullWidth
+          type="submit">
+          Войти
+        </Button>
         <AuthBottom
           title="Нет аккаунта?"
           href={PagesNamespace.SIGN_UP}

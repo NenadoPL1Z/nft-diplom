@@ -1,10 +1,10 @@
 import { styled } from "@mui/material";
-import { GRAY_COLOR } from "../../theme/colors";
+import { COLORS } from "../../theme/colors";
 
 const AuthParagraphSC = styled("p")`
   margin-top: 20px;
   text-align: center;
-  color: ${GRAY_COLOR};
+  color: ${COLORS.GRAY};
 `;
 
 export default AuthParagraphSC;

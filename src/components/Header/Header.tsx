@@ -6,7 +6,7 @@ import HeaderAccount from "@/components/Header/HeaderAccount/HeaderAccount";
 import Logo from "@/components/Logo/Logo";
 import { useHeader } from "@/components/Header/useHeader";
 import HeaderDrawer from "@/components/Header/HeaderDrawer/HeaderDrawer";
-import { SECONDARY_COLOR, LIGHT_COLOR } from "../../theme/colors";
+import { COLORS } from "../../theme/colors";
 
 const Header = () => {
   const { isTablet, handlePressLogo } = useHeader();
@@ -34,8 +34,8 @@ const HeaderSC = styled("header")`
   top: 0;
   z-index: 2;
   padding: 10px 0;
-  background-color: ${SECONDARY_COLOR};
-  border-bottom: 1px solid ${LIGHT_COLOR};
+  background-color: ${COLORS.SECONDARY};
+  border-bottom: 1px solid ${COLORS.LIGHT};
 `;
 
 const CustomPageContainerSC = styled(PageContainerSC)`

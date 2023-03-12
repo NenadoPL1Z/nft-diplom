@@ -1,5 +1,9 @@
+import { useEffect } from "react";
+
 const UserInit = () => {
-  console.log(123);
+  useEffect(() => {
+    console.log("user init");
+  }, []);
 
   return null;
 };

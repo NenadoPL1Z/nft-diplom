@@ -1,9 +1,12 @@
-import { blue } from "@mui/material/colors";
+import { blue, purple } from "@mui/material/colors";
 
-export const PRIMARY_MAIN_COLOR = blue[50];
-export const MAIN_COLOR = "#0B0D21";
-export const SECONDARY_COLOR = "#070817";
-export const WHITE_COLOR = "white";
+export const PRIMARY_MAIN_COLOR = blue[500];
 
-export const LIGHT_COLOR = "lightblue";
-export const GRAY_COLOR = "gray";
+export enum COLORS {
+  MAIN = "#11131e",
+  SECONDARY = "#1e1e31",
+  WHITE = "#FFFFFF",
+  LIGHT = "#FFFFFF",
+  GRAY = "gray",
+  BLACK = "#000000",
+}

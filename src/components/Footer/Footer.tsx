@@ -2,7 +2,7 @@ import React from "react";
 import PageContainerSC from "@/UI/SC/PageContainerSC";
 import { styled } from "@mui/material";
 import Logo from "@/components/Logo/Logo";
-import { SECONDARY_COLOR, LIGHT_COLOR, GRAY_COLOR } from "../../theme/colors";
+import { COLORS } from "../../theme/colors";
 
 const Footer = () => {
   return (
@@ -21,8 +21,8 @@ const Footer = () => {
 
 const FooterSC = styled("footer")`
   padding: 20px 0;
-  background-color: ${SECONDARY_COLOR};
-  border-top: 1px solid ${LIGHT_COLOR};
+  background-color: ${COLORS.SECONDARY};
+  border-top: 1px solid ${COLORS.LIGHT};
 `;
 
 const WrapperSC = styled("footer")`
@@ -41,7 +41,7 @@ const FooterLogoSC = styled("div")`
 const ParagraphSC = styled("p")`
   text-align: center;
   white-space: pre-wrap;
-  color: ${GRAY_COLOR};
+  color: ${COLORS.GRAY};
 `;
 
 export default Footer;

@@ -1,20 +1,15 @@
 import { createTheme } from "@mui/material";
-import {
-  LIGHT_COLOR,
-  MAIN_COLOR,
-  PRIMARY_MAIN_COLOR,
-  SECONDARY_COLOR,
-} from "./colors";
+import { COLORS, PRIMARY_MAIN_COLOR } from "./colors";
 
 export const theme = createTheme({
   palette: {
     primary: {
       main: PRIMARY_MAIN_COLOR,
-      light: LIGHT_COLOR,
+      light: COLORS.LIGHT,
     },
     secondary: {
-      main: SECONDARY_COLOR,
-      light: LIGHT_COLOR,
+      main: COLORS.SECONDARY,
+      light: COLORS.LIGHT,
     },
   },
   components: {
@@ -26,8 +21,8 @@ export const theme = createTheme({
     MuiAvatar: {
       defaultProps: {
         style: {
-          backgroundColor: MAIN_COLOR,
-          border: `2px solid ${LIGHT_COLOR}`,
+          backgroundColor: COLORS.MAIN,
+          border: `2px solid ${COLORS.LIGHT}`,
           boxSizing: "content-box",
         },
       },
@@ -35,9 +30,9 @@ export const theme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: MAIN_COLOR,
+          backgroundColor: COLORS.MAIN,
           padding: 10,
-          borderRight: `1px solid ${LIGHT_COLOR}`,
+          borderRight: `1px solid ${COLORS.LIGHT}`,
         },
       },
     },

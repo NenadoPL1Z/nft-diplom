@@ -1,3 +1,12 @@
 export const BASE_URL = "";
 export const TIMEOUT = 5000;
-export const NFTPortApi = process.env.NEXT_PUBLIC_NFTPortApi;
+export const NFT_API_KEY = process.env.NEXT_PUBLIC_NFT_API_KEY;
+export const FIREBASE_API_KEY = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
+export const FIREBASE_AUTH_DOMAIN =
+  process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN;
+export const FIREBASE_PROJECT_ID = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+export const FIREBASE_STORAGE_BUCKET =
+  process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+export const FIREBASE_SENDER_ID =
+  process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID;
+export const FIREBASE_APP_ID = process.env.NEXT_PUBLIC_FIREBASE_APP_ID;

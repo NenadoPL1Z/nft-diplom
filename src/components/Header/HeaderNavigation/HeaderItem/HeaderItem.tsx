@@ -35,7 +35,7 @@ const HeaderItem = ({ title, href, onClick }: IHeaderItem) => {
         <Button
           fullWidth={true}
           onClick={handleClick}
-          variant={isActive ? "contained" : "outlined"}>
+          variant={isActive ? "outlined" : "text"}>
           {title}
         </Button>
       </Container.Component>
