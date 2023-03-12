@@ -2,7 +2,6 @@ import React from "react";
 import { IChildren } from "@/types/types";
 import { useAuthWrapper } from "@/components/AuthWrapper/useAuthWrapper";
 import { styled } from "@mui/material";
-import PageContainerSC from "@/UI/SC/PageContainerSC";
 import { COLORS } from "../../theme/colors";
 
 interface IAuthWrapperProps extends IChildren {

@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import { INftModel } from "@/lib/models/INftModel";
 import { styled } from "@mui/material";
 
 type INFTItemImage = {

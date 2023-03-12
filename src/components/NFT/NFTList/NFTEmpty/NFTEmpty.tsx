@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, styled } from "@mui/material";
+import { Button } from "@mui/material";
 import { NFTContainerSC, NFTTitleSC } from "@/components/NFT/NFTList/styles";
 import { useRouter } from "next/router";
 

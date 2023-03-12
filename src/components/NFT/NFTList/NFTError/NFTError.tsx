@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, styled } from "@mui/material";
-import { COLORS } from "../../../../theme/colors";
 import { NFTTitleSC } from "@/components/NFT/NFTList/styles";
 
 const NFTError = () => {

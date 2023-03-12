@@ -1,5 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { nftSlice } from "@/store/reducers/nftSlice/nftSlice";
 import Moralis from "moralis";
 import { EvmChain } from "@moralisweb3/common-evm-utils";
 import { IStore } from "@/store/store";
