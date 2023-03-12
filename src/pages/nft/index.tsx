@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
-import PageContainerSC from "@/UI/SC/PageContainerSC";
-
-import NftList from "@/components/Nft/NftList/NftList";
+import NftList from "@/components/NFT/NFTList/NFTList";
 import { useAppDispatch } from "@/hooks/useStore";
 import { fetchGetContractNFTs } from "@/store/reducers/nftSlice/asyncThunks/fetchGetContractNFTs/fetchGetContractNFTs";
-import NftSearch from "@/components/Nft/NftSearch/NftSearch";
+import NftSearch from "@/components/NFT/NFTSearch/NFTSearch";
 
 const Nft = () => {
   const dispatch = useAppDispatch();
@@ -12,6 +10,7 @@ const Nft = () => {
   useEffect(() => {
     dispatch(fetchGetContractNFTs());
   }, []);
+
   return (
     <>
       <NftSearch />

@@ -1,14 +1,11 @@
 import React, { FormEvent, useState } from "react";
 import { Button, styled } from "@mui/material";
 import TFSearchUI from "@/UI/TextFieldUI/TextFields/TFSearchUI/TFSearchUI";
-import SearchPopularResults from "@/components/Nft/NftSearch/SearchPopularResults/SearchPopularResults";
+import PopularResults from "@/components/NFT/NFTSearch/PopularResults/PopularResults";
+import { useNFTSearch } from "@/components/NFT/NFTSearch/useNFTSearch";
 
-const NftSearch = () => {
-  const [search, setSearch] = useState<string>("");
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(search);
-  };
+const NFTSearch = () => {
+  const { search, setSearch, onSubmit, onClick } = useNFTSearch();
 
   return (
     <section>
@@ -20,14 +17,13 @@ const NftSearch = () => {
         />
         {search && <CustomButton>ПОИСК</CustomButton>}
       </SearchContainerSC>
-      <SearchPopularResults />
+      <PopularResults onClick={onClick} />
     </section>
   );
 };
 
 const SearchContainerSC = styled("form")`
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0 15px;
   display: flex;
 `;
 
@@ -35,4 +31,4 @@ const CustomButton = styled(Button)`
   margin-left: 15px;
 `;
 
-export default React.memo(NftSearch);
+export default React.memo(NFTSearch);
