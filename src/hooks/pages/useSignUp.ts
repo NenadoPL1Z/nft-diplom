@@ -85,7 +85,7 @@ export const useSignUp = () => {
       registrationUser(data.email, data.password)
         .then(() => {
           handleChangeStatus({ isLoading: false });
-          dispatch(changeUserAuth(true));
+          dispatch(changeUserAuth({ isAuth: true, isLoading: true }));
           router.push(PagesNamespace.ACCOUNT);
         })
         .catch((error) => {

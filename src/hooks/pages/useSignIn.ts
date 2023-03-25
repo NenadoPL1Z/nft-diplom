@@ -70,7 +70,7 @@ export const useSignIn = () => {
     loginEmailPassword(data.email, data.password)
       .then(() => {
         handleChangeStatus({ isLoading: false });
-        dispatch(changeUserAuth(true));
+        dispatch(changeUserAuth({ isAuth: true, isLoading: true }));
         router.push(PagesNamespace.ACCOUNT);
       })
       .catch((e) => {

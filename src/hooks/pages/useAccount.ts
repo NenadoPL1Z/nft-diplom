@@ -1,13 +1,8 @@
-import { useAppSelector } from "@/hooks/useStore";
-import { useEffect } from "react";
+import { usePrivatePage } from "@/hooks/usePrivatePage";
 
 export const useAccount = () => {
-  const { isLoading, isAuth } = useAppSelector((state) => state.userSlice);
-
-  useEffect(() => {}, [isLoading, isAuth]);
-
+  const { isLoading } = usePrivatePage();
   return {
-    isAuth,
     isLoading,
   };
 };

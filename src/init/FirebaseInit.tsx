@@ -14,6 +14,11 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "@firebase/auth";
+import { useAppDispatch } from "@/hooks/useStore";
+import {
+  changeUser,
+  changeUserAuth,
+} from "@/store/reducers/userSlice/userSlice";
 
 const firebaseConfig = {
   apiKey: FIREBASE_API_KEY,
@@ -45,15 +50,16 @@ export const registrationUser = async (email: string, password: string) => {
 };
 
 const FirebaseInit = () => {
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
     if (auth) {
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          console.log(user);
+          dispatch(changeUser(user));
           // ...
         } else {
-          // User is signed out
-          // ...
+          dispatch(changeUserAuth({ isAuth: false, isLoading: false }));
         }
       });
     }

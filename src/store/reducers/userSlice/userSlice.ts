@@ -1,13 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AuthType } from "@/lib/models/IUserModel";
 import { IUserReducerState } from "@/store/reducers/userSlice/types";
+import { User } from "@firebase/auth";
 
 const initialState: IUserReducerState = {
-  isAuth: null,
+  isAuth: false,
   isLoading: true,
-  userData: {
-    id: 0,
-  },
+  userData: null,
 };
 
 export const userSlice = createSlice({
@@ -17,11 +15,20 @@ export const userSlice = createSlice({
     changeUserLoading(state, action: PayloadAction<boolean>) {
       state.isLoading = action.payload;
     },
-    changeUserAuth(state, action: PayloadAction<AuthType>) {
-      state.isAuth = action.payload;
+    changeUserAuth(
+      state,
+      action: PayloadAction<Pick<IUserReducerState, "isAuth" | "isLoading">>,
+    ) {
+      state.isAuth = action.payload.isAuth;
+      state.isLoading = action.payload.isLoading;
+    },
+    changeUser(state, action: PayloadAction<User>) {
+      state.userData = action.payload;
       state.isLoading = false;
+      state.isAuth = true;
     },
   },
 });
 
-export const { changeUserAuth, changeUserLoading } = userSlice.actions;
+export const { changeUserAuth, changeUserLoading, changeUser } =
+  userSlice.actions;

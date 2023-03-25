@@ -1,7 +1,8 @@
-import { AuthType, IUserModel } from "@/lib/models/IUserModel";
+import { IUserModel } from "@/lib/models/IUserModel";
+import { User } from "@firebase/auth";
 
 export interface IUserReducerState {
   isLoading: boolean;
-  isAuth: AuthType;
-  userData: IUserModel;
+  isAuth: boolean;
+  userData: User | null;
 }
