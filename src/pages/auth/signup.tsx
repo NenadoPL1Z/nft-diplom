@@ -1,8 +1,8 @@
 import React from "react";
-import AuthWrapper from "@/components/AuthWrapper/AuthWrapper";
+import AuthWrapper from "@/components/Wrappers/AuthWrapper/AuthWrapper";
 import TextFieldContainerSC from "@/UI/TextFieldUI/TextFieldContainerSC";
 import TextFieldUI from "@/UI/TextFieldUI/TextFieldUI";
-import AuthBottom from "@/components/AuthWrapper/AuthBottom";
+import AuthBottom from "@/components/Wrappers/AuthWrapper/AuthBottom";
 import { PagesNamespace } from "@/types/enum";
 import { useSignUp } from "@/hooks/pages/useSignUp";
 import TFPasswordUI from "@/UI/TextFieldUI/TextFields/TFPasswordUI/TFPasswordUI";

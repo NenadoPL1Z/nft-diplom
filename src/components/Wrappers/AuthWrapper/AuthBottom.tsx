@@ -1,5 +1,5 @@
 import React from "react";
-import AuthParagraphSC from "@/components/AuthWrapper/AuthParagraphSC";
+import AuthParagraphSC from "@/components/Wrappers/AuthWrapper/AuthParagraphSC";
 import Link from "next/link";
 import { PagesNamespace } from "@/types/enum";
 import { Button } from "@mui/material";

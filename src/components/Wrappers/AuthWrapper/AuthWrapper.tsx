@@ -1,8 +1,8 @@
 import React from "react";
 import { IChildren } from "@/types/types";
-import { useAuthWrapper } from "@/components/AuthWrapper/useAuthWrapper";
+import { useAuthWrapper } from "@/components/Wrappers/AuthWrapper/useAuthWrapper";
 import { styled } from "@mui/material";
-import { COLORS } from "../../theme/colors";
+import { COLORS } from "../../../theme/colors";
 
 interface IAuthWrapperProps extends IChildren {
   title: string;

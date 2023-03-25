@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import { COLORS } from "../../theme/colors";
+import { COLORS } from "../../../theme/colors";
 
 const AuthParagraphSC = styled("p")`
   margin-top: 20px;

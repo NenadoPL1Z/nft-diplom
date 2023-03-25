@@ -1,9 +1,9 @@
 import React from "react";
-import AuthWrapper from "@/components/AuthWrapper/AuthWrapper";
+import AuthWrapper from "@/components/Wrappers/AuthWrapper/AuthWrapper";
 import TextFieldContainerSC from "@/UI/TextFieldUI/TextFieldContainerSC";
 import TextFieldUI from "@/UI/TextFieldUI/TextFieldUI";
 import { Button } from "@mui/material";
-import AuthBottom from "@/components/AuthWrapper/AuthBottom";
+import AuthBottom from "@/components/Wrappers/AuthWrapper/AuthBottom";
 import { PagesNamespace } from "@/types/enum";
 
 const Reset = () => {

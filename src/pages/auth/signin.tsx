@@ -1,10 +1,10 @@
 import React from "react";
-import AuthWrapper from "@/components/AuthWrapper/AuthWrapper";
+import AuthWrapper from "@/components/Wrappers/AuthWrapper/AuthWrapper";
 import { Button, styled, Typography } from "@mui/material";
 import TextFieldUI from "@/UI/TextFieldUI/TextFieldUI";
 import TextFieldContainerSC from "@/UI/TextFieldUI/TextFieldContainerSC";
 import { PagesNamespace } from "@/types/enum";
-import AuthBottom from "@/components/AuthWrapper/AuthBottom";
+import AuthBottom from "@/components/Wrappers/AuthWrapper/AuthBottom";
 import Link from "next/link";
 import { useSignIn } from "@/hooks/pages/useSignIn";
 import TFPasswordUI from "@/UI/TextFieldUI/TextFields/TFPasswordUI/TFPasswordUI";
