@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   FIREBASE_API_KEY,
   FIREBASE_APP_ID,
@@ -9,8 +9,9 @@ import {
 } from "@/lib/constants/constants";
 import { initializeApp } from "firebase/app";
 import {
-  connectAuthEmulator,
+  createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "@firebase/auth";
 
@@ -26,23 +27,38 @@ const firebaseConfig = {
 export const firebaseApp = initializeApp(firebaseConfig);
 
 const auth = getAuth(firebaseApp);
-// connectAuthEmulator(auth, "http://localhost:3000/");
 
 export const loginEmailPassword = async (email: string, password: string) => {
   try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password,
-    );
-
-    console.log(userCredential.user);
+    return signInWithEmailAndPassword(auth, email, password);
   } catch (e) {
-    console.log("qwe");
+    return e;
+  }
+};
+
+export const registrationUser = async (email: string, password: string) => {
+  try {
+    return createUserWithEmailAndPassword(auth, email, password);
+  } catch (e) {
+    return e;
   }
 };
 
 const FirebaseInit = () => {
+  useEffect(() => {
+    if (auth) {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log(user);
+          // ...
+        } else {
+          // User is signed out
+          // ...
+        }
+      });
+    }
+  }, []);
+
   return null;
 };
 

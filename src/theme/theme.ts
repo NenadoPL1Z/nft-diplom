@@ -13,6 +13,11 @@ export const theme = createTheme({
     },
   },
   components: {
+    MuiTypography: {
+      defaultProps: {
+        color: "secondary",
+      },
+    },
     MuiButton: {
       defaultProps: {
         variant: "contained",
@@ -39,6 +44,21 @@ export const theme = createTheme({
     MuiTextField: {
       defaultProps: {
         fullWidth: true,
+      },
+    },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          padding: "15px 20px",
+          minWidth: "320px",
+          minHeight: "150px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginBottom: "100px",
+          backgroundColor: COLORS.SECONDARY,
+          borderRadius: 10,
+        },
       },
     },
   },

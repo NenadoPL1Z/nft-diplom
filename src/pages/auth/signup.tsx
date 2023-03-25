@@ -1,27 +1,33 @@
 import React from "react";
 import AuthWrapper from "@/components/AuthWrapper/AuthWrapper";
-import { Button, styled } from "@mui/material";
-import TextFieldUI from "@/UI/TextFieldUI/TextFieldUI";
 import TextFieldContainerSC from "@/UI/TextFieldUI/TextFieldContainerSC";
-import { PagesNamespace } from "@/types/enum";
+import TextFieldUI from "@/UI/TextFieldUI/TextFieldUI";
 import AuthBottom from "@/components/AuthWrapper/AuthBottom";
-import Link from "next/link";
-import { useSignIn } from "@/hooks/pages/useSignIn";
+import { PagesNamespace } from "@/types/enum";
+import { useSignUp } from "@/hooks/pages/useSignUp";
+import TFPasswordUI from "@/UI/TextFieldUI/TextFields/TFPasswordUI/TFPasswordUI";
+import ButtonUI from "@/UI/ButtonUI/ButtonUI";
+import DialogUI from "@/UI/DialogUI/DialogUI";
+import { styled, Typography } from "@mui/material";
 
-const SignIn = () => {
+const Signup = () => {
   const {
+    hasError,
+    isLoading,
     passwordController,
     emailController,
+    onSubmit,
+    handleClose,
     handleChangeEmail,
     handleChangePassword,
-    onSubmit,
-  } = useSignIn();
+  } = useSignUp();
+
   return (
-    <AuthWrapper title="Вход">
+    <AuthWrapper title="Регистрация">
       <form onSubmit={onSubmit}>
         <TextFieldContainerSC>
           <TextFieldUI
-            label="Почта"
+            placeholder="Почта"
             value={emailController.field.value}
             onChange={handleChangeEmail}
             error={!!emailController.fieldState.error}
@@ -29,37 +35,35 @@ const SignIn = () => {
           />
         </TextFieldContainerSC>
         <TextFieldContainerSC>
-          <TextFieldUI
-            label="Пароль"
+          <TFPasswordUI
+            placeholder="Пароль"
             value={passwordController.field.value}
             onChange={handleChangePassword}
             error={!!passwordController.fieldState.error}
             helperText={passwordController.fieldState.error?.message}
           />
         </TextFieldContainerSC>
-        <ResetContainerSC>
-          <Link href={PagesNamespace.RESET}>
-            <Button variant="text">Забыли пароль?</Button>
-          </Link>
-        </ResetContainerSC>
-        <Button
+        {hasError && (
+          <TypographyCustomSC color="error">{hasError}</TypographyCustomSC>
+        )}
+        <ButtonUI
+          isLoading={isLoading}
           fullWidth
           type="submit">
-          Войти
-        </Button>
+          Зарегистрироваться
+        </ButtonUI>
         <AuthBottom
-          title="Нет аккаунта?"
-          href={PagesNamespace.SIGN_UP}
-          buttonTitle="Зарегистрироваться в 2 клика"
+          title="Есть аккаунт?"
+          href={PagesNamespace.SIGN_IN}
+          buttonTitle="Войти"
         />
       </form>
     </AuthWrapper>
   );
 };
 
-const ResetContainerSC = styled(TextFieldContainerSC)`
-  text-align: right;
+const TypographyCustomSC = styled(Typography)`
   margin-bottom: 20px;
 `;
 
-export default SignIn;
+export default Signup;

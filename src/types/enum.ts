@@ -4,7 +4,7 @@ export enum PagesNamespace {
   CONTACTS = "/contacts",
   NFT = "/nft",
   ACCOUNT = "/account",
-  SIGN_IN = "/signin",
-  SIGN_UP = "/signup",
-  RESET = "/reset",
+  SIGN_IN = "/auth/signin",
+  SIGN_UP = "/auth/signup",
+  RESET = "/auth/reset",
 }

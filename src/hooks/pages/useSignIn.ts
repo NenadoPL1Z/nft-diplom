@@ -1,6 +1,14 @@
 import { useController, useForm } from "react-hook-form";
 import { ChangeEvent } from "react";
 import { loginEmailPassword } from "../../init/FirebaseInit";
+import { useRouter } from "next/router";
+import { useStatus } from "@/hooks/useStatus";
+import { PagesNamespace } from "@/types/enum";
+import { useAppDispatch } from "@/hooks/useStore";
+import {
+  changeUserAuth,
+  changeUserLoading,
+} from "@/store/reducers/userSlice/userSlice";
 
 interface ISignInForm {
   email: string;
@@ -8,6 +16,13 @@ interface ISignInForm {
 }
 
 export const useSignIn = () => {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  const { isLoading, hasError, handleChangeStatus } = useStatus({
+    isLoading: false,
+  });
+
   const methods = useForm<ISignInForm>({
     defaultValues: { email: "", password: "" },
   });
@@ -18,11 +33,6 @@ export const useSignIn = () => {
     name: "email",
     rules: {
       required: true,
-      // maxLength: {
-      //   value: 30,
-      //   message: "Максимальная длинна почты 30 символов",
-      // },
-      // minLength: { value: 5, message: "Минимальная длинна почты 5 символов" },
     },
   });
 
@@ -31,11 +41,6 @@ export const useSignIn = () => {
     name: "password",
     rules: {
       required: true,
-      // maxLength: {
-      //   value: 20,
-      //   message: "Максимальная длинна пароля 20 символов",
-      // },
-      // minLength: { value: 8, message: "Минимальная длинна пароля 8 символов" },
     },
   });
 
@@ -44,17 +49,48 @@ export const useSignIn = () => {
     | typeof emailController;
 
   const handleChange =
-    (controller: FieldsControllerType) => (e: ChangeEvent<HTMLInputElement>) =>
+    (controller: FieldsControllerType) =>
+    (e: ChangeEvent<HTMLInputElement>) => {
+      handleChangeStatus({ hasError: "" });
       controller.field.onChange(e.target.value);
+    };
 
   const handleChangeEmail = handleChange(emailController);
   const handleChangePassword = handleChange(passwordController);
 
+  const setError = (message: string) => {
+    handleChangeStatus({
+      isLoading: false,
+      hasError: message,
+    });
+  };
+
   const onSubmit = handleSubmit((data) => {
-    loginEmailPassword(data.email, data.password);
+    handleChangeStatus({ isLoading: true });
+    loginEmailPassword(data.email, data.password)
+      .then(() => {
+        handleChangeStatus({ isLoading: false });
+        dispatch(changeUserAuth(true));
+        router.push(PagesNamespace.ACCOUNT);
+      })
+      .catch((e) => {
+        switch (e.code) {
+          case "auth/invalid-email":
+          case "auth/wrong-password":
+            setError("Некорректные данные для входа");
+            break;
+          case "auth/user-not-found":
+            setError("Пользователь не найден");
+            break;
+          default:
+            setError("Ошибка при входе");
+        }
+      });
   });
 
   return {
+    hasError,
+    isLoading,
     onSubmit,
     emailController,
     passwordController,
