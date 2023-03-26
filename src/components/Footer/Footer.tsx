@@ -60,7 +60,7 @@ const FooterLogoSC = styled("div")`
 
 const IconContainerSC = styled("ul")`
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   & > *:last-child {
     margin-right: 0;
   }

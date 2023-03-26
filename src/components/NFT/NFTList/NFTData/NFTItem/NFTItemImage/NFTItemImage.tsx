@@ -1,27 +1,18 @@
-import React, { useMemo } from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material";
-
-type INFTItemImage = {
-  name: string;
-  image: string;
-  description: string;
-  attributes: string[];
-};
+import { INftModel } from "@/lib/models/INftModel";
 
 interface INFTItemImageProps {
-  metadata: string;
+  metadata: Pick<INftModel, "normalized_metadata">["normalized_metadata"];
 }
 
 const NFTItemImage = ({ metadata }: INFTItemImageProps) => {
-  const data: INFTItemImage = useMemo(
-    () => JSON.parse(metadata || "{}"),
-    [metadata],
-  );
-
+  const [isError, setIsError] = useState<boolean>(false);
   return (
     <ImageSC
-      src={"https://picsum.photos/200/300"}
-      alt={data?.name}
+      onError={() => setIsError(true)}
+      src={isError ? "/images/placeholder-image.webp" : metadata?.image}
+      alt={metadata?.name}
     />
   );
 };

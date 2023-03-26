@@ -1,17 +1,22 @@
 import React from "react";
 import { INftModel } from "@/lib/models/INftModel";
 import { Button, styled } from "@mui/material";
-import { COLORS } from "../../../../../theme/colors";
+import { COLORS, PRIMARY_MAIN_COLOR } from "../../../../../theme/colors";
 import NFTItemImage from "@/components/NFT/NFTList/NFTData/NFTItem/NFTItemImage/NFTItemImage";
+import NftAttributes from "@/components/NFT/NFTList/NFTData/NFTItem/NftAttributes/NftAttributes";
 
-const NFTItem = ({ token_id, name, metadata }: INftModel) => {
+const NFTItem = (props: INftModel) => {
+  const { token_id, name, metadata, normalized_metadata } = props;
+
   return (
     <ContainerSC>
       <WrapperSC>
-        <NFTItemImage metadata={metadata || "{}"} />
+        <NFTItemImage metadata={normalized_metadata} />
         <TextSC>
-          <TitleSC>{name}</TitleSC>
-          <PriceSC>100</PriceSC>
+          <TitleSC>
+            {name} <span>{token_id}</span>
+          </TitleSC>
+          <NftAttributes {...normalized_metadata} />
           <Button
             variant="outlined"
             href={`/nft/${token_id}`}>
@@ -41,6 +46,10 @@ const TextSC = styled("div")`
 
 const TitleSC = styled("h4")`
   margin-bottom: 10px;
+  font-weight: 500;
+  & > span {
+    color: ${PRIMARY_MAIN_COLOR};
+  }
 `;
 
 const PriceSC = styled("h4")`

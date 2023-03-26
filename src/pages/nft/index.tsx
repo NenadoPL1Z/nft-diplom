@@ -1,15 +1,19 @@
 import React, { useEffect } from "react";
 import NftList from "@/components/NFT/NFTList/NFTList";
-import { useAppDispatch } from "@/hooks/useStore";
+import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { fetchGetContractNFTs } from "@/store/reducers/nftSlice/asyncThunks/fetchGetContractNFTs/fetchGetContractNFTs";
 import NftSearch from "@/components/NFT/NFTSearch/NFTSearch";
 
 const Nft = () => {
+  const isMoralis = useAppSelector((state) => state.globalSlice.isMoralis);
+  const result = useAppSelector((state) => state.nftSlice.result);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchGetContractNFTs());
-  }, []);
+    if (isMoralis && !result.length) {
+      dispatch(fetchGetContractNFTs());
+    }
+  }, [isMoralis]);
 
   return (
     <>

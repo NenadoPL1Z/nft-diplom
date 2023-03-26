@@ -8,7 +8,7 @@ const NFTSearch = () => {
   const { search, setSearch, onSubmit, onClick } = useNFTSearch();
 
   return (
-    <section>
+    <ContainerSC>
       <SearchContainerSC onSubmit={onSubmit}>
         <TFSearchUI
           value={search}
@@ -18,9 +18,11 @@ const NFTSearch = () => {
         {search && <CustomButton>ПОИСК</CustomButton>}
       </SearchContainerSC>
       <PopularResults onClick={onClick} />
-    </section>
+    </ContainerSC>
   );
 };
+
+const ContainerSC = styled("section")``;
 
 const SearchContainerSC = styled("form")`
   margin: 20px 0 15px;
