@@ -2,7 +2,6 @@ import React from "react";
 import AuthWrapper from "@/components/Wrappers/AuthWrapper/AuthWrapper";
 import TextFieldContainerSC from "@/UI/TextFieldUI/TextFieldContainerSC";
 import TextFieldUI from "@/UI/TextFieldUI/TextFieldUI";
-import { Button } from "@mui/material";
 import AuthBottom from "@/components/Wrappers/AuthWrapper/AuthBottom";
 import { PagesNamespace } from "@/types/enum";
 import { useReset } from "@/hooks/pages/useReset";
