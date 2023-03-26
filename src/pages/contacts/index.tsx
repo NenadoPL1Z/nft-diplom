@@ -1,6 +1,8 @@
 import React from "react";
-import { styled, Typography } from "@mui/material";
+import { Button, styled, Typography } from "@mui/material";
 import { PRIMARY_MAIN_COLOR } from "../../theme/colors";
+import Link from "next/link";
+import { PagesNamespace } from "@/types/enum";
 
 const Contacts = () => {
   return (
@@ -12,15 +14,18 @@ const Contacts = () => {
         вопросы большего количества пользователей. В дополнение к этому, мы
         также постоянно публикуем обновления и уведомления о наших продуктах на
         главном сайте. Поэтому наша команда решила не заполнять раздел
-        "Контакты" на нашем сайте, чтобы защитить пользователей от потери
+        'Контакты' на нашем сайте, чтобы защитить пользователей от потери
         времени и беспорядка в обмене сообщениями и помочь им быстро
         взаимодействовать с представленной нами информацией. При этом, мы
         предоставляем различные информационные ресурсы, чтобы дать пользователям
         понять важность наших решений и рецепты успеха. Мы также предлагаем
-        "ЧАВО", чтобы помочь пользователям найти ответы на самые
+        'ЧАВО', чтобы помочь пользователям найти ответы на самые
         распространенные вопросы на нашем сайте.{"\n"}
         <span>C уважение команда NFT-Easy.</span>
       </ParagraphSC>
+      <Link href={PagesNamespace.NFT}>
+        <Button>Обратно на маркет!</Button>
+      </Link>
     </ContainerSC>
   );
 };
@@ -30,7 +35,7 @@ const ContainerSC = styled("section")`
 `;
 
 const ParagraphSC = styled(Typography)`
-  margin: 10px 0 30px;
+  margin: 10px 0;
   white-space: pre-wrap;
   & > span {
     color: ${PRIMARY_MAIN_COLOR};
