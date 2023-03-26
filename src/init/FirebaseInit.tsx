@@ -74,7 +74,6 @@ const FirebaseInit = () => {
     if (auth) {
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          console.log(user);
           dispatch(
             changeUser({
               email: user.email || "",

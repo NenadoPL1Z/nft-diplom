@@ -14,7 +14,7 @@ const AccountInfo = () => {
         desc={userData?.email || ""}
       />
       <AccountInfoTab
-        title="Дата оследнего входа"
+        title="Дата последнего входа"
         desc={getRusData(userData?.lastLoginAt || "")}
       />
       <AccountInfoTab

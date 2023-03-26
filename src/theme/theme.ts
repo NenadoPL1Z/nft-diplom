@@ -12,6 +12,12 @@ export const theme = createTheme({
       light: COLORS.LIGHT,
     },
   },
+  typography: {
+    h1: {
+      fontSize: "32px",
+      fontWeight: "700",
+    },
+  },
   components: {
     MuiTypography: {
       defaultProps: {
