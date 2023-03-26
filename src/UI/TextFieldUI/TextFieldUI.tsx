@@ -3,11 +3,11 @@ import { COLORS, PRIMARY_MAIN_COLOR } from "../../theme/colors";
 
 const TextFieldUI = styled(TextField)`
   .MuiFormLabel-root {
-    color: ${COLORS.WHITE};
+    color: ${COLORS.LIGHT};
   }
   .MuiInputBase-root {
     .MuiInputBase-input {
-      color: ${COLORS.WHITE};
+      color: ${COLORS.LIGHT};
     }
     &:hover {
       .MuiOutlinedInput-notchedOutline {
@@ -15,7 +15,7 @@ const TextFieldUI = styled(TextField)`
       }
     }
     .MuiOutlinedInput-notchedOutline {
-      border-color: ${COLORS.WHITE};
+      border-color: ${COLORS.LIGHT};
     }
   }
 `;

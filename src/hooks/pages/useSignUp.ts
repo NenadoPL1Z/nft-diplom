@@ -5,11 +5,6 @@ import { validateEmail } from "@/lib/services/services";
 import { useStatus } from "@/hooks/useStatus";
 import { useRouter } from "next/router";
 import { PagesNamespace } from "@/types/enum";
-import { useAppDispatch } from "@/hooks/useStore";
-import {
-  changeUserAuth,
-  changeUserLoading,
-} from "@/store/reducers/userSlice/userSlice";
 
 type SignUpStateType = {
   email: string;
@@ -18,7 +13,6 @@ type SignUpStateType = {
 
 export const useSignUp = () => {
   const router = useRouter();
-  const dispatch = useAppDispatch();
 
   const { isLoading, hasError, handleChangeStatus } = useStatus({
     isLoading: false,
@@ -85,7 +79,6 @@ export const useSignUp = () => {
       registrationUser(data.email, data.password)
         .then(() => {
           handleChangeStatus({ isLoading: false });
-          dispatch(changeUserAuth({ isAuth: true, isLoading: true }));
           router.push(PagesNamespace.ACCOUNT);
         })
         .catch((error) => {

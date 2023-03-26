@@ -13,8 +13,9 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
 } from "@firebase/auth";
-import { useAppDispatch } from "@/hooks/useStore";
+import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import {
   changeUser,
   changeUserAuth,
@@ -49,6 +50,14 @@ export const registrationUser = async (email: string, password: string) => {
   }
 };
 
+export const logoutUser = async () => {
+  try {
+    return signOut(auth);
+  } catch (e) {
+    return e;
+  }
+};
+
 const FirebaseInit = () => {
   const dispatch = useAppDispatch();
 
@@ -56,14 +65,18 @@ const FirebaseInit = () => {
     if (auth) {
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          dispatch(changeUser(user));
-          // ...
+          dispatch(
+            changeUser({
+              metadata: JSON.parse(JSON.stringify(user.metadata)),
+              email: user.email,
+            }),
+          );
         } else {
           dispatch(changeUserAuth({ isAuth: false, isLoading: false }));
         }
       });
     }
-  }, []);
+  });
 
   return null;
 };

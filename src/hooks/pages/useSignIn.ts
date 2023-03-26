@@ -4,11 +4,6 @@ import { loginEmailPassword } from "../../init/FirebaseInit";
 import { useRouter } from "next/router";
 import { useStatus } from "@/hooks/useStatus";
 import { PagesNamespace } from "@/types/enum";
-import { useAppDispatch } from "@/hooks/useStore";
-import {
-  changeUserAuth,
-  changeUserLoading,
-} from "@/store/reducers/userSlice/userSlice";
 
 interface ISignInForm {
   email: string;
@@ -17,7 +12,6 @@ interface ISignInForm {
 
 export const useSignIn = () => {
   const router = useRouter();
-  const dispatch = useAppDispatch();
 
   const { isLoading, hasError, handleChangeStatus } = useStatus({
     isLoading: false,
@@ -70,7 +64,6 @@ export const useSignIn = () => {
     loginEmailPassword(data.email, data.password)
       .then(() => {
         handleChangeStatus({ isLoading: false });
-        dispatch(changeUserAuth({ isAuth: true, isLoading: true }));
         router.push(PagesNamespace.ACCOUNT);
       })
       .catch((e) => {

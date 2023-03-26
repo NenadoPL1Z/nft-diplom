@@ -22,13 +22,25 @@ export const userSlice = createSlice({
       state.isAuth = action.payload.isAuth;
       state.isLoading = action.payload.isLoading;
     },
-    changeUser(state, action: PayloadAction<User>) {
+    changeUser(
+      state,
+      action: PayloadAction<Pick<IUserReducerState, "userData">["userData"]>,
+    ) {
       state.userData = action.payload;
       state.isLoading = false;
       state.isAuth = true;
     },
+    logoutActionUser(state) {
+      state.userData = null;
+      state.isLoading = false;
+      state.isAuth = false;
+    },
   },
 });
 
-export const { changeUserAuth, changeUserLoading, changeUser } =
-  userSlice.actions;
+export const {
+  changeUserAuth,
+  changeUserLoading,
+  changeUser,
+  logoutActionUser,
+} = userSlice.actions;
