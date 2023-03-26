@@ -1,3 +1,5 @@
-export interface IUserModel {
-  id: number;
-}
+export type IUserModel = {
+  email: string;
+  creationTime: string;
+  lastLoginAt: string;
+};

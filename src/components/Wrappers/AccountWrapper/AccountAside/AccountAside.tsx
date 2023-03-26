@@ -22,13 +22,14 @@ const AccountAside = () => {
 };
 
 const ContainerSC = styled("aside")`
-  background-color: ${COLORS.SECONDARY};
   margin-right: 20px;
-  border-radius: 10px;
   min-width: 250px;
-  overflow: hidden;
 `;
 
-const UlSC = styled("ul")``;
+const UlSC = styled("ul")`
+  background-color: ${COLORS.SECONDARY};
+  border-radius: 10px;
+  overflow: hidden;
+`;
 
 export default React.memo(AccountAside);

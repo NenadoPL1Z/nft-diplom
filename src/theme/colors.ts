@@ -7,7 +7,7 @@ export enum COLORS {
   SECONDARY = "#1e1e31",
   LIGHT = "#FFFFFF",
   BLACK = "#000000",
-  GRAY = "#ece8e8",
+  GRAY = "#c7c7c7",
 
   BACKDOOR = "rgba(255, 255, 255, 0.1)",
 }

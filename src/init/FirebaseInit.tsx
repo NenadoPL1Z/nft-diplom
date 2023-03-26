@@ -65,10 +65,12 @@ const FirebaseInit = () => {
     if (auth) {
       onAuthStateChanged(auth, (user) => {
         if (user) {
+          console.log(user);
           dispatch(
             changeUser({
-              metadata: JSON.parse(JSON.stringify(user.metadata)),
-              email: user.email,
+              email: user.email || "",
+              creationTime: user.metadata.creationTime || "",
+              lastLoginAt: user.metadata.lastSignInTime || "",
             }),
           );
         } else {

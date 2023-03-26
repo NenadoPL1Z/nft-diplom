@@ -22,8 +22,8 @@ const LoadingWrapper = ({ isLoading, children }: LoadingWrapperProps) => {
 const ContainerSC = styled("section")`
   flex-grow: 1;
   display: flex;
-  align-items: center;
   justify-content: center;
+  padding: 20px 0;
 `;
 
 export default React.memo(LoadingWrapper);

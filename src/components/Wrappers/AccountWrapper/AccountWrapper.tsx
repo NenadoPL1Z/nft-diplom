@@ -21,9 +21,11 @@ const AccountWrapper = ({ title, desc, children }: AccountWrapperProps) => {
       <ContainerSC>
         <AccountAside />
         <WrapperSC>
-          <TitleSC>{title}</TitleSC>
-          {desc && <ParagraphSC>{desc}</ParagraphSC>}
-          {children}
+          <InnerWrapperSC>
+            <TitleSC>{title}</TitleSC>
+            {desc && <ParagraphSC>{desc}</ParagraphSC>}
+            {children}
+          </InnerWrapperSC>
         </WrapperSC>
       </ContainerSC>
     </LoadingWrapper>
@@ -32,14 +34,18 @@ const AccountWrapper = ({ title, desc, children }: AccountWrapperProps) => {
 
 const ContainerSC = styled("div")`
   display: flex;
+  flex-grow: 1;
+  justify-content: center;
 `;
 
 const WrapperSC = styled("div")`
-  background-color: ${COLORS.SECONDARY};
   width: 100%;
   max-width: 600px;
-  height: 80%;
+`;
+
+const InnerWrapperSC = styled("div")`
   padding: 20px;
+  background-color: ${COLORS.SECONDARY};
   border-radius: 10px;
 `;
 
