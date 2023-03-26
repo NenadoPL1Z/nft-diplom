@@ -5,21 +5,43 @@ import TextFieldUI from "@/UI/TextFieldUI/TextFieldUI";
 import { Button } from "@mui/material";
 import AuthBottom from "@/components/Wrappers/AuthWrapper/AuthBottom";
 import { PagesNamespace } from "@/types/enum";
+import { useReset } from "@/hooks/pages/useReset";
+import ButtonUI from "@/UI/ButtonUI/ButtonUI";
+import DialogUI from "@/UI/DialogUI/DialogUI";
 
 const Reset = () => {
+  const { isLoading, success, emailController, handleClose, onSubmit } =
+    useReset();
+
   return (
     <AuthWrapper title="Восстановление пароля">
-      <form>
+      <form onSubmit={onSubmit}>
         <TextFieldContainerSC>
-          <TextFieldUI label="Почта" />
+          <TextFieldUI
+            placeholder="Почта"
+            value={emailController.field.value}
+            onChange={(e) => emailController.field.onChange(e.target.value)}
+            error={!!emailController.fieldState.error}
+            helperText={emailController.fieldState.error?.message}
+          />
         </TextFieldContainerSC>
-        <Button fullWidth>Отпарвить письмо</Button>
+        <ButtonUI
+          fullWidth
+          type="submit"
+          isLoading={isLoading}>
+          Отпарвить письмо
+        </ButtonUI>
         <AuthBottom
           title=""
           href={PagesNamespace.SIGN_IN}
           buttonTitle="Вернуться к входу"
         />
       </form>
+      <DialogUI
+        open={!!success}
+        handleClose={handleClose}>
+        {success}
+      </DialogUI>
     </AuthWrapper>
   );
 };

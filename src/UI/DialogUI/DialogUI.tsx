@@ -48,6 +48,8 @@ const WrapperSC = styled("div")`
 
 const CustomTypography = styled(Typography)`
   text-align: center;
+  max-width: 330px;
+  margin-bottom: 10px;
 `;
 
 export default React.memo(DialogUI);
