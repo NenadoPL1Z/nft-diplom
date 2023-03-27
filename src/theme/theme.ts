@@ -67,5 +67,30 @@ export const theme = createTheme({
         },
       },
     },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          boxShadow: `0 0 10px ${COLORS.BLACK}`,
+          backgroundColor: COLORS.SECONDARY,
+        },
+      },
+    },
+    MuiList: {
+      styleOverrides: {
+        root: {
+          maxHeight: "250px",
+          backgroundColor: COLORS.SECONDARY,
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          color: PRIMARY_MAIN_COLOR,
+          fontWeight: 500,
+          fontSize: "14px",
+        },
+      },
+    },
   },
 });

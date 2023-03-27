@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   INftReducerState,
   nftSliceName,
@@ -12,6 +12,8 @@ const initialState: INftReducerState = {
   page_size: 15,
   search: "",
   result: [],
+  address: "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB",
+  chain: "ETHEREUM",
   cursor: undefined,
 };
 
@@ -19,6 +21,15 @@ export const nftSlice = createSlice({
   name: nftSliceName,
   initialState,
   reducers: {
+    changeChain(
+      state,
+      action: PayloadAction<Pick<INftReducerState, "chain">["chain"]>,
+    ) {
+      state.chain = action.payload;
+    },
+    changeAddress(state, action: PayloadAction<string>) {
+      state.address = action.payload;
+    },
     changeNftLoading(state) {
       state.isLoading = true;
       state.hasError = "";
@@ -43,4 +54,5 @@ export const nftSlice = createSlice({
   },
 });
 
-export const { changeNftLoading } = nftSlice.actions;
+export const { changeNftLoading, changeAddress, changeChain } =
+  nftSlice.actions;

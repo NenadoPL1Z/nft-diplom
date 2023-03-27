@@ -1,31 +1,30 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import Moralis from "moralis";
-import { EvmChain } from "@moralisweb3/common-evm-utils";
 import { IStore } from "@/store/store";
-import { CursorType, nftSliceName } from "@/store/reducers/nftSlice/types";
+import {
+  CursorType,
+  EvmChainUnion,
+  nftSliceName,
+} from "@/store/reducers/nftSlice/types";
 import { INftModel } from "@/lib/models/INftModel";
+import { EvmChain } from "@moralisweb3/common-evm-utils";
 
 export const fetchGetContractNFTs = createAsyncThunk<
   { result: INftModel[]; cursor: CursorType },
-  string | void,
+  void,
   IStore
 >(
   nftSliceName + "/fetchGetContractNFTs",
-  async (
-    address = "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB",
-    { rejectWithValue, getState },
-  ) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
-      const chain = EvmChain.ETHEREUM;
-
+      console.log(getState());
       const response = await Moralis.EvmApi.nft
         .getContractNFTs({
-          chain,
-          range: 1,
-          address: address as string,
+          chain: EvmChain[getState().nftSlice.chain as EvmChainUnion] as any,
+          address: getState().nftSlice.address,
           limit: getState().nftSlice.page_size,
-          normalizeMetadata: true,
           cursor: getState().nftSlice.cursor,
+          normalizeMetadata: true,
         })
         .then((r) => r.toJSON());
 

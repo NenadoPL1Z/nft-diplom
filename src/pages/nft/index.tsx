@@ -1,26 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import NftList from "@/components/NFT/NFTList/NFTList";
-import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
-import { fetchGetContractNFTs } from "@/store/reducers/nftSlice/asyncThunks/fetchGetContractNFTs/fetchGetContractNFTs";
 import NftSearch from "@/components/NFT/NFTSearch/NFTSearch";
+import { styled } from "@mui/material";
+import { useNftPage } from "@/hooks/pages/useNftPage";
 
 const Nft = () => {
-  const isMoralis = useAppSelector((state) => state.globalSlice.isMoralis);
-  const result = useAppSelector((state) => state.nftSlice.result);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (isMoralis && !result.length) {
-      dispatch(fetchGetContractNFTs());
-    }
-  }, [isMoralis]);
+  useNftPage();
 
   return (
-    <>
+    <ContainerSC>
       <NftSearch />
       <NftList />
-    </>
+    </ContainerSC>
   );
 };
+
+const ContainerSC = styled("section")`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`;
 
 export default Nft;
