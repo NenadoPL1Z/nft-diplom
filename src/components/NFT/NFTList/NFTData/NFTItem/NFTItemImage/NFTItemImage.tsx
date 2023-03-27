@@ -20,8 +20,7 @@ const NFTItemImage = ({ metadata }: INFTItemImageProps) => {
 const ImageSC = styled("img")`
   object-fit: cover;
   width: 100%;
-  height: 100%;
-  max-height: 250px;
+  height: 250px;
 `;
 
 export default React.memo(NFTItemImage);

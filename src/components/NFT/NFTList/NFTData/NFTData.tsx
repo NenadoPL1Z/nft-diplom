@@ -24,6 +24,7 @@ const ContainerSC = styled("div")`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 20px;
+  justify-content: center;
 `;
 
 export default React.memo(NFTData);

@@ -1,5 +1,4 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import { popularResults } from "@/lib/mock/popularResults";
@@ -7,7 +6,6 @@ import PopularResultsItem from "@/components/NFT/NFTSearch/PopularResults/Popula
 import { styled } from "@mui/material";
 import { COLORS } from "../../../../theme/colors";
 import { IPopularResultsProps } from "@/components/NFT/NFTSearch/PopularResults/types";
-
 const PopularResults = (props: IPopularResultsProps) => {
   return (
     <ContainerSC>

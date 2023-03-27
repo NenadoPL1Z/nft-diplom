@@ -12,7 +12,7 @@ const NftMore = () => {
     dispatch(changeNftLoading());
     setTimeout(() => {
       dispatch(fetchGetContractNFTs());
-    }, 5000);
+    }, 3000);
   };
 
   return (
