@@ -9,6 +9,5 @@ export enum PagesNamespace {
   ACCOUNT = "/account",
   HISTORY = "/account/history",
   FAVORITE = "/account/favorite",
-  EXCHANGE = "/account/exchange",
   LOGOUT = "/account/logout",
 }
