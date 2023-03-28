@@ -5,6 +5,7 @@ export const useNFTList = () => {
   const hasError = useAppSelector((state) => state.nftSlice.hasError);
   const isLoading = useAppSelector((state) => state.nftSlice.isLoading);
   const result = useAppSelector((state) => state.nftSlice.result);
+  const isEnd = useAppSelector((state) => state.nftSlice.isEnd);
 
   const isError = useMemo(
     () => !!hasError && !isLoading,
@@ -23,6 +24,11 @@ export const useNFTList = () => {
     [isLoading, isError, isEmpty, isResult],
   );
 
+  const isVisibleEnd = useMemo(
+    () => !hasError && !isLoading && result.length && isEnd,
+    [hasError, isEnd, isLoading, result],
+  );
+
   return {
     result,
     isEmpty,
@@ -30,5 +36,6 @@ export const useNFTList = () => {
     isResult,
     isLoading,
     isMore,
+    isVisibleEnd,
   };
 };

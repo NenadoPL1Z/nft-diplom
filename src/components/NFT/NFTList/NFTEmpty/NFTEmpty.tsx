@@ -17,7 +17,7 @@ const NFTEmpty = () => {
       <Button
         color="error"
         onClick={handleClick}>
-        Очистить все параметры поиска и попробовать снова
+        Вернуться к CRYPTOPUNKS
       </Button>
     </NFTContainerSC>
   );

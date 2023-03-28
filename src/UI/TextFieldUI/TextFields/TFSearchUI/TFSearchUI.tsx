@@ -6,9 +6,14 @@ import TextFieldUI from "@/UI/TextFieldUI/TextFieldUI";
 
 type ITFSearchUIProp = TextFieldProps & {
   onClickRightIcon: () => void;
+  isVisibleRightIcon?: boolean;
 };
 
-const TFSearchUI = ({ onClickRightIcon, ...props }: ITFSearchUIProp) => {
+const TFSearchUI = ({
+  onClickRightIcon,
+  isVisibleRightIcon = false,
+  ...props
+}: ITFSearchUIProp) => {
   return (
     <TextFieldUI
       type="text"
@@ -20,15 +25,16 @@ const TFSearchUI = ({ onClickRightIcon, ...props }: ITFSearchUIProp) => {
             <SearchIcon color="secondary" />
           </InputAdornment>
         ),
-        endAdornment: props.value ? (
-          <InputAdornment position="end">
-            <IconButton
-              color="secondary"
-              onClick={onClickRightIcon}>
-              <CloseIcon color="secondary" />
-            </IconButton>
-          </InputAdornment>
-        ) : null,
+        endAdornment:
+          props.value || isVisibleRightIcon ? (
+            <InputAdornment position="end">
+              <IconButton
+                color="secondary"
+                onClick={onClickRightIcon}>
+                <CloseIcon color="secondary" />
+              </IconButton>
+            </InputAdornment>
+          ) : null,
         ...props.InputProps,
       }}
     />

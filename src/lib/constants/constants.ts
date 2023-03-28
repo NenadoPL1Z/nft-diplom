@@ -1,3 +1,5 @@
+import { EvmChainUnion } from "@/store/reducers/nftSlice/types";
+
 export const BASE_URL = "";
 export const TIMEOUT = 5000;
 export const NFT_API_KEY = process.env.NEXT_PUBLIC_NFT_API_KEY;
@@ -10,3 +12,9 @@ export const FIREBASE_STORAGE_BUCKET =
 export const FIREBASE_SENDER_ID =
   process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID;
 export const FIREBASE_APP_ID = process.env.NEXT_PUBLIC_FIREBASE_APP_ID;
+
+export const PAGE_LIMIT = 15;
+
+export const DEFAULT_ADDRESS = "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB";
+
+export const DEFAULT_CHAIN: EvmChainUnion = "ETHEREUM";

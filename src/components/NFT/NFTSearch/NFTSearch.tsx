@@ -1,42 +1,49 @@
 import React from "react";
 import { useNFTSearch } from "@/components/NFT/NFTSearch/useNFTSearch";
 import NFTExchange from "@/components/NFT/NFTSearch/NFTExchange/NFTExchange";
-import PopularResults from "@/components/NFT/NFTSearch/PopularResults/PopularResults";
 import { useNFTSearchStyles } from "@/components/NFT/NFTSearch/NFTSearch.styles";
+import { FormProvider } from "react-hook-form";
 
 const NFTSearch = () => {
-  const { search, setSearch, onSubmit, onClick } = useNFTSearch();
+  const {
+    methods,
+    searchController,
+    chainController,
+    isVisibleSearch,
+    onSubmit,
+  } = useNFTSearch();
 
   return (
-    <>
-      <PramsContainerSC onSubmit={onSubmit}>
+    <FormProvider {...methods}>
+      <FormContainerSC onSubmit={onSubmit}>
         <TFSearchUISC
-          value={search}
-          fullWidth={true}
-          onChange={(e) => setSearch(e.target.value)}
-          onClickRightIcon={() => setSearch("")}
+          value={searchController.field.value}
+          onChange={(e) => searchController.field.onChange(e.target.value)}
+          onClickRightIcon={() => searchController.field.onChange("")}
+          fullWidth
         />
         <SelectContainerSC>
-          <NFTExchange />
+          <NFTExchange
+            value={chainController.field.value}
+            onChange={(e) => chainController.field.onChange(e.target.value)}
+          />
         </SelectContainerSC>
-        {search && (
+        {isVisibleSearch && (
           <CustomButton
             color="secondary"
             type="submit">
             ПОИСК
           </CustomButton>
         )}
-      </PramsContainerSC>
-      <ContainerSC>
-        <PopularResults onClick={onClick} />
-      </ContainerSC>
-    </>
+      </FormContainerSC>
+      <ContainerSC>{/*<PopularResults onClick={onClick} />*/}</ContainerSC>
+    </FormProvider>
   );
 };
 
 const {
   ContainerSC,
-  PramsContainerSC,
+  FormContainerSC,
   TFSearchUISC,
   SelectContainerSC,
   CustomButton,

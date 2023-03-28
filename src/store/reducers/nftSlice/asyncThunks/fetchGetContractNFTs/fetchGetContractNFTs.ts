@@ -2,27 +2,28 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import Moralis from "moralis";
 import { IStore } from "@/store/store";
 import {
-  CursorType,
   EvmChainUnion,
+  INftReducerState,
   nftSliceName,
 } from "@/store/reducers/nftSlice/types";
 import { INftModel } from "@/lib/models/INftModel";
 import { EvmChain } from "@moralisweb3/common-evm-utils";
+import { PAGE_LIMIT } from "@/lib/constants/constants";
+import { ISearchFormModle } from "@/lib/models/FormModels/ISearchFormModle";
 
 export const fetchGetContractNFTs = createAsyncThunk<
-  { result: INftModel[]; cursor: CursorType },
-  void,
+  Pick<INftReducerState, "result" | "cursor" | "isEnd">,
+  ISearchFormModle,
   IStore
 >(
   nftSliceName + "/fetchGetContractNFTs",
-  async (_, { rejectWithValue, getState }) => {
+  async ({ search, chain }, { rejectWithValue, getState }) => {
     try {
-      console.log(getState());
       const response = await Moralis.EvmApi.nft
         .getContractNFTs({
-          chain: EvmChain[getState().nftSlice.chain as EvmChainUnion] as any,
-          address: getState().nftSlice.address,
-          limit: getState().nftSlice.page_size,
+          address: search,
+          limit: PAGE_LIMIT,
+          chain: EvmChain[chain as EvmChainUnion] as any,
           cursor: getState().nftSlice.cursor,
           normalizeMetadata: true,
         })
@@ -31,10 +32,10 @@ export const fetchGetContractNFTs = createAsyncThunk<
       return {
         result: response.result as INftModel[],
         cursor: response.cursor,
+        isEnd: false,
       };
-    } catch (e) {
-      console.log(e);
-      return rejectWithValue("Ошибка получения api");
+    } catch (e: any) {
+      return rejectWithValue(`${e.name} ${e.code}`);
     }
   },
 );

@@ -4,8 +4,8 @@ import TFSearchUI from "@/UI/TextFieldUI/TextFields/TFSearchUI/TFSearchUI";
 
 const ContainerSC = styled("section")``;
 
-const PramsContainerSC = styled("form")`
-  padding: 10px 10px 5px;
+const FormContainerSC = styled("form")`
+  padding: 10px 0px 5px;
   display: flex;
   align-items: center;
   position: sticky;
@@ -49,7 +49,7 @@ const CustomButton = styled(Button)`
 
 export const useNFTSearchStyles = () => ({
   ContainerSC,
-  PramsContainerSC,
+  FormContainerSC,
   TFSearchUISC,
   SelectContainerSC,
   CustomButton,

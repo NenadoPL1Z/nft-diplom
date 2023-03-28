@@ -3,16 +3,22 @@ import ButtonUI from "@/UI/ButtonUI/ButtonUI";
 import { styled } from "@mui/material";
 import { useAppDispatch } from "@/hooks/useStore";
 import { fetchGetContractNFTs } from "@/store/reducers/nftSlice/asyncThunks/fetchGetContractNFTs/fetchGetContractNFTs";
-import { changeNftLoading } from "@/store/reducers/nftSlice/nftSlice";
+import { useRouter } from "next/router";
+import { getQuery } from "@/lib/services/services";
+import { ISearchFormModle } from "@/lib/models/FormModels/ISearchFormModle";
 
 const NftMore = () => {
+  const { asPath } = useRouter();
   const dispatch = useAppDispatch();
 
   const onPress = () => {
-    dispatch(changeNftLoading());
-    setTimeout(() => {
-      dispatch(fetchGetContractNFTs());
-    }, 3000);
+    const { search, chain } = getQuery(asPath);
+    dispatch(
+      fetchGetContractNFTs({
+        search,
+        chain,
+      } as ISearchFormModle),
+    );
   };
 
   return (
