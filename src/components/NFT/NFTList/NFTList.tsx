@@ -33,7 +33,7 @@ const ContainerSC = styled("section")`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 `;
 
 export default React.memo(NFTList);

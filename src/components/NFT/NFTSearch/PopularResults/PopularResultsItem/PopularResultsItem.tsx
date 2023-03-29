@@ -10,7 +10,7 @@ const PopularResultsItem = ({
   onClick,
   ...resultData
 }: IPopularResultsItemProps) => {
-  const { title, address } = resultData;
+  const { title } = resultData;
 
   return (
     <ContainerSC

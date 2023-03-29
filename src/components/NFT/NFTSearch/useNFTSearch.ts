@@ -9,8 +9,8 @@ import { getQuery } from "@/lib/services/services";
 import { exchangeData } from "@/lib/mock/exchangeData";
 import { fetchGetContractNFTs } from "@/store/reducers/nftSlice/asyncThunks/fetchGetContractNFTs/fetchGetContractNFTs";
 import { resetNftSlice } from "@/store/reducers/nftSlice/nftSlice";
+import { IPopularResultModel } from "@/lib/models/IPopularResultModel";
 
-// 0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB
 export const useNFTSearch = () => {
   const router = useRouter();
   const { push, asPath } = router;
@@ -30,6 +30,16 @@ export const useNFTSearch = () => {
   });
 
   const isVisibleSearch = useMemo(() => formState.isDirty, [formState]);
+
+  const onClickPopularResults = (data: IPopularResultModel) => () => {
+    dispatch(resetNftSlice());
+    router.push({
+      query: {
+        search: data.address,
+        chain: "ETHEREUM",
+      },
+    });
+  };
 
   const onSubmit = handleSubmit(({ search, chain }) => {
     dispatch(resetNftSlice());
@@ -75,5 +85,6 @@ export const useNFTSearch = () => {
     isVisibleSearch,
     chainController,
     searchController,
+    onClickPopularResults,
   };
 };

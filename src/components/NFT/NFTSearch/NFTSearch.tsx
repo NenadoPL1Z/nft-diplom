@@ -11,6 +11,7 @@ const NFTSearch = () => {
     searchController,
     chainController,
     isVisibleSearch,
+    onClickPopularResults,
     onSubmit,
   } = useNFTSearch();
 
@@ -38,7 +39,9 @@ const NFTSearch = () => {
           </CustomButton>
         )}
       </FormContainerSC>
-      <ContainerSC>{/*<PopularResults onClick={onClick} />*/}</ContainerSC>
+      <ContainerSC>
+        <PopularResults onClick={onClickPopularResults} />
+      </ContainerSC>
     </FormProvider>
   );
 };
