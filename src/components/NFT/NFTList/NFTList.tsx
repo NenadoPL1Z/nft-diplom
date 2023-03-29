@@ -8,8 +8,15 @@ import NFTData from "@/components/NFT/NFTList/NFTData/NFTData";
 import NFTMore from "@/components/NFT/NFTList/NFTMore/NFTMore";
 
 const NFTList = () => {
-  const { result, isError, isEmpty, isResult, isLoading, isMore } =
-    useNFTList();
+  const {
+    result,
+    isError,
+    isEmpty,
+    isResult,
+    isLoading,
+    isMore,
+    isVisibleEnd,
+  } = useNFTList();
 
   return (
     <ContainerSC>

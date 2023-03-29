@@ -17,7 +17,7 @@ const NFTEmpty = () => {
       <Button
         color="error"
         onClick={handleClick}>
-        Вернуться к CRYPTOPUNKS
+        Вернуться к MONKEY
       </Button>
     </NFTContainerSC>
   );

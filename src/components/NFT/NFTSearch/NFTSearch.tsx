@@ -3,6 +3,7 @@ import { useNFTSearch } from "@/components/NFT/NFTSearch/useNFTSearch";
 import NFTExchange from "@/components/NFT/NFTSearch/NFTExchange/NFTExchange";
 import { useNFTSearchStyles } from "@/components/NFT/NFTSearch/NFTSearch.styles";
 import { FormProvider } from "react-hook-form";
+import PopularResults from "@/components/NFT/NFTSearch/PopularResults/PopularResults";
 
 const NFTSearch = () => {
   const {
@@ -17,6 +18,7 @@ const NFTSearch = () => {
     <FormProvider {...methods}>
       <FormContainerSC onSubmit={onSubmit}>
         <TFSearchUISC
+          name="nft"
           value={searchController.field.value}
           onChange={(e) => searchController.field.onChange(e.target.value)}
           onClickRightIcon={() => searchController.field.onChange("")}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { styled } from "@mui/material";
 import { INftModel } from "@/lib/models/INftModel";
 
@@ -8,10 +8,17 @@ interface INFTItemImageProps {
 
 const NFTItemImage = ({ metadata }: INFTItemImageProps) => {
   const [isError, setIsError] = useState<boolean>(false);
+
+  const image = useMemo(() => {
+    return metadata?.image?.includes("ipfs")
+      ? `https://ipfs.io/ipfs/${metadata?.image?.split("ipfs://")[1]}`
+      : metadata?.image;
+  }, [metadata?.image]);
+
   return (
     <ImageSC
       onError={() => setIsError(true)}
-      src={isError ? "/images/placeholder-image.webp" : metadata?.image}
+      src={isError ? "/images/placeholder-image.webp" : image}
       alt={metadata?.name}
     />
   );

@@ -13,8 +13,8 @@ export const FIREBASE_SENDER_ID =
   process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID;
 export const FIREBASE_APP_ID = process.env.NEXT_PUBLIC_FIREBASE_APP_ID;
 
-export const PAGE_LIMIT = 15;
+export const PAGE_LIMIT = 100;
 
-export const DEFAULT_ADDRESS = "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB";
+export const DEFAULT_ADDRESS = "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D";
 
 export const DEFAULT_CHAIN: EvmChainUnion = "ETHEREUM";
