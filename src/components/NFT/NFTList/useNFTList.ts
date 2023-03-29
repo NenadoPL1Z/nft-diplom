@@ -19,14 +19,14 @@ export const useNFTList = () => {
 
   const isResult = useMemo(() => !!result.length, [result]);
 
-  const isMore = useMemo(
-    () => !isLoading && !isError && !isEmpty && isResult,
-    [isLoading, isError, isEmpty, isResult],
-  );
-
   const isVisibleEnd = useMemo(
     () => !hasError && !isLoading && result.length && isEnd,
     [hasError, isEnd, isLoading, result],
+  );
+
+  const isMore = useMemo(
+    () => !isLoading && !isError && !isEmpty && isResult && !isVisibleEnd,
+    [isLoading, isError, isEmpty, isResult, isVisibleEnd],
   );
 
   return {

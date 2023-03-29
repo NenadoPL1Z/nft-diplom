@@ -6,6 +6,7 @@ import NFTError from "@/components/NFT/NFTList/NFTError/NFTError";
 import NFTEmpty from "@/components/NFT/NFTList/NFTEmpty/NFTEmpty";
 import NFTData from "@/components/NFT/NFTList/NFTData/NFTData";
 import NFTMore from "@/components/NFT/NFTList/NFTMore/NFTMore";
+import NFTEnd from "@/components/NFT/NFTList/NFTEnd/NFTEnd";
 
 const NFTList = () => {
   const {
@@ -25,6 +26,7 @@ const NFTList = () => {
       {isError && <NFTError />}
       {isLoading && <NFTLoading />}
       {isMore && <NFTMore />}
+      {isVisibleEnd && <NFTEnd />}
     </ContainerSC>
   );
 };

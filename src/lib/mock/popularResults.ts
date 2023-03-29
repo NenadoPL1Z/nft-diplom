@@ -2,8 +2,8 @@ import { IPopularResultModel } from "@/lib/models/IPopularResultModel";
 
 export const popularResults: IPopularResultModel[] = [
   {
-    title: "Otherdeed for Otherside",
-    address: "0xb4c0c7e7C0F6825b9355816E06829de66AC0e330",
+    title: "TreeNFT",
+    address: "0x1Eac83297bb95E32F3F881bdD707b3A9304Acc08",
   },
   {
     title: "Wrapped Cryptopunks",

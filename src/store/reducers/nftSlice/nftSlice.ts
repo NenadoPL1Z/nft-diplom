@@ -7,8 +7,8 @@ import { fetchGetContractNFTs } from "@/store/reducers/nftSlice/asyncThunks/fetc
 
 const initialState: INftReducerState = {
   hasError: "",
-  isEnd: true,
   isLoading: true,
+  isEnd: false,
   cursor: undefined,
   result: [],
 };
@@ -32,6 +32,7 @@ export const nftSlice = createSlice({
       state.result = [...state.result, ...action.payload.result];
       state.cursor = action.payload.cursor;
       state.isLoading = false;
+      state.isEnd = action.payload.isEnd;
       state.hasError = "";
     });
     builder.addCase(fetchGetContractNFTs.rejected, (state, action) => {

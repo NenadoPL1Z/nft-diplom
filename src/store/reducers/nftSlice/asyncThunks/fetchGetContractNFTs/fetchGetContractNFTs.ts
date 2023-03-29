@@ -29,10 +29,12 @@ export const fetchGetContractNFTs = createAsyncThunk<
         })
         .then((r) => r.toJSON());
 
+      console.log((response.result?.length || 0) < PAGE_LIMIT);
+
       return {
         result: response.result as INftModel[],
         cursor: response.cursor,
-        isEnd: false,
+        isEnd: (response.result?.length || 0) < PAGE_LIMIT,
       };
     } catch (e: any) {
       return rejectWithValue(`${e.name} ${e.code}`);
