@@ -4,7 +4,7 @@ import { NFTTitleSC } from "@/components/NFT/NFTList/styles";
 import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { fetchGetContractNFTs } from "@/store/reducers/nftSlice/asyncThunks/fetchGetContractNFTs/fetchGetContractNFTs";
-import { ISearchFormModle } from "@/lib/models/FormModels/ISearchFormModle";
+import { ISearchFormModel } from "@/lib/models/FormModels/ISearchFormModel";
 import { changeNftLoading } from "@/store/reducers/nftSlice/nftSlice";
 import { getQuery } from "@/lib/services/services";
 import { COLORS } from "../../../../theme/colors";
@@ -19,7 +19,7 @@ const NFTError = () => {
     const { search, chain } = getQuery(asPath);
 
     setTimeout(() => {
-      dispatch(fetchGetContractNFTs({ search, chain } as ISearchFormModle));
+      dispatch(fetchGetContractNFTs({ search, chain } as ISearchFormModel));
     }, 1000);
   };
 

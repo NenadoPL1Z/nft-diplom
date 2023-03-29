@@ -5,7 +5,7 @@ import { useAppDispatch } from "@/hooks/useStore";
 import { fetchGetContractNFTs } from "@/store/reducers/nftSlice/asyncThunks/fetchGetContractNFTs/fetchGetContractNFTs";
 import { useRouter } from "next/router";
 import { getQuery } from "@/lib/services/services";
-import { ISearchFormModle } from "@/lib/models/FormModels/ISearchFormModle";
+import { ISearchFormModel } from "@/lib/models/FormModels/ISearchFormModel";
 
 const NftMore = () => {
   const { asPath } = useRouter();
@@ -17,7 +17,7 @@ const NftMore = () => {
       fetchGetContractNFTs({
         search,
         chain,
-      } as ISearchFormModle),
+      } as ISearchFormModel),
     );
   };
 

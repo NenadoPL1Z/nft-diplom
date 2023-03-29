@@ -1,5 +1,5 @@
 import { useController, useForm } from "react-hook-form";
-import { ISearchFormModle } from "@/lib/models/FormModels/ISearchFormModle";
+import { ISearchFormModel } from "@/lib/models/FormModels/ISearchFormModel";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { PagesNamespace } from "@/types/enum";
 import { useEffect, useMemo } from "react";
@@ -18,7 +18,7 @@ export const useNFTSearch = () => {
   const dispatch = useAppDispatch();
   const isMoralis = useAppSelector((state) => state.globalSlice.isMoralis);
 
-  const methods = useForm<ISearchFormModle>({
+  const methods = useForm<ISearchFormModel>({
     defaultValues: { search: DEFAULT_ADDRESS, chain: "ETHEREUM" },
   });
   const { handleSubmit, control, reset, formState } = methods;
@@ -67,7 +67,7 @@ export const useNFTSearch = () => {
       const data = {
         search,
         chain,
-      } as ISearchFormModle;
+      } as ISearchFormModel;
       reset(data);
       dispatch(fetchGetContractNFTs(data));
     }

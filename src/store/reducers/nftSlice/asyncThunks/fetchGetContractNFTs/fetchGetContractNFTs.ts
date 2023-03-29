@@ -9,11 +9,11 @@ import {
 import { INftModel } from "@/lib/models/INftModel";
 import { EvmChain } from "@moralisweb3/common-evm-utils";
 import { PAGE_LIMIT } from "@/lib/constants/constants";
-import { ISearchFormModle } from "@/lib/models/FormModels/ISearchFormModle";
+import { ISearchFormModel } from "@/lib/models/FormModels/ISearchFormModel";
 
 export const fetchGetContractNFTs = createAsyncThunk<
   Pick<INftReducerState, "result" | "cursor" | "isEnd">,
-  ISearchFormModle,
+  ISearchFormModel,
   IStore
 >(
   nftSliceName + "/fetchGetContractNFTs",

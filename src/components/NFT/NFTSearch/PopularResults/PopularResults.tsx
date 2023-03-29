@@ -11,12 +11,11 @@ const PopularResults = (props: IPopularResultsProps) => {
       <TitleSC>Популярные запросы</TitleSC>
       <WrapperSC>
         {popularResults.map((popularItem) => (
-          <li key={popularItem.title}>
-            <PopularResultsItem
-              {...props}
-              {...popularItem}
-            />
-          </li>
+          <PopularResultsItem
+            key={popularItem.title}
+            {...props}
+            {...popularItem}
+          />
         ))}
       </WrapperSC>
     </ContainerSC>

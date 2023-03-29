@@ -1,6 +1,7 @@
 import { EvmChainUnion } from "@/store/reducers/nftSlice/types";
 
-export type ISearchFormModle = {
+export type ISearchFormModel = {
   search: string;
+  nftId: string;
   chain: EvmChainUnion;
 };
