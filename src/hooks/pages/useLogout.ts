@@ -1,4 +1,4 @@
-import { useAppDispatch } from "@/hooks/useStore";
+import { useAppDispatch } from "@/hooks/store/useStore";
 import { logoutUser } from "../../init/FirebaseInit";
 import { useState } from "react";
 import { logoutActionUser } from "@/store/reducers/userSlice/userSlice";

@@ -10,6 +10,7 @@ export interface INftReducerState {
   result: INftModel[];
   isLoading: boolean;
   isEnd: boolean;
+  isSingle: boolean;
   hasError: string;
 
   cursor: CursorType;

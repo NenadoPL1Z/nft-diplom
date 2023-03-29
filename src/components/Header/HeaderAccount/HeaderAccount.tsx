@@ -2,7 +2,7 @@ import React from "react";
 import { Avatar, Button, styled } from "@mui/material";
 import Link from "next/link";
 import { PagesNamespace } from "@/types/enum";
-import { useAppSelector } from "@/hooks/useStore";
+import { useAppSelector } from "@/hooks/store/useStore";
 import { HeaderNavigationTypes } from "@/components/Header/types";
 
 const HeaderAccount = ({ onClick }: HeaderNavigationTypes) => {

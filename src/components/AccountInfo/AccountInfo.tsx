@@ -1,6 +1,6 @@
 import React from "react";
 import AccountInfoTab from "@/components/AccountInfo/AccountInfoTab/AccountInfoTab";
-import { useAppSelector } from "@/hooks/useStore";
+import { useAppSelector } from "@/hooks/store/useStore";
 import { styled } from "@mui/material";
 import { getRusData } from "@/lib/services/services";
 

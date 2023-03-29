@@ -2,24 +2,25 @@ import React from "react";
 import { Button, styled } from "@mui/material";
 import { NFTTitleSC } from "@/components/NFT/NFTList/styles";
 import { useRouter } from "next/router";
-import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
+import { useAppDispatch, useAppSelector } from "@/hooks/store/useStore";
 import { fetchGetContractNFTs } from "@/store/reducers/nftSlice/asyncThunks/fetchGetContractNFTs/fetchGetContractNFTs";
 import { ISearchFormModel } from "@/lib/models/FormModels/ISearchFormModel";
 import { changeNftLoading } from "@/store/reducers/nftSlice/nftSlice";
 import { getQuery } from "@/lib/services/services";
 import { COLORS } from "../../../../theme/colors";
+import { useGetNFT } from "@/hooks/store/useGetNFT";
 
 const NFTError = () => {
   const { asPath } = useRouter();
-  const dispatch = useAppDispatch();
+  const { dispatch, handleFetchData } = useGetNFT();
   const hasError = useAppSelector((state) => state.nftSlice.hasError);
 
   const handleClick = () => {
     dispatch(changeNftLoading());
-    const { search, chain } = getQuery(asPath);
+    const data = getQuery(asPath) as ISearchFormModel;
 
     setTimeout(() => {
-      dispatch(fetchGetContractNFTs({ search, chain } as ISearchFormModel));
+      handleFetchData(data);
     }, 1000);
   };
 

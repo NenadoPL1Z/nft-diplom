@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useAppSelector } from "@/hooks/useStore";
+import { useAppSelector } from "@/hooks/store/useStore";
 import { useEffect } from "react";
 import { PagesNamespace } from "@/types/enum";
 

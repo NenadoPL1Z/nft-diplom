@@ -13,7 +13,7 @@ import { ISearchFormModel } from "@/lib/models/FormModels/ISearchFormModel";
 
 export const fetchGetContractNFTs = createAsyncThunk<
   Pick<INftReducerState, "result" | "cursor" | "isEnd">,
-  ISearchFormModel,
+  Omit<ISearchFormModel, "id">,
   IStore
 >(
   nftSliceName + "/fetchGetContractNFTs",
@@ -28,8 +28,6 @@ export const fetchGetContractNFTs = createAsyncThunk<
           normalizeMetadata: true,
         })
         .then((r) => r.toJSON());
-
-      console.log((response.result?.length || 0) < PAGE_LIMIT);
 
       return {
         result: response.result as INftModel[],

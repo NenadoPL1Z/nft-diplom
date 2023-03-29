@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/hooks/useStore";
+import { useAppSelector } from "@/hooks/store/useStore";
 import { useMemo } from "react";
 
 export const useNFTList = () => {
@@ -6,6 +6,7 @@ export const useNFTList = () => {
   const isLoading = useAppSelector((state) => state.nftSlice.isLoading);
   const result = useAppSelector((state) => state.nftSlice.result);
   const isEnd = useAppSelector((state) => state.nftSlice.isEnd);
+  const isSingle = useAppSelector((state) => state.nftSlice.isSingle);
 
   const isError = useMemo(
     () => !!hasError && !isLoading,
@@ -20,13 +21,19 @@ export const useNFTList = () => {
   const isResult = useMemo(() => !!result.length, [result]);
 
   const isVisibleEnd = useMemo(
-    () => !hasError && !isLoading && !!result.length && isEnd,
-    [hasError, isEnd, isLoading, result],
+    () => !hasError && !isLoading && !!result.length && isEnd && !isSingle,
+    [hasError, isEnd, isLoading, result, isSingle],
   );
 
   const isMore = useMemo(
-    () => !isLoading && !isError && !isEmpty && isResult && !isVisibleEnd,
-    [isLoading, isError, isEmpty, isResult, isVisibleEnd],
+    () =>
+      !isLoading &&
+      !isError &&
+      !isEmpty &&
+      isResult &&
+      !isVisibleEnd &&
+      !isSingle,
+    [isLoading, isError, isEmpty, isResult, isVisibleEnd, isSingle],
   );
 
   return {

@@ -8,6 +8,7 @@ import PopularResults from "@/components/NFT/NFTSearch/PopularResults/PopularRes
 const NFTSearch = () => {
   const {
     methods,
+    idController,
     searchController,
     chainController,
     isVisibleSearch,
@@ -18,12 +19,21 @@ const NFTSearch = () => {
   return (
     <FormProvider {...methods}>
       <FormContainerSC onSubmit={onSubmit}>
-        <TFSearchUISC
+        <TFSearchSC
           name="nft"
           value={searchController.field.value}
           onChange={(e) => searchController.field.onChange(e.target.value)}
           onClickRightIcon={() => searchController.field.onChange("")}
           fullWidth
+        />
+        <TFFindIdSC
+          name="findNFT"
+          type="numeric"
+          placeholder="Поиск по ID"
+          isStartIcon={false}
+          value={idController.field.value}
+          onChange={(e) => idController.field.onChange(e.target.value)}
+          onClickRightIcon={() => idController.field.onChange("")}
         />
         <SelectContainerSC>
           <NFTExchange
@@ -49,7 +59,8 @@ const NFTSearch = () => {
 const {
   ContainerSC,
   FormContainerSC,
-  TFSearchUISC,
+  TFSearchSC,
+  TFFindIdSC,
   SelectContainerSC,
   CustomButton,
 } = useNFTSearchStyles();

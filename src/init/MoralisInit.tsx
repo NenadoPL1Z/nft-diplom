@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Moralis from "moralis";
 import { NFT_API_KEY } from "@/lib/constants/constants";
-import { useAppDispatch } from "@/hooks/useStore";
+import { useAppDispatch } from "@/hooks/store/useStore";
 import { changeMoralis } from "@/store/reducers/globalSlice/globalSlice";
 
 const MoralisInit = () => {

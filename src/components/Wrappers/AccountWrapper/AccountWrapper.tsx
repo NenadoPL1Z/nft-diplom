@@ -2,7 +2,7 @@ import React from "react";
 import LoadingWrapper from "@/components/Wrappers/LoadingWrapper/LoadingWrapper";
 import AccountAside from "@/components/Wrappers/AccountWrapper/AccountAside/AccountAside";
 import { IChildren } from "@/types/types";
-import { useAppSelector } from "@/hooks/useStore";
+import { useAppSelector } from "@/hooks/store/useStore";
 import { styled, Typography } from "@mui/material";
 import { COLORS } from "../../../theme/colors";
 import { usePrivatePage } from "@/hooks/usePrivatePage";

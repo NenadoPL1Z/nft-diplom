@@ -1,7 +1,7 @@
 import React from "react";
 import MoodBadIcon from "@mui/icons-material/MoodBad";
-import { styled, Typography } from "@mui/material";
 import ButtonUI from "@/UI/ButtonUI/ButtonUI";
+import { useNFTEndStyles } from "@/components/NFT/NFTList/NFTEnd/NFTEnd.styles";
 
 const NFTEnd = () => {
   return (
@@ -17,20 +17,5 @@ const NFTEnd = () => {
   );
 };
 
-const ContainerSC = styled("div")`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  & > svg {
-    width: 50px;
-    height: 50px;
-  }
-`;
-
-const ParagraphSC = styled("p")`
-  margin: 10px 0 20px;
-  font-size: 18px;
-`;
-
+const { ContainerSC, ParagraphSC } = useNFTEndStyles();
 export default React.memo(NFTEnd);

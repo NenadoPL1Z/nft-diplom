@@ -21,12 +21,17 @@ const FormContainerSC = styled("form")`
   }
 `;
 
-const TFSearchUISC = styled(TFSearchUI)`
+const TFSearchSC = styled(TFSearchUI)`
   margin-right: 10px;
   @media (max-width: 600px) {
-    margin-right: 0px;
+    margin-right: 0;
     margin-bottom: 10px;
   }
+`;
+
+const TFFindIdSC = styled(TFSearchUI)`
+  margin-right: 10px;
+  max-width: 150px;
 `;
 
 const SelectContainerSC = styled("div")`
@@ -50,7 +55,8 @@ const CustomButton = styled(Button)`
 export const useNFTSearchStyles = () => ({
   ContainerSC,
   FormContainerSC,
-  TFSearchUISC,
+  TFSearchSC,
+  TFFindIdSC,
   SelectContainerSC,
   CustomButton,
 });

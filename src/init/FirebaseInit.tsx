@@ -16,7 +16,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "@firebase/auth";
-import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
+import { useAppDispatch, useAppSelector } from "@/hooks/store/useStore";
 import {
   changeUser,
   changeUserAuth,

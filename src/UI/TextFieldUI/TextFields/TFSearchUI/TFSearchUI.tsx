@@ -5,12 +5,14 @@ import CloseIcon from "@mui/icons-material/Close";
 import TextFieldUI from "@/UI/TextFieldUI/TextFieldUI";
 
 type ITFSearchUIProp = TextFieldProps & {
-  onClickRightIcon: () => void;
+  onClickRightIcon?: () => void;
+  isStartIcon?: boolean;
   isVisibleRightIcon?: boolean;
 };
 
 const TFSearchUI = ({
   onClickRightIcon,
+  isStartIcon = true,
   isVisibleRightIcon = false,
   ...props
 }: ITFSearchUIProp) => {
@@ -20,11 +22,11 @@ const TFSearchUI = ({
       placeholder="Поиск"
       {...props}
       InputProps={{
-        startAdornment: (
+        startAdornment: isStartIcon ? (
           <InputAdornment position="start">
             <SearchIcon color="secondary" />
           </InputAdornment>
-        ),
+        ) : null,
         endAdornment:
           props.value || isVisibleRightIcon ? (
             <InputAdornment position="end">
