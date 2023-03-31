@@ -1,7 +1,7 @@
 import React from "react";
 import { INftModel } from "@/lib/models/INftModel";
 import { v4 as uuidv4 } from "uuid";
-import { useNFTAttributesStyles } from "@/components/NFT/NFTList/NFTData/NFTItem/NftAttributes/NFTAttributes.styles";
+import { useNFTAttributesStyles } from "@/components/NFT/NFTItem/NftAttributes/NFTAttributes.styles";
 
 type NftAttributesProps = Pick<
   INftModel,

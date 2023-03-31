@@ -19,3 +19,8 @@ export const getQuery = (queryString: string) => {
 
   return queryObj;
 };
+
+export const getIpfsImage = (imageUrl: string) =>
+  imageUrl.includes("ipfs")
+    ? `https://ipfs.io/ipfs/${imageUrl.split("ipfs://")[1]}`
+    : "";

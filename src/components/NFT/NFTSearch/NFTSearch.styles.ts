@@ -10,7 +10,7 @@ const FormContainerSC = styled("form")`
   align-items: center;
   position: sticky;
   top: 65px;
-  z-index: 1;
+  z-index: 50;
   background-color: ${COLORS.MAIN};
   @media (max-width: 768px) {
     top: 70px;

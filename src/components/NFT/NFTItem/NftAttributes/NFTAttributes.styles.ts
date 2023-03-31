@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import { COLORS, PRIMARY_MAIN_COLOR } from "../../../../../../theme/colors";
+import { COLORS, PRIMARY_MAIN_COLOR } from "../../../../theme/colors";
 
 const ContainerSC = styled("div")`
   margin-bottom: 10px;

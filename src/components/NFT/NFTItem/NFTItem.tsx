@@ -1,9 +1,10 @@
 import React from "react";
 import { INftModel } from "@/lib/models/INftModel";
 import { Button } from "@mui/material";
-import NFTItemImage from "@/components/NFT/NFTList/NFTData/NFTItem/NFTItemImage/NFTItemImage";
-import NftAttributes from "@/components/NFT/NFTList/NFTData/NFTItem/NftAttributes/NftAttributes";
-import { useNFTItemStyles } from "@/components/NFT/NFTList/NFTData/NFTItem/NFTITem.styles";
+import NFTItemImage from "@/components/NFT/NFTItem/NFTItemImage/NFTItemImage";
+import NftAttributes from "@/components/NFT/NFTItem/NftAttributes/NftAttributes";
+import { useNFTItemStyles } from "@/components/NFT/NFTItem/NFTITem.styles";
+import NFTFavorites from "@/components/NFT/NFTItem/NFTFavorites/NFTFavorites";
 
 const NFTItem = (props: INftModel) => {
   const { token_id, name, normalized_metadata } = props;
@@ -11,7 +12,12 @@ const NFTItem = (props: INftModel) => {
   return (
     <ContainerSC>
       <WrapperSC>
-        <NFTItemImage metadata={normalized_metadata} />
+        <ImageContainerSC>
+          <NFTItemImage metadata={normalized_metadata} />
+          <FavoriteContainerSC>
+            <NFTFavorites />
+          </FavoriteContainerSC>
+        </ImageContainerSC>
         <TextSC>
           <div>
             <TitleSC>
@@ -32,6 +38,13 @@ const NFTItem = (props: INftModel) => {
   );
 };
 
-const { ContainerSC, WrapperSC, TitleSC, TextSC } = useNFTItemStyles();
+const {
+  ContainerSC,
+  WrapperSC,
+  ImageContainerSC,
+  FavoriteContainerSC,
+  TitleSC,
+  TextSC,
+} = useNFTItemStyles();
 
 export default React.memo(NFTItem);

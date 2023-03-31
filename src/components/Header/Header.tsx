@@ -34,7 +34,7 @@ const Header = () => {
 const HeaderSC = styled("header")`
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 100;
   padding: 10px 0;
   background-color: ${COLORS.SECONDARY};
   border-bottom: 1px solid ${COLORS.LIGHT};
