@@ -18,7 +18,10 @@ const HeaderDrawer = () => {
       <Button
         onClick={handleToggleDrawer(true)}
         variant="text">
-        <MenuIcon style={{ width: "40px", height: "40px" }} />
+        <MenuIcon
+          color="secondary"
+          style={{ width: "40px", height: "40px" }}
+        />
       </Button>
       <Drawer
         anchor="left"

@@ -2,17 +2,24 @@ import React from "react";
 import { INftModel } from "@/lib/models/INftModel";
 import NFTItem from "@/components/NFT/NFTItem/NFTItem";
 import { styled } from "@mui/material";
+import { useRouter } from "next/router";
 
 interface INFTDataProps {
   data: INftModel[];
 }
 
 const NFTData = ({ data }: INFTDataProps) => {
+  const {
+    query: { search, chain },
+  } = useRouter();
+
   return (
     <ContainerSC>
       {data.map((dataItem) => (
         <NFTItem
           key={dataItem.token_id}
+          search={search as string}
+          chain={chain as string}
           {...dataItem}
         />
       ))}
