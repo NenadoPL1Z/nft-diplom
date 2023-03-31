@@ -21,10 +21,15 @@ const NFTData = ({ data }: INFTDataProps) => {
 };
 
 const ContainerSC = styled("div")`
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
 `;
 
 export default React.memo(NFTData);

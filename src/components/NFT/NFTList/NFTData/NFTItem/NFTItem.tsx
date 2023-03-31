@@ -3,7 +3,7 @@ import { INftModel } from "@/lib/models/INftModel";
 import { Button } from "@mui/material";
 import NFTItemImage from "@/components/NFT/NFTList/NFTData/NFTItem/NFTItemImage/NFTItemImage";
 import NftAttributes from "@/components/NFT/NFTList/NFTData/NFTItem/NftAttributes/NftAttributes";
-import { useNFTItemStyless } from "@/components/NFT/NFTList/NFTData/NFTItem/NFTITem.styles";
+import { useNFTItemStyles } from "@/components/NFT/NFTList/NFTData/NFTItem/NFTITem.styles";
 
 const NFTItem = (props: INftModel) => {
   const { token_id, name, normalized_metadata } = props;
@@ -32,6 +32,6 @@ const NFTItem = (props: INftModel) => {
   );
 };
 
-const { ContainerSC, WrapperSC, TitleSC, TextSC } = useNFTItemStyless();
+const { ContainerSC, WrapperSC, TitleSC, TextSC } = useNFTItemStyles();
 
 export default React.memo(NFTItem);
