@@ -4,7 +4,7 @@ import NFTItem from "@/components/NFT/NFTItem/NFTItem";
 import { NFTProps } from "@/components/NFT/types";
 import { useNFTDataStyles } from "@/components/NFT/NFTList/NFTData/NFTData.styles";
 
-type NFTDataProps = Omit<NFTProps, "id"> & {
+type NFTDataProps = Pick<NFTProps, "search" | "chain"> & {
   data: INftModel[];
 };
 

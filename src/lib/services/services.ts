@@ -1,3 +1,5 @@
+import { exchangeData } from "@/lib/mock/exchangeData";
+
 export const validateEmail = (email: string) => {
   const regExp = /^\S+@\S+\.\S+$/;
   return regExp.test(email);
@@ -26,3 +28,6 @@ export const getIpfsImage = (imageUrl: string) =>
     : "";
 
 export const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+export const checkExchange = (chain: string) =>
+  exchangeData.find((item) => item === chain);

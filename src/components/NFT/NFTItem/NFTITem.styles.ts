@@ -41,6 +41,10 @@ const TextSC = styled("div")`
   justify-content: space-between;
 `;
 
+const TextTopSC = styled("div")`
+  flex-grow: 1;
+`;
+
 const TitleSC = styled("h4")`
   margin-bottom: 10px;
   & > span {
@@ -54,5 +58,6 @@ export const useNFTItemStyles = () => ({
   ImageContainerSC,
   FavoriteContainerSC,
   TextSC,
+  TextTopSC,
   TitleSC,
 });

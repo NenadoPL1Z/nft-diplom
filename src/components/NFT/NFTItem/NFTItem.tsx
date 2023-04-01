@@ -7,7 +7,7 @@ import { useNFTItemStyles } from "@/components/NFT/NFTItem/NFTITem.styles";
 import NFTFavorites from "@/components/NFT/NFTItem/NFTFavorites/NFTFavorites";
 import { NFTProps } from "@/components/NFT/types";
 
-type NFTItemProps = INftModel & Omit<NFTProps, "id">;
+type NFTItemProps = INftModel & Pick<NFTProps, "search" | "chain">;
 
 const NFTItem = ({ search, chain, ...otherProps }: NFTItemProps) => {
   const { token_id, name, normalized_metadata } = otherProps;
@@ -22,26 +22,26 @@ const NFTItem = ({ search, chain, ...otherProps }: NFTItemProps) => {
           </FavoriteContainerSC>
         </ImageContainerSC>
         <TextSC>
-          <div>
+          <TextTopSC>
             <TitleSC>
               {name} <span>{token_id}</span>
             </TitleSC>
             {!!normalized_metadata?.attributes?.length && (
               <NftAttributes {...normalized_metadata} />
             )}
-          </div>
+          </TextTopSC>
           <Button
-            style={{ marginBottom: "8px" }}
+            sx={{ marginBottom: "8px" }}
             variant="outlined"
             target="_blank"
             href={`/nft/${chain}/${search}/${token_id}`}>
-            Открыть токен
+            ТОКЕН
           </Button>
           <Button
             variant="outlined"
             target="_blank"
             href={`/nft/${chain}/${search}`}>
-            Открыть коллекцию
+            КОЛЛЕКЦИЯ
           </Button>
         </TextSC>
       </WrapperSC>
@@ -56,6 +56,7 @@ const {
   FavoriteContainerSC,
   TitleSC,
   TextSC,
+  TextTopSC,
 } = useNFTItemStyles();
 
 export default React.memo(NFTItem);
