@@ -12,12 +12,7 @@ export const accountAsideData: AccountAsideItemModel[] = [
     Icon: InfoIcon,
   },
   {
-    title: "Итория поисков",
-    url: PagesNamespace.HISTORY,
-    Icon: HistoryIcon,
-  },
-  {
-    title: "Избранные NFT ",
+    title: "Избранные NFT",
     url: PagesNamespace.FAVORITE,
     Icon: StarIcon,
   },
