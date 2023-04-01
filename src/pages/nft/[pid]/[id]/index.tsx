@@ -11,11 +11,21 @@ const NftAddress = () => {
   return (
     <>
       <ContainerSC>
-        {nftItem?.symbol && <TitleSC>Коллекция: {nftItem.symbol}</TitleSC>}
-        {nftItem?.contract_type && (
-          <TitleTwoSC>Контракт: {nftItem.contract_type}</TitleTwoSC>
+        {nftItem?.symbol && (
+          <TitleSC>
+            Коллекция: <span>{nftItem.symbol}</span>
+          </TitleSC>
         )}
-        {nftItem && <TitleTwoSC>Адресс: {search}</TitleTwoSC>}
+        {nftItem?.contract_type && (
+          <TitleTwoSC>
+            Контракт: <span>{nftItem.contract_type}</span>
+          </TitleTwoSC>
+        )}
+        {nftItem && search && (
+          <TitleTwoSC>
+            Адресс: <span>{search}</span>
+          </TitleTwoSC>
+        )}
       </ContainerSC>
       <NFT
         id={""}
