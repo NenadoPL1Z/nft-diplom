@@ -31,9 +31,17 @@ const NFTItem = ({ search, chain, ...otherProps }: NFTItemProps) => {
             )}
           </div>
           <Button
+            style={{ marginBottom: "8px" }}
             variant="outlined"
+            target="_blank"
             href={`/nft/${chain}/${search}/${token_id}`}>
-            Открыть
+            Открыть токен
+          </Button>
+          <Button
+            variant="outlined"
+            target="_blank"
+            href={`/nft/${chain}/${search}`}>
+            Открыть коллекцию
           </Button>
         </TextSC>
       </WrapperSC>

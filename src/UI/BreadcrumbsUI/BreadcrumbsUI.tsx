@@ -1,5 +1,5 @@
 import React from "react";
-import { Breadcrumbs, styled } from "@mui/material";
+import { css, styled } from "@mui/material";
 import { PRIMARY_MAIN_COLOR } from "../../theme/colors";
 import { BreadcrumbsUIProps } from "@/UI/BreadcrumbsUI/type";
 import Link from "next/link";
@@ -7,15 +7,16 @@ import Link from "next/link";
 const BreadcrumbsUI = ({ data }: BreadcrumbsUIProps) => {
   return (
     <ContainerSC>
-      <Breadcrumbs aria-label="breadcrumb">
-        {data.map((breadcrumbsItem) => (
+      <ul>
+        {data.map((breadcrumbsItem, index) => (
           <BreadcrumbsItem
+            isLast={index === data.length - 1}
             key={breadcrumbsItem.href}
             href={breadcrumbsItem.href}>
             {breadcrumbsItem.title}
           </BreadcrumbsItem>
         ))}
-      </Breadcrumbs>
+      </ul>
     </ContainerSC>
   );
 };
@@ -24,9 +25,17 @@ const ContainerSC = styled("nav")`
   margin-top: 10px;
 `;
 
-const BreadcrumbsItem = styled(Link)`
+const ItemAfter = css`
+  &:after {
+    content: " / ";
+  }
+`;
+
+const BreadcrumbsItem = styled(Link)<{ isLast: boolean }>`
   color: ${PRIMARY_MAIN_COLOR};
   cursor: pointer;
+  position: relative;
+  ${({ isLast }) => !isLast && ItemAfter}
   &:hover {
     text-decoration: underline;
   }
