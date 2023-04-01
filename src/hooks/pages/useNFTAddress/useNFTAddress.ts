@@ -10,12 +10,14 @@ export const useNFTAddress = () => {
   const { query } = useRouter();
   const nftItem = useAppSelector((state) => state.nftSlice.result[0]);
 
+  console.log(query);
+
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const search = useMemo(() => query.id as string, [query]);
+  const search = useMemo(() => query.address as string, [query]);
 
   const chain = useMemo(
-    () => checkExchange((query.pid as string) || "") || DEFAULT_CHAIN,
+    () => checkExchange((query.chain as string) || "") || DEFAULT_CHAIN,
     [query],
   );
 

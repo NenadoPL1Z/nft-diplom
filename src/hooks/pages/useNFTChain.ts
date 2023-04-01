@@ -33,7 +33,7 @@ export const useNFTChain = () => {
       }
 
       //? asPath loading
-      if (chain !== "[pid]") {
+      if (chain !== "[chain]") {
         //? find chain
         if (!exchangeData.find((item) => item === chain)) {
           push(`${PagesNamespace.NFT}/${DEFAULT_CHAIN}`);
