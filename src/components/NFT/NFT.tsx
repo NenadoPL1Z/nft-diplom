@@ -9,8 +9,9 @@ const NFT = ({
   search = DEFAULT_ADDRESS,
   chain = DEFAULT_CHAIN,
   id = "",
+  isDisableSelect = false,
 }: Partial<NFTProps>) => {
-  const props = { search, chain, id };
+  const props = { search, chain, id, isDisableSelect };
 
   return (
     <ContainerSC>

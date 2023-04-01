@@ -30,6 +30,7 @@ const NFTExchange = (props: SelectProps) => {
 const SelectSC = styled(Select)`
   & > .MuiSelect-select {
     color: ${COLORS.LIGHT};
+    -webkit-text-fill-color: ${COLORS.LIGHT} !important;
   }
 
   & > .MuiOutlinedInput-notchedOutline {
@@ -37,6 +38,9 @@ const SelectSC = styled(Select)`
   }
   & > .MuiSvgIcon-root {
     color: ${COLORS.LIGHT};
+  }
+  & > svg.Mui-disabled {
+    display: none;
   }
 `;
 

@@ -6,7 +6,7 @@ import { FormProvider } from "react-hook-form";
 import PopularResults from "@/components/NFT/NFTSearch/PopularResults/PopularResults";
 import { NFTProps } from "@/components/NFT/types";
 
-const NFTSearch = (props: NFTProps) => {
+const NFTSearch = ({ isDisableSelect, ...otherProps }: NFTProps) => {
   const {
     methods,
     idController,
@@ -15,7 +15,7 @@ const NFTSearch = (props: NFTProps) => {
     isVisibleSearch,
     onClickPopularResults,
     onSubmit,
-  } = useNFTSearch(props);
+  } = useNFTSearch(otherProps);
 
   return (
     <FormProvider {...methods}>
@@ -38,6 +38,7 @@ const NFTSearch = (props: NFTProps) => {
         />
         <SelectContainerSC>
           <NFTExchange
+            disabled={isDisableSelect}
             value={chainController.field.value}
             onChange={(e) => chainController.field.onChange(e.target.value)}
           />

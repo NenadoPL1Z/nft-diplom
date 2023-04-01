@@ -4,4 +4,5 @@ export type NFTProps = {
   id: string;
   search: string;
   chain: EvmChainUnion;
+  isDisableSelect?: boolean;
 };
