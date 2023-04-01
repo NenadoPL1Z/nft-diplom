@@ -4,8 +4,9 @@ import NFTExchange from "@/components/NFT/NFTSearch/NFTExchange/NFTExchange";
 import { useNFTSearchStyles } from "@/components/NFT/NFTSearch/NFTSearch.styles";
 import { FormProvider } from "react-hook-form";
 import PopularResults from "@/components/NFT/NFTSearch/PopularResults/PopularResults";
+import { NFTProps } from "@/components/NFT/types";
 
-const NFTSearch = () => {
+const NFTSearch = (props: NFTProps) => {
   const {
     methods,
     idController,
@@ -14,7 +15,7 @@ const NFTSearch = () => {
     isVisibleSearch,
     onClickPopularResults,
     onSubmit,
-  } = useNFTSearch();
+  } = useNFTSearch(props);
 
   return (
     <FormProvider {...methods}>

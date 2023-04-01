@@ -5,8 +5,9 @@ import NFTItemImage from "@/components/NFT/NFTItem/NFTItemImage/NFTItemImage";
 import NftAttributes from "@/components/NFT/NFTItem/NftAttributes/NftAttributes";
 import { useNFTItemStyles } from "@/components/NFT/NFTItem/NFTITem.styles";
 import NFTFavorites from "@/components/NFT/NFTItem/NFTFavorites/NFTFavorites";
+import { NFTProps } from "@/components/NFT/types";
 
-type NFTItemProps = INftModel & { search: string; chain: string };
+type NFTItemProps = INftModel & Omit<NFTProps, "id">;
 
 const NFTItem = ({ search, chain, ...otherProps }: NFTItemProps) => {
   const { token_id, name, normalized_metadata } = otherProps;

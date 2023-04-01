@@ -1,21 +1,21 @@
 import React from "react";
-import NftList from "@/components/NFT/NFTList/NFTList";
-import NftSearch from "@/components/NFT/NFTSearch/NFTSearch";
-import { styled } from "@mui/material";
+import NFT from "@/components/NFT/NFT";
+import { useRouter } from "next/router";
+import { getQuery } from "@/lib/services/services";
+import { NFTProps } from "@/components/NFT/types";
+import { DEFAULT_ADDRESS, DEFAULT_CHAIN } from "@/lib/constants/constants";
 
-const Nft = () => {
+const NftPage = () => {
+  const { asPath } = useRouter();
+  const { chain, search, id } = getQuery(asPath) as NFTProps;
+
   return (
-    <ContainerSC>
-      <NftSearch />
-      <NftList />
-    </ContainerSC>
+    <NFT
+      chain={chain || DEFAULT_CHAIN}
+      search={search || DEFAULT_ADDRESS}
+      id={id || ""}
+    />
   );
 };
 
-const ContainerSC = styled("section")`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-`;
-
-export default Nft;
+export default NftPage;

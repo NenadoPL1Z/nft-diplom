@@ -24,3 +24,5 @@ export const getIpfsImage = (imageUrl: string) =>
   imageUrl.includes("ipfs")
     ? `https://ipfs.io/ipfs/${imageUrl.split("ipfs://")[1]}`
     : "";
+
+export const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });

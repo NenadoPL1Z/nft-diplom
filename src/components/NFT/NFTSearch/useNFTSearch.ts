@@ -1,27 +1,25 @@
 import { useController, useForm } from "react-hook-form";
 import { ISearchFormModel } from "@/lib/models/FormModels/ISearchFormModel";
-import { useAppDispatch, useAppSelector } from "@/hooks/store/useStore";
+import { useAppSelector } from "@/hooks/store/useStore";
 import { PagesNamespace } from "@/types/enum";
 import { useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
-import { DEFAULT_ADDRESS, DEFAULT_CHAIN } from "@/lib/constants/constants";
-import { getQuery } from "@/lib/services/services";
+import { scrollTop } from "@/lib/services/services";
 import { exchangeData } from "@/lib/mock/exchangeData";
-import { fetchGetContractNFTs } from "@/store/reducers/nftSlice/asyncThunks/fetchGetContractNFTs/fetchGetContractNFTs";
 import { resetNftSlice } from "@/store/reducers/nftSlice/nftSlice";
 import { IPopularResultModel } from "@/lib/models/IPopularResultModel";
-import { fetchGetNFTId } from "@/store/reducers/nftSlice/asyncThunks/fetchGetNFTId/fetchGetNFTId";
 import { useGetNFT } from "@/hooks/store/useGetNFT";
+import { NFTProps } from "@/components/NFT/types";
+import { DEFAULT_ADDRESS, DEFAULT_CHAIN } from "@/lib/constants/constants";
 
-export const useNFTSearch = () => {
-  const router = useRouter();
-  const { push, asPath } = router;
+export const useNFTSearch = ({ search, chain, id }: NFTProps) => {
+  const { push, asPath } = useRouter();
 
   const { dispatch, handleFetchData } = useGetNFT();
   const isMoralis = useAppSelector((state) => state.globalSlice.isMoralis);
 
   const methods = useForm<ISearchFormModel>({
-    defaultValues: { search: DEFAULT_ADDRESS, chain: "ETHEREUM", id: "" },
+    defaultValues: { search: DEFAULT_ADDRESS, chain: DEFAULT_CHAIN, id: "" },
   });
   const { handleSubmit, control, reset, formState } = methods;
 
@@ -36,7 +34,7 @@ export const useNFTSearch = () => {
 
   const onClickPopularResults = (data: IPopularResultModel) => () => {
     dispatch(resetNftSlice());
-    router.push({
+    push({
       query: {
         search: data.address,
         chain: "ETHEREUM",
@@ -48,21 +46,19 @@ export const useNFTSearch = () => {
   const onSubmit = handleSubmit(({ search, chain, id }) => {
     dispatch(resetNftSlice());
     push(PagesNamespace.NFT, { query: { search, chain, id } }).then(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      scrollTop();
     });
   });
 
   useEffect(() => {
     if (isMoralis && asPath) {
-      const { search, chain, id } = getQuery(asPath);
-
       // set query
       if (!exchangeData.find((item) => item === chain)) {
         push(PagesNamespace.NFT, {
           query: {
             id: "",
-            search: search || DEFAULT_ADDRESS,
-            chain: DEFAULT_CHAIN,
+            search,
+            chain,
           },
         });
         return;
@@ -72,7 +68,7 @@ export const useNFTSearch = () => {
         search,
         chain,
         id,
-      } as ISearchFormModel;
+      };
 
       reset(data);
       handleFetchData(data);

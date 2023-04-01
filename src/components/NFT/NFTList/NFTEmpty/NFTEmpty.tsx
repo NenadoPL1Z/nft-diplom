@@ -1,15 +1,10 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { NFTContainerSC, NFTTitleSC } from "@/components/NFT/NFTList/styles";
-import { useRouter } from "next/router";
-import { PagesNamespace } from "@/types/enum";
+import { useNFTEmpty } from "@/components/NFT/NFTList/NFTEmpty/useNFTEmpty";
 
 const NFTEmpty = () => {
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push(PagesNamespace.NFT);
-  };
+  const { handleClick } = useNFTEmpty();
 
   return (
     <NFTContainerSC>

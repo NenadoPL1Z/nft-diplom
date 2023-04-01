@@ -1,5 +1,4 @@
 import React from "react";
-import { styled } from "@mui/material";
 import { useNFTList } from "@/components/NFT/NFTList/useNFTList";
 import NFTLoading from "@/components/NFT/NFTList/NFTLoading/NFTLoading";
 import NFTError from "@/components/NFT/NFTList/NFTError/NFTError";
@@ -7,8 +6,10 @@ import NFTEmpty from "@/components/NFT/NFTList/NFTEmpty/NFTEmpty";
 import NFTData from "@/components/NFT/NFTList/NFTData/NFTData";
 import NFTMore from "@/components/NFT/NFTList/NFTMore/NFTMore";
 import NFTEnd from "@/components/NFT/NFTList/NFTEnd/NFTEnd";
+import { NFTProps } from "@/components/NFT/types";
+import { useNFTListStyles } from "@/components/NFT/NFTList/NFTList.styles";
 
-const NFTList = () => {
+const NFTList = (props: NFTProps) => {
   const {
     result,
     isError,
@@ -21,21 +22,20 @@ const NFTList = () => {
 
   return (
     <ContainerSC>
-      {isResult && <NFTData data={result} />}
+      {isResult && (
+        <NFTData
+          {...props}
+          data={result}
+        />
+      )}
       {isEmpty && <NFTEmpty />}
-      {isError && <NFTError />}
+      {isError && <NFTError {...props} />}
       {isLoading && <NFTLoading />}
-      {isMore && <NFTMore />}
+      {isMore && <NFTMore {...props} />}
       {isVisibleEnd && <NFTEnd />}
     </ContainerSC>
   );
 };
 
-const ContainerSC = styled("section")`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  margin-bottom: 40px;
-`;
-
+const { ContainerSC } = useNFTListStyles();
 export default React.memo(NFTList);

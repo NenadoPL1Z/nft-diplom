@@ -2,6 +2,7 @@ import React from "react";
 import MoodBadIcon from "@mui/icons-material/MoodBad";
 import ButtonUI from "@/UI/ButtonUI/ButtonUI";
 import { useNFTEndStyles } from "@/components/NFT/NFTList/NFTEnd/NFTEnd.styles";
+import { scrollTop } from "@/lib/services/services";
 
 const NFTEnd = () => {
   return (
@@ -10,7 +11,7 @@ const NFTEnd = () => {
       <ParagraphSC>Больше NFT по данному запрсу нет</ParagraphSC>
       <ButtonUI
         variant="outlined"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+        onClick={scrollTop}>
         Наверх
       </ButtonUI>
     </ContainerSC>

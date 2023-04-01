@@ -4,6 +4,7 @@ import { IHeaderModel } from "@/lib/models/IHeaderModel";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { HeaderNavigationTypes } from "@/components/Header/types";
+import { scrollTop } from "@/lib/services/services";
 
 type IHeaderItem = Omit<IHeaderModel, "id"> & HeaderNavigationTypes;
 
@@ -21,10 +22,7 @@ const HeaderItem = ({ title, href, onClick }: IHeaderItem) => {
 
   const handleClick = () => {
     if (isActive) {
-      window.scrollTo({
-        behavior: "smooth",
-        top: 0,
-      });
+      scrollTop();
     }
     if (onClick) onClick();
   };
