@@ -1,45 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import NFT from "@/components/NFT/NFT";
-import { useRouter } from "next/router";
-import { PagesNamespace } from "@/types/enum";
-import { exchangeData } from "@/lib/mock/exchangeData";
-import { EvmChainUnion } from "@/store/reducers/nftSlice/types";
-import { DEFAULT_CHAIN } from "@/lib/constants/constants";
 import NFTLoading from "@/components/NFT/NFTList/NFTLoading/NFTLoading";
+import BreadcrumbsUI from "@/UI/BreadcrumbsUI/BreadcrumbsUI";
+import { useNFTChain } from "@/hooks/pages/useNFTChain";
+import { DEFAULT_CHAIN } from "@/lib/constants/constants";
 
 const NFTChain = () => {
-  const { asPath, push } = useRouter();
-  const [defaultChain, setDefaultChain] = useState<EvmChainUnion | "">("");
+  const { defaultChain, id, search, breadcrumbsData, pathname } = useNFTChain();
 
-  useEffect(() => {
-    if (asPath) {
-      const chain = asPath.split("/")[2];
-
-      //? empty
-      if (!chain) {
-        push(PagesNamespace.NFT);
-        return;
-      }
-
-      //? asPath loading
-      if (chain !== "[pid]") {
-        //? find chain
-        if (!exchangeData.find((item) => item === chain)) {
-          push(`${PagesNamespace.NFT}/${DEFAULT_CHAIN}`);
-          return;
-        }
-        setDefaultChain(chain as EvmChainUnion);
-      }
-    }
-  }, [asPath, push]);
-
-  return defaultChain ? (
+  return (
     <NFT
-      chain={defaultChain}
+      id={id}
+      search={search}
+      chain={defaultChain || DEFAULT_CHAIN}
+      pathname={pathname}
+      isLoading={false}
+      breadcrumbsData={breadcrumbsData}
       isDisableSelect
     />
-  ) : (
-    <NFTLoading />
   );
 };
 

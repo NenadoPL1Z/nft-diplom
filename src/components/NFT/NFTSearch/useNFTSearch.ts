@@ -12,7 +12,7 @@ import { useGetNFT } from "@/hooks/store/useGetNFT";
 import { NFTProps } from "@/components/NFT/types";
 import { DEFAULT_ADDRESS, DEFAULT_CHAIN } from "@/lib/constants/constants";
 
-export const useNFTSearch = ({ search, chain, id }: NFTProps) => {
+export const useNFTSearch = ({ search, chain, id, pathname }: NFTProps) => {
   const { push, asPath } = useRouter();
 
   const { dispatch, handleFetchData } = useGetNFT();
@@ -35,6 +35,7 @@ export const useNFTSearch = ({ search, chain, id }: NFTProps) => {
   const onClickPopularResults = (data: IPopularResultModel) => () => {
     dispatch(resetNftSlice());
     push({
+      pathname,
       query: {
         search: data.address,
         chain: "ETHEREUM",
@@ -45,7 +46,7 @@ export const useNFTSearch = ({ search, chain, id }: NFTProps) => {
 
   const onSubmit = handleSubmit(({ search, chain, id }) => {
     dispatch(resetNftSlice());
-    push(PagesNamespace.NFT, { query: { search, chain, id } }).then(() => {
+    push({ pathname, query: { search, chain, id } }).then(() => {
       scrollTop();
     });
   });
@@ -54,7 +55,8 @@ export const useNFTSearch = ({ search, chain, id }: NFTProps) => {
     if (isMoralis && asPath) {
       // set query
       if (!exchangeData.find((item) => item === chain)) {
-        push(PagesNamespace.NFT, {
+        push({
+          pathname,
           query: {
             id: "",
             search,
