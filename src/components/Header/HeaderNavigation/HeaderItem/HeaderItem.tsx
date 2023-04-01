@@ -10,8 +10,12 @@ type IHeaderItem = Omit<IHeaderModel, "id"> & HeaderNavigationTypes;
 
 const HeaderItem = ({ title, href, onClick }: IHeaderItem) => {
   const { pathname } = useRouter();
+  console.log(pathname);
 
-  const isActive = useMemo(() => pathname === href, [pathname, href]);
+  const isActive = useMemo(
+    () => (href !== "/" ? pathname.includes(href) : pathname === href),
+    [pathname, href],
+  );
   const Container = useMemo(
     () =>
       isActive

@@ -5,11 +5,11 @@ import TFSearchUI from "@/UI/TextFieldUI/TextFields/TFSearchUI/TFSearchUI";
 const ContainerSC = styled("section")``;
 
 const FormContainerSC = styled("form")`
-  padding: 10px 0px 5px;
+  padding: 10px 0 5px;
   display: flex;
   align-items: center;
   position: sticky;
-  top: 65px;
+  top: 63px;
   z-index: 50;
   background-color: ${COLORS.MAIN};
   @media (max-width: 768px) {

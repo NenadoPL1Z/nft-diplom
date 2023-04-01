@@ -29,7 +29,7 @@ const FavoriteContainerSC = styled("div")`
   z-index: 1;
   background-color: ${COLORS.SECONDARY};
   transform: translateY(-50px);
-  border-radius: 0 0px 0 8px;
+  border-radius: 0 0 0 8px;
   transition: 0.1s all linear;
 `;
 

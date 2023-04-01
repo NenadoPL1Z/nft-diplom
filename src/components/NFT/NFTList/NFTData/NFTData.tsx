@@ -4,11 +4,19 @@ import NFTItem from "@/components/NFT/NFTItem/NFTItem";
 import { NFTProps } from "@/components/NFT/types";
 import { useNFTDataStyles } from "@/components/NFT/NFTList/NFTData/NFTData.styles";
 
-type NFTDataProps = Pick<NFTProps, "search" | "chain"> & {
+type NFTDataProps = Pick<
+  NFTProps,
+  "search" | "chain" | "isVisibleCollectionItem"
+> & {
   data: INftModel[];
 };
 
-const NFTData = ({ data, chain, search }: NFTDataProps) => {
+const NFTData = ({
+  data,
+  chain,
+  isVisibleCollectionItem,
+  search,
+}: NFTDataProps) => {
   return (
     <ContainerSC>
       {data.map((dataItem) => (
@@ -16,6 +24,7 @@ const NFTData = ({ data, chain, search }: NFTDataProps) => {
           key={dataItem.token_id}
           search={search}
           chain={chain}
+          isVisibleCollectionItem={isVisibleCollectionItem}
           {...dataItem}
         />
       ))}

@@ -29,6 +29,8 @@ const ImageSC = styled("img")`
   width: 100%;
   height: 100%;
   min-height: 250px;
+  border-radius: 0 8px 0 0;
+  overflow: hidden;
 `;
 
 export default React.memo(NFTItemImage);

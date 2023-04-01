@@ -1,16 +1,37 @@
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
+import React from "react";
+import NFT from "@/components/NFT/NFT";
+import { PagesNamespace } from "@/types/enum";
+import { useNFTAddress } from "@/hooks/pages/useNFTAddress/useNFTAddress";
+import { useNFTAddressStyles } from "@/hooks/pages/useNFTAddress/NFTAddress.styles";
 
 const NftAddress = () => {
-  const { query } = useRouter();
+  const { search, chain, isLoading, breadcrumbsData, nftItem } =
+    useNFTAddress();
 
-  useEffect(() => {
-    if (Object.keys(query).length) {
-      console.log(query);
-    }
-  }, [query]);
-
-  return <div>address</div>;
+  return (
+    <>
+      <ContainerSC>
+        {nftItem?.symbol && <TitleSC>Коллекция: {nftItem.symbol}</TitleSC>}
+        {nftItem?.contract_type && (
+          <TitleTwoSC>Контракт: {nftItem.contract_type}</TitleTwoSC>
+        )}
+        {nftItem && <TitleTwoSC>Адресс: {search}</TitleTwoSC>}
+      </ContainerSC>
+      <NFT
+        id={""}
+        search={search}
+        chain={chain}
+        pathname={`${PagesNamespace.NFT}/${chain}/${search}`}
+        isLoading={isLoading}
+        breadcrumbsData={breadcrumbsData}
+        isDisableSelect
+        isSearchParams={false}
+        isVisibleCollectionItem={false}
+      />
+    </>
+  );
 };
+
+const { ContainerSC, TitleSC, TitleTwoSC } = useNFTAddressStyles();
 
 export default React.memo(NftAddress);

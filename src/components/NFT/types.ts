@@ -7,6 +7,8 @@ export type NFTProps = {
   chain: EvmChainUnion;
   pathname: string;
   isDisableSelect?: boolean;
+  isSearchParams?: boolean;
+  isVisibleCollectionItem?: boolean;
 };
 
 export type MainNFTProps = NFTProps & {

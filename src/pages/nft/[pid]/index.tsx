@@ -12,7 +12,7 @@ const NFTChain = () => {
       search={search}
       chain={defaultChain || DEFAULT_CHAIN}
       pathname={pathname}
-      isLoading={false}
+      isLoading={!defaultChain}
       breadcrumbsData={breadcrumbsData}
       isDisableSelect
     />

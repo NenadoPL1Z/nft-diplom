@@ -15,20 +15,30 @@ const NFT = ({
   chain = DEFAULT_CHAIN,
   pathname = PagesNamespace.NFT,
   isDisableSelect = false,
+  isSearchParams = true,
   isLoading = false,
-  breadcrumbsData = [],
+  breadcrumbsData,
+  isVisibleCollectionItem = true,
 }: Partial<MainNFTProps>) => {
-  const props = { search, chain, id, pathname, isDisableSelect };
+  const props = {
+    search,
+    chain,
+    id,
+    pathname,
+    isDisableSelect,
+    isSearchParams,
+    isVisibleCollectionItem,
+  };
+
+  const { breadcrumbs, isVisibleBreadcrumbs } = useNFT({ breadcrumbsData });
 
   return (
     <ContainerSC>
       {isLoading && <NFTLoading />}
       {!isLoading && (
         <>
-          {!!breadcrumbsData?.length && (
-            <BreadcrumbsUI data={breadcrumbsData} />
-          )}
           <NftSearch {...props} />
+          {isVisibleBreadcrumbs && <BreadcrumbsUI data={breadcrumbs} />}
           <NftList {...props} />
         </>
       )}

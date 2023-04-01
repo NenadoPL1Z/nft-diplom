@@ -18,10 +18,7 @@ export const useNFTChain = () => {
     [defaultChain],
   );
   const breadcrumbsData = useMemo(
-    () => [
-      { title: "Маркет", href: PagesNamespace.NFT },
-      { title: defaultChain, href: pathname },
-    ],
+    () => [{ title: defaultChain, href: pathname }],
     [defaultChain, pathname],
   );
 

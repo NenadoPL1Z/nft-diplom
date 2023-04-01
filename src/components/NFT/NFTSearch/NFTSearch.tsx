@@ -6,7 +6,11 @@ import { FormProvider } from "react-hook-form";
 import PopularResults from "@/components/NFT/NFTSearch/PopularResults/PopularResults";
 import { NFTProps } from "@/components/NFT/types";
 
-const NFTSearch = ({ isDisableSelect, ...otherProps }: NFTProps) => {
+const NFTSearch = ({
+  isDisableSelect,
+  isSearchParams,
+  ...otherProps
+}: NFTProps) => {
   const {
     methods,
     idController,
@@ -17,7 +21,7 @@ const NFTSearch = ({ isDisableSelect, ...otherProps }: NFTProps) => {
     onSubmit,
   } = useNFTSearch(otherProps);
 
-  return (
+  return isSearchParams ? (
     <FormProvider {...methods}>
       <FormContainerSC onSubmit={onSubmit}>
         <TFSearchSC
@@ -55,7 +59,7 @@ const NFTSearch = ({ isDisableSelect, ...otherProps }: NFTProps) => {
         <PopularResults onClick={onClickPopularResults} />
       </ContainerSC>
     </FormProvider>
-  );
+  ) : null;
 };
 
 const {

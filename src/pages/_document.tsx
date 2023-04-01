@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="ru">
       <Head>
-        <title>NFT</title>
+        <title>NFT FIND</title>
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
