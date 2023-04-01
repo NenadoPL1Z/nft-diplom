@@ -1,19 +1,27 @@
 import React from "react";
-import { Button } from "@mui/material";
+import { Button, ButtonProps } from "@mui/material";
 import { NFTContainerSC, NFTTitleSC } from "@/components/NFT/NFTList/styles";
 import { useNFTEmpty } from "@/components/NFT/NFTList/NFTEmpty/useNFTEmpty";
 
-const NFTEmpty = () => {
+type NFTEmptyProps = {
+  isButton?: boolean;
+  buttonProps?: ButtonProps;
+};
+
+const NFTEmpty = ({ isButton = true, buttonProps = {} }: NFTEmptyProps) => {
   const { handleClick } = useNFTEmpty();
 
   return (
     <NFTContainerSC>
       <NFTTitleSC>По данному запросу ничего не найденно!{"\n"}</NFTTitleSC>
-      <Button
-        color="error"
-        onClick={handleClick}>
-        Вернуться к MONKEY
-      </Button>
+      {isButton && (
+        <Button
+          color="error"
+          onClick={handleClick}
+          {...buttonProps}>
+          {buttonProps?.children || "Вернуться к MONKEY"}
+        </Button>
+      )}
     </NFTContainerSC>
   );
 };
