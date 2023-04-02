@@ -1,27 +1,35 @@
 import React from "react";
-import { INftReducerState } from "@/store/reducers/nftSlice/types";
-import { styled } from "@mui/material";
+import { INftModel } from "@/lib/models/INftModel";
+import NFTItem from "@/components/NFT/NFTItem/NFTItem";
+import { useNFTTopContentStyles } from "@/components/NFTID/NFTIdTop/NFTTopContent/NFTTopContent.styles";
+import BreadcrumbsUI from "@/UI/BreadcrumbsUI/BreadcrumbsUI";
+import { useNFTTopContent } from "@/components/NFTID/NFTIdTop/NFTTopContent/useNFTTopContent";
+import NftTopRight from "@/components/NFTID/NFTIdTop/NFTTopContent/NFTTopRight/NFTTopRight";
 
-type NFTTopContentProps = Pick<INftReducerState, "result">["result"];
+const NFTTopContent = (props: INftModel) => {
+  const { breadcrumbData } = useNFTTopContent();
 
-const NFTTopContent = (props: NFTTopContentProps) => {
   return (
     <ContainerSC>
-      {/*<NFTItem*/}
-      {/*  name={""}*/}
-      {/*  symbol={""}*/}
-      {/*  token_id={""}*/}
-      {/*  token_address={""}*/}
-      {/*  contract_type={""}*/}
-      {/*  search={""}*/}
-      {/*  chain={"ETHEREUM"}*/}
-      {/*  {...props}*/}
-      {/*  isVisibleCollectionItem={false}*/}
-      {/*/>*/}
+      <BreadcrumbsUI data={breadcrumbData} />
+      <WrapperSC>
+        <AsideSC>
+          <NFTItem
+            search=""
+            chain="ETHEREUM"
+            isVisibleCollectionItem={false}
+            {...props}
+          />
+        </AsideSC>
+        <RightContainerSC>
+          <NftTopRight {...props} />
+        </RightContainerSC>
+      </WrapperSC>
     </ContainerSC>
   );
 };
 
-const ContainerSC = styled("section")``;
+const { ContainerSC, WrapperSC, AsideSC, RightContainerSC } =
+  useNFTTopContentStyles();
 
 export default React.memo(NFTTopContent);

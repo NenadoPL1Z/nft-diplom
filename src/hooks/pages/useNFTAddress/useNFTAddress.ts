@@ -10,8 +10,6 @@ export const useNFTAddress = () => {
   const { query } = useRouter();
   const nftItem = useAppSelector((state) => state.nftSlice.result[0]);
 
-  console.log(query);
-
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const search = useMemo(() => query.address as string, [query]);

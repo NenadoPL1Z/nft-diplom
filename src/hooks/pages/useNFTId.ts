@@ -3,6 +3,7 @@ import { useEffect, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "@/hooks/store/useStore";
 import { fetchGetNFTId } from "@/store/reducers/nftSlice/asyncThunks/fetchGetNFTId/fetchGetNFTId";
 import { EvmChainUnion } from "@/store/reducers/nftSlice/types";
+import { resetNftSlice } from "@/store/reducers/nftSlice/nftSlice";
 
 export const useNFTId = () => {
   const { query } = useRouter();
@@ -32,6 +33,9 @@ export const useNFTId = () => {
         }),
       );
     }
+    return () => {
+      dispatch(resetNftSlice());
+    };
   }, [query]);
 
   return {

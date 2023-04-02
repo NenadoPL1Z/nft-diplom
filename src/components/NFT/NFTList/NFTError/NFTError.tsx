@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, styled } from "@mui/material";
+import { Button } from "@mui/material";
 import { NFTProps } from "@/components/NFT/types";
 import { useNFTErrorStyles } from "@/components/NFT/NFTList/NFTError/NFTError.styles";
 import { useNFTError } from "@/components/NFT/NFTList/NFTError/useNFTError";

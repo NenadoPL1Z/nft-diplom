@@ -9,6 +9,7 @@ export type NFTProps = {
   isDisableSelect?: boolean;
   isSearchParams?: boolean;
   isVisibleCollectionItem?: boolean;
+  isVisibleTokenButton?: boolean;
 };
 
 export type MainNFTProps = NFTProps & {

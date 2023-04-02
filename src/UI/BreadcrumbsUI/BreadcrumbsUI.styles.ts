@@ -1,6 +1,6 @@
 import { css, styled } from "@mui/material";
 import Link from "next/link";
-import { PRIMARY_MAIN_COLOR } from "../../theme/colors";
+import { COLORS, PRIMARY_MAIN_COLOR } from "../../theme/colors";
 
 const ContainerSC = styled("nav")`
   margin-bottom: 10px;
@@ -13,7 +13,7 @@ const ItemAfter = css`
 `;
 
 const BreadcrumbsItem = styled(Link)<{ isLast: boolean }>`
-  color: ${PRIMARY_MAIN_COLOR};
+  color: ${({ isLast }) => (isLast ? PRIMARY_MAIN_COLOR : COLORS.LIGHT)};
   cursor: pointer;
   position: relative;
   font-size: 18px;

@@ -6,7 +6,7 @@ import { useNFTDataStyles } from "@/components/NFT/NFTList/NFTData/NFTData.style
 
 type NFTDataProps = Pick<
   NFTProps,
-  "search" | "chain" | "isVisibleCollectionItem"
+  "search" | "chain" | "isVisibleCollectionItem" | "isVisibleTokenButton"
 > & {
   data: INftModel[];
 };
@@ -16,6 +16,7 @@ const NFTData = ({
   chain,
   isVisibleCollectionItem,
   search,
+  isVisibleTokenButton = true,
 }: NFTDataProps) => {
   return (
     <ContainerSC>
@@ -24,6 +25,7 @@ const NFTData = ({
           key={dataItem.token_id}
           search={search}
           chain={chain}
+          isVisibleTokenButton={isVisibleTokenButton}
           isVisibleCollectionItem={isVisibleCollectionItem}
           {...dataItem}
         />

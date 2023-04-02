@@ -8,12 +8,16 @@ import NFTFavorites from "@/components/NFT/NFTItem/NFTFavorites/NFTFavorites";
 import { NFTProps } from "@/components/NFT/types";
 
 type NFTItemProps = INftModel &
-  Pick<NFTProps, "search" | "chain" | "isVisibleCollectionItem">;
+  Pick<
+    NFTProps,
+    "search" | "chain" | "isVisibleCollectionItem" | "isVisibleTokenButton"
+  >;
 
 const NFTItem = ({
   search,
   chain,
   isVisibleCollectionItem,
+  isVisibleTokenButton,
   ...otherProps
 }: NFTItemProps) => {
   const { token_id, name, normalized_metadata } = otherProps;
@@ -36,13 +40,15 @@ const NFTItem = ({
               <NftAttributes {...normalized_metadata} />
             )}
           </TextTopSC>
-          <Button
-            sx={{ marginBottom: isVisibleCollectionItem ? "8px" : "" }}
-            variant="outlined"
-            target="_blank"
-            href={`/nft/${chain}/${search}/${token_id}`}>
-            ТОКЕН
-          </Button>
+          {isVisibleTokenButton && (
+            <Button
+              sx={{ marginBottom: isVisibleCollectionItem ? "8px" : "" }}
+              variant="outlined"
+              target="_blank"
+              href={`/nft/${chain}/${search}/${token_id}`}>
+              ТОКЕН
+            </Button>
+          )}
           {isVisibleCollectionItem && (
             <Button
               variant="outlined"

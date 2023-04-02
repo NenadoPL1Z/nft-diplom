@@ -1,6 +1,5 @@
 import React from "react";
 import { useNFTId } from "@/hooks/pages/useNFTId";
-import NFTLoading from "@/components/NFT/NFTList/NFTLoading/NFTLoading";
 import NFTIdTop from "@/components/NFTID/NFTIdTop/NFTIdTop";
 import NFTIdBottom from "@/components/NFTID/NFTIdBottom/NFTIdBottom";
 
@@ -14,7 +13,7 @@ const NftIDPage = () => {
         hasError={hasError}
         result={result}
       />
-      <NFTIdBottom />
+      {result[0] && <NFTIdBottom />}
     </>
   );
 };
