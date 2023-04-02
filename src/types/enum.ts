@@ -1,6 +1,6 @@
 export enum PagesNamespace {
   INDEX = "/",
-  ABOUT = "/about",
+  FAQ = "/faq",
   CONTACTS = "/contacts",
   NFT = "/nft",
   SIGN_IN = "/auth/signin",

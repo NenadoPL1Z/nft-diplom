@@ -19,7 +19,7 @@ const TFSearchUI = ({
   return (
     <TextFieldUI
       type="text"
-      placeholder="Поиск"
+      placeholder="Адрес"
       {...props}
       InputProps={{
         startAdornment: isStartIcon ? (

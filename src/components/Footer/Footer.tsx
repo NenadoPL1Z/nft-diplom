@@ -2,7 +2,7 @@ import React from "react";
 import PageContainerSC from "@/UI/SC/PageContainerSC";
 import { styled } from "@mui/material";
 import Logo from "@/components/Logo/Logo";
-import { COLORS } from "../../theme/colors";
+import { COLORS, PRIMARY_MAIN_COLOR } from "../../theme/colors";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
@@ -32,7 +32,9 @@ const Footer = () => {
               </IconLinkSC>
             </IconItemSC>
           </IconContainerSC>
-          <ParagraphSC>Copyright © 2023</ParagraphSC>
+          <ParagraphSC>
+            Copyright © 2023 Made by <span>Rodion Pyatigroskiy</span>
+          </ParagraphSC>
         </WrapperSC>
       </PageContainerSC>
     </FooterSC>
@@ -86,6 +88,10 @@ const ParagraphSC = styled("p")`
   text-align: center;
   white-space: pre-wrap;
   color: ${COLORS.GRAY};
+  & > span {
+    color: ${PRIMARY_MAIN_COLOR};
+    font-weight: 500;
+  }
 `;
 
 export default Footer;

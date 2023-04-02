@@ -34,7 +34,7 @@ const NFTSearch = ({
         <TFFindIdSC
           name="findNFT"
           type="numeric"
-          placeholder="Поиск по ID"
+          placeholder="id"
           isStartIcon={false}
           value={idController.field.value}
           onChange={(e) => idController.field.onChange(e.target.value)}
@@ -51,7 +51,7 @@ const NFTSearch = ({
           <CustomButton
             color="secondary"
             type="submit">
-            ПОИСК
+            НАЙТИ
           </CustomButton>
         )}
       </FormContainerSC>
