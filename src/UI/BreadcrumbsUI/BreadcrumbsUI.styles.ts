@@ -18,6 +18,7 @@ const BreadcrumbsItem = styled(Link)<{ isLast: boolean }>`
   position: relative;
   font-size: 18px;
   font-weight: 500;
+  word-break: break-word;
   ${({ isLast }) => !isLast && ItemAfter}
   &:hover {
     text-decoration: underline;

@@ -17,7 +17,6 @@ const RightContainerSC = styled("section")`
   background-color: ${COLORS.SECONDARY};
   width: 100%;
   border-radius: 8px;
-  padding: 20px;
   overflow: hidden;
 `;
 

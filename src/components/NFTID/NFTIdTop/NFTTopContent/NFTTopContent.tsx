@@ -5,22 +5,26 @@ import { useNFTTopContentStyles } from "@/components/NFTID/NFTIdTop/NFTTopConten
 import BreadcrumbsUI from "@/UI/BreadcrumbsUI/BreadcrumbsUI";
 import { useNFTTopContent } from "@/components/NFTID/NFTIdTop/NFTTopContent/useNFTTopContent";
 import NftTopRight from "@/components/NFTID/NFTIdTop/NFTTopContent/NFTTopRight/NFTTopRight";
+import { useBigTablet, useTablet } from "@/hooks/useMedia";
 
 const NFTTopContent = (props: INftModel) => {
   const { breadcrumbData } = useNFTTopContent();
+  const isBigTablet = useBigTablet();
 
   return (
     <ContainerSC>
       <BreadcrumbsUI data={breadcrumbData} />
       <WrapperSC>
-        <AsideSC>
-          <NFTItem
-            search=""
-            chain="ETHEREUM"
-            isVisibleCollectionItem={false}
-            {...props}
-          />
-        </AsideSC>
+        {!isBigTablet && (
+          <AsideSC>
+            <NFTItem
+              search=""
+              chain="ETHEREUM"
+              isVisibleCollectionItem={false}
+              {...props}
+            />
+          </AsideSC>
+        )}
         <RightContainerSC>
           <NftTopRight {...props} />
         </RightContainerSC>
