@@ -7,7 +7,6 @@ import { PagesNamespace } from "@/types/enum";
 import { useSignUp } from "@/hooks/pages/useSignUp";
 import TFPasswordUI from "@/UI/TextFieldUI/TextFields/TFPasswordUI/TFPasswordUI";
 import ButtonUI from "@/UI/ButtonUI/ButtonUI";
-import DialogUI from "@/UI/DialogUI/DialogUI";
 import { styled, Typography } from "@mui/material";
 
 const Signup = () => {
@@ -17,7 +16,6 @@ const Signup = () => {
     passwordController,
     emailController,
     onSubmit,
-    handleClose,
     handleChangeEmail,
     handleChangePassword,
   } = useSignUp();

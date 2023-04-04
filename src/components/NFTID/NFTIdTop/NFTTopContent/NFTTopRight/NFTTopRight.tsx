@@ -2,7 +2,6 @@ import React from "react";
 import { INftModel } from "@/lib/models/INftModel";
 import NFTTopRightInfo from "@/components/NFTID/NFTIdTop/NFTTopContent/NFTTopRight/NFTTopRightInfo/NFTTopRightInfo";
 import { NFTIDTitleSC } from "@/components/NFTID/NFTIDTitleSC/NFTIDTitleSC";
-import NFTItem from "@/components/NFT/NFTItem/NFTItem";
 import { useBigTablet } from "@/hooks/useMedia";
 import { styled } from "@mui/material";
 import NFTItemImage from "@/components/NFT/NFTItem/NFTItemImage/NFTItemImage";

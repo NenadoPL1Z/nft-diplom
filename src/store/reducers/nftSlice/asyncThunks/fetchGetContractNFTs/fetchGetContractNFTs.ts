@@ -23,7 +23,7 @@ export const fetchGetContractNFTs = createAsyncThunk<
         .getContractNFTs({
           address: search,
           limit: PAGE_LIMIT,
-          chain: EvmChain[chain as EvmChainUnion] as any,
+          chain: EvmChain[chain as EvmChainUnion] as never,
           cursor: getState().nftSlice.cursor,
           normalizeMetadata: true,
         })
@@ -34,6 +34,7 @@ export const fetchGetContractNFTs = createAsyncThunk<
         cursor: response.cursor,
         isEnd: (response.result?.length || 0) < PAGE_LIMIT,
       };
+      //eslint-disable-next-line
     } catch (e: any) {
       return rejectWithValue(`${e.name} ${e.code}`);
     }

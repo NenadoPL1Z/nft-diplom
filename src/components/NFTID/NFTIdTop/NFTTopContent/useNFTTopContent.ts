@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { BreadcrumbsItemType } from "@/UI/BreadcrumbsUI/type";
 import { PagesNamespace } from "@/types/enum";
 

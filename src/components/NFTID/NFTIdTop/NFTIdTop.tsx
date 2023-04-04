@@ -3,7 +3,6 @@ import { INftReducerState } from "@/store/reducers/nftSlice/types";
 import NFTLoading from "@/components/NFT/NFTList/NFTLoading/NFTLoading";
 import NFTEmpty from "@/components/NFT/NFTList/NFTEmpty/NFTEmpty";
 import NFTTopContent from "@/components/NFTID/NFTIdTop/NFTTopContent/NFTTopContent";
-import NFTIdBottom from "@/components/NFTID/NFTIdBottom/NFTIdBottom";
 import { styled } from "@mui/material";
 
 const NFTIdTop = ({

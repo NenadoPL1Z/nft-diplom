@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { styled } from "@mui/material";
 import { AccountAsideItemModel } from "@/lib/models/AccountAsideItem";
 import { COLORS, PRIMARY_MAIN_COLOR } from "../../../../../theme/colors";

@@ -1,7 +1,6 @@
 import { useController, useForm } from "react-hook-form";
 import { ISearchFormModel } from "@/lib/models/FormModels/ISearchFormModel";
 import { useAppSelector } from "@/hooks/store/useStore";
-import { PagesNamespace } from "@/types/enum";
 import { useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 import { scrollTop } from "@/lib/services/services";

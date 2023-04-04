@@ -1,11 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ISearchFormModel } from "@/lib/models/FormModels/ISearchFormModel";
 import { IStore } from "@/store/store";
-import {
-  EvmChainUnion,
-  INftReducerState,
-  nftSliceName,
-} from "@/store/reducers/nftSlice/types";
+import { EvmChainUnion, nftSliceName } from "@/store/reducers/nftSlice/types";
 import Moralis from "moralis";
 import { EvmChain } from "@moralisweb3/common-evm-utils";
 import { INftModel } from "@/lib/models/INftModel";
@@ -22,12 +18,13 @@ export const fetchGetNFTId = createAsyncThunk<
         .getNFTTokenIdOwners({
           address: search,
           tokenId: id,
-          chain: EvmChain[chain as EvmChainUnion] as any,
+          chain: EvmChain[chain as EvmChainUnion] as never,
           normalizeMetadata: true,
         })
         .then((r) => r.toJSON());
 
       return response.result || [];
+      //eslint-disable-next-line
     } catch (e: any) {
       return rejectWithValue(`${e.name} ${e.code}`);
     }

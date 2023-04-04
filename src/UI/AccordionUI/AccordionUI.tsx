@@ -5,7 +5,6 @@ import {
   AccordionProps,
   AccordionSummary,
   styled,
-  Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { COLORS } from "../../theme/colors";

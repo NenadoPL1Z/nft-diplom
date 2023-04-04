@@ -5,7 +5,7 @@ import { useNFTTopContentStyles } from "@/components/NFTID/NFTIdTop/NFTTopConten
 import BreadcrumbsUI from "@/UI/BreadcrumbsUI/BreadcrumbsUI";
 import { useNFTTopContent } from "@/components/NFTID/NFTIdTop/NFTTopContent/useNFTTopContent";
 import NftTopRight from "@/components/NFTID/NFTIdTop/NFTTopContent/NFTTopRight/NFTTopRight";
-import { useBigTablet, useTablet } from "@/hooks/useMedia";
+import { useBigTablet } from "@/hooks/useMedia";
 
 const NFTTopContent = (props: INftModel) => {
   const { breadcrumbData } = useNFTTopContent();

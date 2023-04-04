@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUserReducerState } from "@/store/reducers/userSlice/types";
-import { User } from "@firebase/auth";
 
 const initialState: IUserReducerState = {
   isAuth: false,
