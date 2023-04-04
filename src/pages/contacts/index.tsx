@@ -15,14 +15,12 @@ const Contacts = () => {
         также постоянно публикуем обновления и уведомления о наших продуктах на
         главном сайте. Поэтому наша команда решила не заполнять раздел
         {/* eslint-disable-next-line react/no-unescaped-entities */}
-        'Контакты' на нашем сайте, чтобы защитить пользователей от потери
-        времени и беспорядка в обмене сообщениями и помочь им быстро
-        взаимодействовать с представленной нами информацией. При этом, мы
-        предоставляем различные информационные ресурсы, чтобы дать пользователям
-        понять важность наших решений и рецепты успеха. Мы также предлагаем
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
-        'ЧАВО', чтобы помочь пользователям найти ответы на самые
-        распространенные вопросы на нашем сайте.{"\n"}
+        {/* eslint-disable-next-line react/no-unescaped-entities */} "Контакты"
+        на нашем сайте, чтобы защитить пользователей от потери времени и
+        беспорядка в обмене сообщениями и помочь им быстро взаимодействовать с
+        представленной нами информацией. При этом, мы предоставляем различные
+        информационные ресурсы, чтобы дать пользователям понять важность наших
+        решений и рецепты успеха.{"\n"}
         <span>C уважение команда NFT-Easy.</span>
       </ParagraphSC>
       <Link href={PagesNamespace.NFT}>
@@ -39,6 +37,10 @@ const ContainerSC = styled("section")`
   flex-grow: 1;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 `;
 
 const ParagraphSC = styled(Typography)`
@@ -48,6 +50,9 @@ const ParagraphSC = styled(Typography)`
   text-align: center;
   & > span {
     color: ${PRIMARY_MAIN_COLOR};
+  }
+  @media (max-width: 768px) {
+    text-align: left;
   }
 `;
 

@@ -21,6 +21,10 @@ const AsideItem = ({ title, url, Icon }: AccountAsideItemModel) => {
 };
 
 const ContainerSC = styled("li")<{ isActive: boolean }>`
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: 0.2s all linear;
   background-color: ${({ isActive }) => (isActive ? PRIMARY_MAIN_COLOR : "")};
   &:hover {
@@ -31,9 +35,9 @@ const ContainerSC = styled("li")<{ isActive: boolean }>`
 const LinkSC = styled(Link)`
   display: flex;
   align-items: center;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
-  padding: 10px 20px;
+  padding: 10px;
   cursor: pointer;
 `;
 

@@ -22,14 +22,17 @@ const AccountAside = () => {
 };
 
 const ContainerSC = styled("aside")`
-  margin-right: 20px;
   min-width: 250px;
+  margin-bottom: 20px;
 `;
 
 const UlSC = styled("ul")`
   background-color: ${COLORS.SECONDARY};
   border-radius: 10px;
   overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 export default React.memo(AccountAside);

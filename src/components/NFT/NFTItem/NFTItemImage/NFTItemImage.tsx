@@ -11,8 +11,6 @@ const NFTItemImage = ({ metadata }: INFTItemImageProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
 
-  console.log(metadata);
-
   const image = useMemo(
     () => getIpfsImage(metadata?.image || "") || metadata?.image,
     [metadata?.image],

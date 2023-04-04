@@ -2,14 +2,13 @@ import { styled, Typography } from "@mui/material";
 import { COLORS } from "../../../theme/colors";
 
 const ContainerSC = styled("div")`
-  display: flex;
   flex-grow: 1;
+  max-width: 600px;
   justify-content: center;
 `;
 
 const WrapperSC = styled("div")`
   width: 100%;
-  max-width: 600px;
 `;
 
 const InnerWrapperSC = styled("div")`
