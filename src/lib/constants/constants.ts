@@ -18,3 +18,12 @@ export const PAGE_LIMIT = 100;
 export const DEFAULT_ADDRESS = "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D";
 
 export const DEFAULT_CHAIN: EvmChainUnion = "ETHEREUM";
+
+export const firebaseConfig = {
+  apiKey: FIREBASE_API_KEY,
+  authDomain: FIREBASE_AUTH_DOMAIN,
+  projectId: FIREBASE_PROJECT_ID,
+  storageBucket: FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: FIREBASE_SENDER_ID,
+  appId: FIREBASE_APP_ID,
+};
