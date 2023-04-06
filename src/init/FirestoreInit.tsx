@@ -6,8 +6,8 @@ const firestore = getFirestore();
 
 const favorites = doc(firestore, "nft/favorites");
 
-export const createUserCollection = (uid: string) => {
-  const nftCollection = collection(favorites, uid);
+export const createFavoritesCollection = (uid: string) => {
+  const userCollection = collection(favorites, uid);
 
   return async (
     chain: string,
@@ -16,7 +16,7 @@ export const createUserCollection = (uid: string) => {
     tokenImage: string,
   ) => {
     if (uid === NFT_FAVORITES_MOCK_COLLECTION) return;
-    await addDoc(nftCollection, { tokenId, address, chain, tokenImage });
+    await addDoc(userCollection, { tokenId, address, chain, tokenImage });
   };
 };
 

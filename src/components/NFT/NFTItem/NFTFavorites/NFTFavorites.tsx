@@ -8,6 +8,7 @@ import Link from "next/link";
 import { PagesNamespace } from "@/types/enum";
 import { NFTProps } from "@/components/NFT/types";
 import { INftModel } from "@/lib/models/INftModel";
+import DialogUI from "@/UI/DialogUI/DialogUI";
 
 export type NftFavoritesProps = Pick<NFTProps, "search" | "chain"> &
   Pick<INftModel, "token_id" | "normalized_metadata"> & {
@@ -15,28 +16,41 @@ export type NftFavoritesProps = Pick<NFTProps, "search" | "chain"> &
   };
 
 const NftFavorites = (props: NftFavoritesProps) => {
-  const { isAuth, isFavorite, handlePressFavorite } = useNFTFavorites(props);
+  const {
+    isAuth,
+    hasError,
+    isFavorite,
+    handlePressFavorite,
+    handleCloseModal,
+  } = useNFTFavorites(props);
 
   return (
-    <Tooltip
-      color="secondary"
-      placement="top"
-      title="В избранное">
-      {isAuth ? (
-        <IconButton onClick={handlePressFavorite}>
-          {!isFavorite && <StarOutlineIcon color="secondary" />}
-          {isFavorite && <StarIcon color="secondary" />}
-        </IconButton>
-      ) : (
-        <Link
-          href={PagesNamespace.SIGN_IN}
-          target="_blank">
-          <IconButton>
-            <StarOutlineIcon color="secondary" />
+    <>
+      <Tooltip
+        color="secondary"
+        placement="top"
+        title="В избранное">
+        {isAuth ? (
+          <IconButton onClick={handlePressFavorite}>
+            {!isFavorite && <StarOutlineIcon color="secondary" />}
+            {isFavorite && <StarIcon color="secondary" />}
           </IconButton>
-        </Link>
-      )}
-    </Tooltip>
+        ) : (
+          <Link
+            href={PagesNamespace.SIGN_IN}
+            target="_blank">
+            <IconButton>
+              <StarOutlineIcon color="secondary" />
+            </IconButton>
+          </Link>
+        )}
+      </Tooltip>
+      <DialogUI
+        open={!!hasError}
+        handleClose={handleCloseModal}>
+        {hasError}
+      </DialogUI>
+    </>
   );
 };
 
