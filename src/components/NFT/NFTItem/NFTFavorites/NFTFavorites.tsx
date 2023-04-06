@@ -20,7 +20,7 @@ const NftFavorites = (props: NftFavoritesProps) => {
     isAuth,
     hasError,
     isFavorite,
-    handlePressFavorite,
+    handleChangeFavorites,
     handleCloseModal,
   } = useNFTFavorites(props);
 
@@ -31,7 +31,7 @@ const NftFavorites = (props: NftFavoritesProps) => {
         placement="top"
         title="В избранное">
         {isAuth ? (
-          <IconButton onClick={handlePressFavorite}>
+          <IconButton onClick={handleChangeFavorites}>
             {!isFavorite && <StarOutlineIcon color="secondary" />}
             {isFavorite && <StarIcon color="secondary" />}
           </IconButton>

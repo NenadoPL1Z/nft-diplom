@@ -17,16 +17,17 @@ export const useNFTFavorites = ({
   const [hasError, setHasError] = useState<string>("");
   const [isFavorite, setIsFavorite] = useState<boolean>(initialIsFavorite);
 
-  const firestoreAddFavorites = createFavoritesCollection(
+  const firestoreChangeFavorites = createFavoritesCollection(
     userData?.uid || NFT_FAVORITES_MOCK_COLLECTION,
+    isFavorite,
   );
 
   const handleCloseModal = () => {
     setHasError("");
   };
 
-  const handleAddToFavorites = () => {
-    firestoreAddFavorites(
+  const handleChangeFavorites = () => {
+    firestoreChangeFavorites(
       chain,
       search,
       token_id,
@@ -40,23 +41,11 @@ export const useNFTFavorites = ({
       });
   };
 
-  const handleDeleteFavorites = () => {
-    console.log(123);
-  };
-
-  const handlePressFavorite = () => {
-    if (isFavorite) {
-      handleDeleteFavorites();
-    } else {
-      handleAddToFavorites();
-    }
-  };
-
   return {
     isAuth,
     hasError,
     isFavorite,
     handleCloseModal,
-    handlePressFavorite,
+    handleChangeFavorites,
   };
 };
