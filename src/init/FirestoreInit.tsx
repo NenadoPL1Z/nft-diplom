@@ -1,9 +1,11 @@
 import React from "react";
-import { doc, getFirestore, setDoc } from "@firebase/firestore";
+import { addDoc, collection, doc, getFirestore } from "@firebase/firestore";
 
 const firestore = getFirestore();
 
 const favorites = doc(firestore, "nft/favorites");
+
+const nftCollection = collection(favorites, "user");
 
 export const firestoreAddFavorites = async (
   chain: string,
@@ -11,11 +13,7 @@ export const firestoreAddFavorites = async (
   tokenId: string,
   tokenImage: string,
 ) => {
-  await setDoc(
-    favorites,
-    { tokenId, address, chain, tokenImage },
-    { merge: true },
-  );
+  await addDoc(nftCollection, { tokenId, address, chain, tokenImage });
 };
 
 const FirestoreInit = () => {

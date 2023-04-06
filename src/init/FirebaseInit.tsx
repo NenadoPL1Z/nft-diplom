@@ -60,6 +60,7 @@ const FirebaseInit = () => {
         if (user) {
           dispatch(
             changeUser({
+              uid: user.uid,
               email: user.email || "",
               creationTime: user.metadata.creationTime || "",
               lastLoginAt: user.metadata.lastSignInTime || "",

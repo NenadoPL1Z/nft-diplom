@@ -8,9 +8,11 @@ export const useNFTFavorites = ({
   token_id,
   normalized_metadata,
 }: NftFavoritesProps) => {
+  const userData = useAppSelector((state) => state.userSlice.userData);
   const isAuth = useAppSelector((state) => state.userSlice.isAuth);
 
   const handleAddToFavorites = () => {
+    console.log(userData?.uid);
     firestoreAddFavorites(
       chain,
       search,
