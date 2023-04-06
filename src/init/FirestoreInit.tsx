@@ -1,19 +1,23 @@
 import React from "react";
 import { addDoc, collection, doc, getFirestore } from "@firebase/firestore";
+import { NFT_FAVORITES_MOCK_COLLECTION } from "@/lib/constants/constants";
 
 const firestore = getFirestore();
 
 const favorites = doc(firestore, "nft/favorites");
 
-const nftCollection = collection(favorites, "user");
+export const createUserCollection = (uid: string) => {
+  const nftCollection = collection(favorites, uid);
 
-export const firestoreAddFavorites = async (
-  chain: string,
-  address: string,
-  tokenId: string,
-  tokenImage: string,
-) => {
-  await addDoc(nftCollection, { tokenId, address, chain, tokenImage });
+  return async (
+    chain: string,
+    address: string,
+    tokenId: string,
+    tokenImage: string,
+  ) => {
+    if (uid === NFT_FAVORITES_MOCK_COLLECTION) return;
+    await addDoc(nftCollection, { tokenId, address, chain, tokenImage });
+  };
 };
 
 const FirestoreInit = () => {

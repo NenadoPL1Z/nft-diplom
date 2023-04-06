@@ -32,6 +32,7 @@ const NFTItem = ({
               search={search}
               chain={chain}
               token_id={token_id}
+              initialIsFavorite={false}
               normalized_metadata={normalized_metadata}
             />
           </FavoriteContainerSC>
