@@ -28,7 +28,12 @@ const NFTItem = ({
         <ImageContainerSC>
           <NFTItemImage metadata={normalized_metadata} />
           <FavoriteContainerSC>
-            <NFTFavorites />
+            <NFTFavorites
+              search={search}
+              chain={chain}
+              token_id={token_id}
+              normalized_metadata={normalized_metadata}
+            />
           </FavoriteContainerSC>
         </ImageContainerSC>
         <TextSC>

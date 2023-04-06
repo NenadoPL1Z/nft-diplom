@@ -4,9 +4,14 @@ import { IconButton, Tooltip } from "@mui/material";
 import { useNFTFavorites } from "@/components/NFT/NFTItem/NFTFavorites/useNFTFavorites";
 import Link from "next/link";
 import { PagesNamespace } from "@/types/enum";
+import { NFTProps } from "@/components/NFT/types";
+import { INftModel } from "@/lib/models/INftModel";
 
-const NftFavorites = () => {
-  const { isAuth, handleAddToFavorites } = useNFTFavorites();
+export type NftFavoritesProps = Pick<NFTProps, "search" | "chain"> &
+  Pick<INftModel, "token_id" | "normalized_metadata">;
+
+const NftFavorites = (props: NftFavoritesProps) => {
+  const { isAuth, handleAddToFavorites } = useNFTFavorites(props);
 
   return (
     <Tooltip

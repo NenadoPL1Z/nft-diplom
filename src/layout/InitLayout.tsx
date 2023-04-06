@@ -1,11 +1,13 @@
 import React from "react";
-import FirebaseInit from "../init/FirebaseInit";
 import MoralisInit from "../init/MoralisInit";
+import FirebaseInit from "../init/FirebaseInit";
+import FirestoreInit from "../init/FirestoreInit";
 
 const InitLayout = () => {
   return (
     <>
       <FirebaseInit />
+      <FirestoreInit />
       <MoralisInit />
     </>
   );
