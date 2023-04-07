@@ -4,3 +4,7 @@ export interface IFavoritesItemModel {
   tokenId: string;
   tokenImage: string;
 }
+
+export type FavoritesItemObjectType = {
+  [key: string]: IFavoritesItemModel[];
+}[];
