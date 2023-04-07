@@ -1,34 +1,37 @@
 import React from "react";
-import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  getFirestore,
-} from "@firebase/firestore";
-import { NFT_FAVORITES_MOCK_COLLECTION } from "@/lib/constants/constants";
+import { deleteDoc, doc, getFirestore, setDoc } from "@firebase/firestore";
 
-const firestore = getFirestore();
+interface IChangeFavorites {
+  chain: string;
+  address: string;
+  tokenId: string;
+  tokenImage: string;
+  uid: string;
+  isFavorite: boolean;
+}
 
-const favorites = doc(firestore, "nft/favorites");
+const db = getFirestore();
 
-export const createFavoritesCollection = (uid: string, isFavorite: boolean) => {
-  const userCollection = collection(favorites, uid);
-
-  return async (
-    chain: string,
-    address: string,
-    tokenId: string,
-    tokenImage: string,
-  ) => {
-    if (uid === NFT_FAVORITES_MOCK_COLLECTION) return;
-    if (!isFavorite) {
-      await addDoc(userCollection, { tokenId, address, chain, tokenImage });
-    }
-    if (isFavorite) {
-      // await deleteDoc(userCollection);
-    }
-  };
+export const dbChangeFavorites = async ({
+  uid,
+  isFavorite,
+  tokenId,
+  address,
+  chain,
+  tokenImage,
+}: IChangeFavorites) => {
+  if (!isFavorite) {
+    console.log(address);
+    await setDoc(doc(db, `favorites/${uid}/${address}`, tokenId), {
+      tokenId,
+      address,
+      chain,
+      tokenImage,
+    });
+  }
+  if (isFavorite) {
+    console.log("delete");
+  }
 };
 
 const FirestoreInit = () => {

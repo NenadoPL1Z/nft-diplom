@@ -1,8 +1,7 @@
 import { useAppSelector } from "@/hooks/store/useStore";
 import { NftFavoritesProps } from "@/components/NFT/NFTItem/NFTFavorites/NFTFavorites";
-import { createFavoritesCollection } from "../../../../init/FirestoreInit";
-import { NFT_FAVORITES_MOCK_COLLECTION } from "@/lib/constants/constants";
 import { useState } from "react";
+import { dbChangeFavorites } from "../../../../init/FirestoreInit";
 
 export const useNFTFavorites = ({
   chain,
@@ -17,26 +16,26 @@ export const useNFTFavorites = ({
   const [hasError, setHasError] = useState<string>("");
   const [isFavorite, setIsFavorite] = useState<boolean>(initialIsFavorite);
 
-  const firestoreChangeFavorites = createFavoritesCollection(
-    userData?.uid || NFT_FAVORITES_MOCK_COLLECTION,
-    isFavorite,
-  );
-
   const handleCloseModal = () => {
     setHasError("");
   };
 
   const handleChangeFavorites = () => {
-    firestoreChangeFavorites(
+    if (!userData?.uid) return;
+
+    dbChangeFavorites({
+      isFavorite,
+      uid: userData?.uid as string,
       chain,
-      search,
-      token_id,
-      normalized_metadata?.image || "",
-    )
+      address: search,
+      tokenId: token_id,
+      tokenImage: normalized_metadata?.image || "",
+    })
       .then(() => {
         setIsFavorite(true);
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log(e);
         setHasError("Ошибка добавления в избранное, пропробуйте позже.");
       });
   };

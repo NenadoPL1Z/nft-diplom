@@ -19,8 +19,6 @@ export const DEFAULT_ADDRESS = "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D";
 
 export const DEFAULT_CHAIN: EvmChainUnion = "ETHEREUM";
 
-export const NFT_FAVORITES_MOCK_COLLECTION = "QWE";
-
 export const firebaseConfig = {
   apiKey: FIREBASE_API_KEY,
   authDomain: FIREBASE_AUTH_DOMAIN,
