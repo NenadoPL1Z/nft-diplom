@@ -29,7 +29,7 @@ const NftFavorites = (props: NftFavoritesProps) => {
       <Tooltip
         color="secondary"
         placement="top"
-        title="В избранное">
+        title={isFavorite ? "Удалить из избранного" : "В избранное"}>
         {isAuth ? (
           <IconButton onClick={handleChangeFavorites}>
             {!isFavorite && <StarOutlineIcon color="secondary" />}

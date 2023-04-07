@@ -1,14 +1,17 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { PagesNamespace } from "@/types/enum";
 import { MainNFTProps } from "@/components/NFT/types";
 import { dbGetFavorites } from "../../init/FirestoreInit";
 import { useAppSelector } from "@/hooks/store/useStore";
+import { MapFavorites } from "@/types/types";
 
 export const useNFT = ({
   search,
   breadcrumbsData = [],
 }: Pick<MainNFTProps, "breadcrumbsData" | "search">) => {
   const userData = useAppSelector((state) => state.userSlice.userData);
+
+  const [favoritesMap, setFavoritesMap] = useState<MapFavorites>(new Map([]));
 
   const breadcrumbs = useMemo(
     () => [{ title: "Маркет", href: PagesNamespace.NFT }, ...breadcrumbsData],
@@ -22,12 +25,17 @@ export const useNFT = ({
 
   useEffect(() => {
     if (userData?.uid && search) {
-      dbGetFavorites({ uid: userData.uid, address: search });
+      dbGetFavorites({ uid: userData.uid, address: search }).then(
+        (response) => {
+          setFavoritesMap(response);
+        },
+      );
     }
   }, [search, userData]);
 
   return {
     breadcrumbs,
+    favoritesMap,
     isVisibleBreadcrumbs,
   };
 };

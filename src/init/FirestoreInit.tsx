@@ -7,8 +7,11 @@ import {
   getFirestore,
   setDoc,
   query,
+  getDocs,
 } from "@firebase/firestore";
 import { firebaseApp } from "./FirebaseInit";
+import { IFavoritesItemModel } from "@/lib/models/IFavoritesItemModel";
+import { MapFavorites } from "@/types/types";
 
 interface IChangeFavorites {
   chain: string;
@@ -30,13 +33,15 @@ export const dbGetFavorites = async ({
   address,
 }: Pick<IChangeFavorites, "uid" | "address">) => {
   const favoritesRef = collection(db, `favorites/${uid}/${address}`);
-  console.log(query(favoritesRef));
+  const docsSnap = await getDocs(favoritesRef);
+  const data: MapFavorites = new Map([]);
 
-  // const snapshot = await db.collection(`favorites/${uid}/${address}`).get();
-  // console.log(snapshot);
-  // const docRef = doc(db, `favorites/${uid}/${address}`, "123");
-  // console.log(await getDoc(docRef));
-  // return getDoc(docRef);
+  docsSnap.forEach((doc) => {
+    const itemData = doc.data() as IFavoritesItemModel;
+    data.set(itemData.tokenId, itemData);
+  });
+
+  return data;
 };
 
 export const dbChangeFavorites = ({

@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/hooks/store/useStore";
 import { NftFavoritesProps } from "@/components/NFT/NFTItem/NFTFavorites/NFTFavorites";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { dbChangeFavorites } from "../../../../init/FirestoreInit";
 
 export const useNFTFavorites = ({
@@ -52,6 +52,10 @@ export const useNFTFavorites = ({
       onRejectDelete,
     });
   };
+
+  useEffect(() => {
+    setIsFavorite(initialIsFavorite);
+  }, [initialIsFavorite]);
 
   return {
     isAuth,

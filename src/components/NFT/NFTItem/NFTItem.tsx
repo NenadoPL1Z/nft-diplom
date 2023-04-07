@@ -11,11 +11,12 @@ type NFTItemProps = INftModel &
   Pick<
     NFTProps,
     "search" | "chain" | "isVisibleCollectionItem" | "isVisibleTokenButton"
-  >;
+  > & { initialIsFavorite: boolean };
 
 const NFTItem = ({
   search,
   chain,
+  initialIsFavorite,
   isVisibleCollectionItem,
   isVisibleTokenButton,
   ...otherProps
@@ -32,7 +33,7 @@ const NFTItem = ({
               search={search}
               chain={chain}
               token_id={token_id}
-              initialIsFavorite={false}
+              initialIsFavorite={initialIsFavorite}
               normalized_metadata={normalized_metadata}
             />
           </FavoriteContainerSC>

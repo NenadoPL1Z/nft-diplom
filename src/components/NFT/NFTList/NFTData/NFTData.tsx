@@ -6,7 +6,11 @@ import { useNFTDataStyles } from "@/components/NFT/NFTList/NFTData/NFTData.style
 
 type NFTDataProps = Pick<
   NFTProps,
-  "search" | "chain" | "isVisibleCollectionItem" | "isVisibleTokenButton"
+  | "search"
+  | "chain"
+  | "isVisibleCollectionItem"
+  | "isVisibleTokenButton"
+  | "favoritesMap"
 > & {
   data: INftModel[];
 };
@@ -17,6 +21,7 @@ const NFTData = ({
   isVisibleCollectionItem,
   search,
   isVisibleTokenButton = true,
+  favoritesMap,
 }: NFTDataProps) => {
   return (
     <ContainerSC>
@@ -27,6 +32,7 @@ const NFTData = ({
           chain={chain}
           isVisibleTokenButton={isVisibleTokenButton}
           isVisibleCollectionItem={isVisibleCollectionItem}
+          initialIsFavorite={!!favoritesMap?.has(dataItem.token_id)}
           {...dataItem}
         />
       ))}

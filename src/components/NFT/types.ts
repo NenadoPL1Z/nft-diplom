@@ -1,5 +1,6 @@
 import { EvmChainUnion } from "@/store/reducers/nftSlice/types";
 import { BreadcrumbsUIProps } from "@/UI/BreadcrumbsUI/type";
+import { MapFavorites } from "@/types/types";
 
 export type NFTProps = {
   id: string;
@@ -10,6 +11,7 @@ export type NFTProps = {
   isSearchParams?: boolean;
   isVisibleCollectionItem?: boolean;
   isVisibleTokenButton?: boolean;
+  favoritesMap?: MapFavorites;
 };
 
 export type MainNFTProps = NFTProps & {

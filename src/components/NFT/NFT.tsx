@@ -30,7 +30,7 @@ const NFT = ({
     isVisibleCollectionItem,
   };
 
-  const { breadcrumbs, isVisibleBreadcrumbs } = useNFT({
+  const { breadcrumbs, isVisibleBreadcrumbs, favoritesMap } = useNFT({
     breadcrumbsData,
     search,
   });
@@ -42,7 +42,10 @@ const NFT = ({
         <>
           <NftSearch {...props} />
           {isVisibleBreadcrumbs && <BreadcrumbsUI data={breadcrumbs} />}
-          <NftList {...props} />
+          <NftList
+            {...props}
+            favoritesMap={favoritesMap}
+          />
         </>
       )}
     </ContainerSC>
