@@ -30,7 +30,10 @@ const NFT = ({
     isVisibleCollectionItem,
   };
 
-  const { breadcrumbs, isVisibleBreadcrumbs } = useNFT({ breadcrumbsData });
+  const { breadcrumbs, isVisibleBreadcrumbs } = useNFT({
+    breadcrumbsData,
+    search,
+  });
 
   return (
     <ContainerSC>

@@ -1,5 +1,14 @@
 import React from "react";
-import { deleteDoc, doc, getFirestore, setDoc } from "@firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  getFirestore,
+  setDoc,
+  query,
+} from "@firebase/firestore";
+import { firebaseApp } from "./FirebaseInit";
 
 interface IChangeFavorites {
   chain: string;
@@ -14,7 +23,21 @@ interface IChangeFavorites {
   onRejectDelete: () => void;
 }
 
-const db = getFirestore();
+const db = getFirestore(firebaseApp);
+
+export const dbGetFavorites = async ({
+  uid,
+  address,
+}: Pick<IChangeFavorites, "uid" | "address">) => {
+  const favoritesRef = collection(db, `favorites/${uid}/${address}`);
+  console.log(query(favoritesRef));
+
+  // const snapshot = await db.collection(`favorites/${uid}/${address}`).get();
+  // console.log(snapshot);
+  // const docRef = doc(db, `favorites/${uid}/${address}`, "123");
+  // console.log(await getDoc(docRef));
+  // return getDoc(docRef);
+};
 
 export const dbChangeFavorites = ({
   uid,
@@ -28,8 +51,10 @@ export const dbChangeFavorites = ({
   onSuccessDelete,
   onRejectDelete,
 }: IChangeFavorites) => {
+  const docRef = doc(db, `favorites/${uid}/${address}`, tokenId);
+  //? Add
   if (!isFavorite) {
-    setDoc(doc(db, `favorites/${uid}/${address}`, tokenId), {
+    setDoc(docRef, {
       tokenId,
       address,
       chain,
@@ -38,10 +63,9 @@ export const dbChangeFavorites = ({
       .then(onSuccessAdd)
       .catch(onRejectAdd);
   }
+  // Delete
   if (isFavorite) {
-    deleteDoc(doc(db, `favorites/${uid}/${address}`, tokenId))
-      .then(onSuccessDelete)
-      .catch(onRejectDelete);
+    deleteDoc(docRef).then(onSuccessDelete).catch(onRejectDelete);
   }
 };
 
