@@ -21,7 +21,6 @@ export const dbChangeFavorites = async ({
   tokenImage,
 }: IChangeFavorites) => {
   if (!isFavorite) {
-    console.log(address);
     await setDoc(doc(db, `favorites/${uid}/${address}`, tokenId), {
       tokenId,
       address,
@@ -30,7 +29,7 @@ export const dbChangeFavorites = async ({
     });
   }
   if (isFavorite) {
-    console.log("delete");
+    await deleteDoc(doc(db, `favorites/${uid}/${address}`, tokenId));
   }
 };
 
