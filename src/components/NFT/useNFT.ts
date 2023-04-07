@@ -4,11 +4,14 @@ import { MainNFTProps } from "@/components/NFT/types";
 import { dbGetFavorites } from "../../init/FirestoreInit";
 import { useAppSelector } from "@/hooks/store/useStore";
 import { MapFavorites } from "@/types/types";
+import { useRouter } from "next/router";
 
 export const useNFT = ({
   search,
   breadcrumbsData = [],
 }: Pick<MainNFTProps, "breadcrumbsData" | "search">) => {
+  const { asPath } = useRouter();
+
   const userData = useAppSelector((state) => state.userSlice.userData);
 
   const [favoritesMap, setFavoritesMap] = useState<MapFavorites>(new Map([]));
@@ -31,7 +34,7 @@ export const useNFT = ({
         },
       );
     }
-  }, [search, userData]);
+  }, [asPath, search, userData]);
 
   return {
     breadcrumbs,

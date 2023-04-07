@@ -27,17 +27,24 @@ interface IChangeFavorites {
 
 const db = getFirestore(firebaseApp);
 
-export const dbGetFavorites = async ({
+export const dbGetAddressCollection = async ({
   uid,
   address,
 }: Pick<IChangeFavorites, "uid" | "address">) => {
   const favoritesRef = collection(db, `favorites/${uid}/${address}`);
-  const docsSnap = await getDocs(favoritesRef);
+  return await getDocs(favoritesRef);
+};
+
+export const dbGetFavorites = async ({
+  uid,
+  address,
+}: Pick<IChangeFavorites, "uid" | "address">) => {
+  const addressSnap = await dbGetAddressCollection({ uid, address });
   const data: MapFavorites = new Map([]);
 
-  docsSnap.forEach((doc) => {
-    const itemData = doc.data() as IFavoritesItemModel;
-    data.set(itemData.tokenId, itemData);
+  addressSnap.forEach((addressItem) => {
+    const addressData = addressItem.data() as IFavoritesItemModel;
+    data.set(addressData.tokenId, addressData);
   });
 
   return data;
@@ -55,10 +62,11 @@ export const dbChangeFavorites = ({
   onSuccessDelete,
   onRejectDelete,
 }: IChangeFavorites) => {
-  const docRef = doc(db, `favorites/${uid}/${address}`, tokenId);
+  const addressPath = `favorites/${uid}/${address}`;
+  const addressRef = doc(db, addressPath, tokenId);
   //? Add
   if (!isFavorite) {
-    setDoc(docRef, {
+    setDoc(addressRef, {
       tokenId,
       address,
       chain,
@@ -69,7 +77,7 @@ export const dbChangeFavorites = ({
   }
   // Delete
   if (isFavorite) {
-    deleteDoc(docRef).then(onSuccessDelete).catch(onRejectDelete);
+    deleteDoc(addressRef).then(onSuccessDelete).catch(onRejectDelete);
   }
 };
 
