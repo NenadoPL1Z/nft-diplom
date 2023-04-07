@@ -3,7 +3,6 @@ import {
   collection,
   deleteDoc,
   doc,
-  getDoc,
   getFirestore,
   setDoc,
   getDocs,
@@ -71,7 +70,7 @@ export const dbChangeFavorites = ({
       address,
       chain,
       tokenImage,
-    })
+    } as IFavoritesItemModel)
       .then(onSuccessAdd)
       .catch(onRejectAdd);
   }
