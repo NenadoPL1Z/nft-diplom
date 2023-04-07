@@ -6,7 +6,6 @@ import {
   getDoc,
   getFirestore,
   setDoc,
-  query,
   getDocs,
 } from "@firebase/firestore";
 import { firebaseApp } from "./FirebaseInit";

@@ -32,7 +32,6 @@ export const useNFTSearch = ({ search, chain, id, pathname }: NFTProps) => {
   const isVisibleSearch = useMemo(() => formState.isDirty, [formState]);
 
   const onClickPopularResults = (data: IPopularResultModel) => () => {
-    dispatch(resetNftSlice());
     push({
       pathname,
       query: {
@@ -44,7 +43,6 @@ export const useNFTSearch = ({ search, chain, id, pathname }: NFTProps) => {
   };
 
   const onSubmit = handleSubmit(({ search, chain, id }) => {
-    dispatch(resetNftSlice());
     push({ pathname, query: { search, chain, id } }).then(() => {
       scrollTop();
     });
@@ -72,15 +70,10 @@ export const useNFTSearch = ({ search, chain, id, pathname }: NFTProps) => {
       };
 
       reset(data);
+      dispatch(resetNftSlice());
       handleFetchData(data);
     }
   }, [isMoralis, asPath]);
-
-  useEffect(() => {
-    return () => {
-      dispatch(resetNftSlice());
-    };
-  }, []);
 
   return {
     methods,
