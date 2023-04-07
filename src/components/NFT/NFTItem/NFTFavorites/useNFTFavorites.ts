@@ -20,6 +20,22 @@ export const useNFTFavorites = ({
     setHasError("");
   };
 
+  const onSuccessAdd = () => {
+    setIsFavorite(true);
+  };
+
+  const onRejectAdd = () => {
+    setHasError("Ошибка добавления в избранное, пропробуйте позже.");
+  };
+
+  const onSuccessDelete = () => {
+    setIsFavorite(false);
+  };
+
+  const onRejectDelete = () => {
+    setHasError("Ошибка удаления из избранного, пропробуйте позже.");
+  };
+
   const handleChangeFavorites = () => {
     if (!userData?.uid) return;
 
@@ -30,14 +46,11 @@ export const useNFTFavorites = ({
       address: search,
       tokenId: token_id,
       tokenImage: normalized_metadata?.image || "",
-    })
-      .then(() => {
-        setIsFavorite(true);
-      })
-      .catch((e) => {
-        console.log(e);
-        setHasError("Ошибка добавления в избранное, пропробуйте позже.");
-      });
+      onSuccessAdd,
+      onRejectAdd,
+      onSuccessDelete,
+      onRejectDelete,
+    });
   };
 
   return {
