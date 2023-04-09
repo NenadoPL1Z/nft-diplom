@@ -6,9 +6,11 @@ import BreadcrumbsUI from "@/UI/BreadcrumbsUI/BreadcrumbsUI";
 import { useNFTTopContent } from "@/components/NFTID/NFTIdTop/NFTTopContent/useNFTTopContent";
 import NftTopRight from "@/components/NFTID/NFTIdTop/NFTTopContent/NFTTopRight/NFTTopRight";
 import { useBigTablet } from "@/hooks/useMedia";
+import NFTFavorites from "@/components/NFT/NFTItem/NFTFavorites/NFTFavorites";
+import { EvmChainUnion } from "@/store/reducers/nftSlice/types";
 
 const NFTTopContent = (props: INftModel) => {
-  const { breadcrumbData } = useNFTTopContent();
+  const { breadcrumbData, isFavorite, id, chain, address } = useNFTTopContent();
   const isBigTablet = useBigTablet();
 
   return (
@@ -18,14 +20,24 @@ const NFTTopContent = (props: INftModel) => {
         {!isBigTablet && (
           <AsideSC>
             <NFTItem
-              search=""
-              chain="ETHEREUM"
+              search={address}
+              chain={chain}
+              initialIsFavorite={isFavorite}
               isVisibleCollectionItem={false}
               {...props}
             />
           </AsideSC>
         )}
         <RightContainerSC>
+          {isBigTablet && (
+            <NFTFavorites
+              chain={chain}
+              search={address}
+              token_id={id}
+              initialIsFavorite={isFavorite}
+              normalized_metadata={props.normalized_metadata}
+            />
+          )}
           <NftTopRight {...props} />
         </RightContainerSC>
       </WrapperSC>

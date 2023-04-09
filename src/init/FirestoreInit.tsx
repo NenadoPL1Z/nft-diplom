@@ -6,6 +6,7 @@ import {
   getFirestore,
   setDoc,
   getDocs,
+  getDoc,
 } from "@firebase/firestore";
 import { firebaseApp } from "./FirebaseInit";
 import { IFavoritesItemModel } from "@/lib/models/IFavoritesItemModel";
@@ -47,6 +48,17 @@ export const dbGetFavorites = async ({
   });
 
   return data;
+};
+
+export const dbGetFavoritesID = async ({
+  uid,
+  address,
+  tokenId,
+}: Pick<IChangeFavorites, "uid" | "address" | "tokenId">) => {
+  const favoritesRef = doc(db, `favorites/${uid}/${address}`, tokenId);
+  const docSnap = await getDoc(favoritesRef);
+
+  return !!docSnap.data();
 };
 
 export const dbChangeFavorites = ({
