@@ -1,16 +1,26 @@
 import { useAppSelector } from "@/hooks/store/useStore";
 import { axiosProject } from "@/lib/http";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FavoritesItemObjectType } from "@/lib/models/IFavoritesItemModel";
 import { useStatus } from "@/hooks/useStatus";
 import { isAxiosError } from "axios";
 import { ErrorFavoritesUnion, IError } from "@/types/types";
+
+export type HandleFilterFavoritesType = (key: string, tokenId: string) => void;
 
 export const useFavorite = () => {
   const userData = useAppSelector((state) => state.userSlice.userData);
 
   const { isLoading, hasError, handleChangeStatus } = useStatus();
   const [favoriteData, setFavoriteData] = useState<FavoritesItemObjectType>([]);
+
+  const favoriteDataKeys = useMemo(() => {
+    const keyArr: string[] = [];
+    favoriteData.forEach((item) => {
+      keyArr.push(Object.keys(item)[0]);
+    });
+    return keyArr;
+  }, [favoriteData]);
 
   const handleLoadData = () => {
     handleChangeStatus({ isLoading: true, hasError: "" });
@@ -40,6 +50,7 @@ export const useFavorite = () => {
     isLoading,
     hasError,
     favoriteData,
+    favoriteDataKeys,
     handleLoadData,
   };
 };
