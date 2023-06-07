@@ -8,7 +8,7 @@ const NFTEnd = () => {
   return (
     <ContainerSC>
       <MoodBadIcon />
-      <ParagraphSC>Больше NFT по данному запрсу нет</ParagraphSC>
+      <ParagraphSC>Больше NFT по данному запросу нет</ParagraphSC>
       <ButtonUI
         variant="outlined"
         onClick={scrollTop}>
